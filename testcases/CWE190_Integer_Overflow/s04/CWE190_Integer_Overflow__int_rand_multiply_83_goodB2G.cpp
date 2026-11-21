@@ -25,7 +25,7 @@ CWE190_Integer_Overflow__int_rand_multiply_83_goodB2G::CWE190_Integer_Overflow__
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__int_rand_multiply_83_goodB2G::~CWE190_Integer_Overflow__int_rand_multiply_83_goodB2G()
@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__int_rand_multiply_83_goodB2G::~CWE190_Integer_Overflow_
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (INT_MAX/2))
         {
-            int result = data * 2;
+            int result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

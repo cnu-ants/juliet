@@ -42,7 +42,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_array_declare_no_init_05_bad()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i].intOne);
+                printIntLine(data[i].intOne);/* ikos[v3.5.1]: error: expression 'data[(int64_t)i].0' is uninitialized */
                 printIntLine(data[i].intTwo);
             }
         }

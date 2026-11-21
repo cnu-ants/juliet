@@ -22,7 +22,7 @@ Template File: sources-sinks-42.tmpl.c
 static int badSource(int data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     return data;
 }
 
@@ -85,7 +85,7 @@ static void goodG2B()
 static int goodB2GSource(int data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     return data;
 }
 

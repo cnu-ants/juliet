@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__int_rand_postinc_65_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -63,7 +63,7 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

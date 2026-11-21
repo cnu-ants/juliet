@@ -33,7 +33,7 @@ void bad()
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > LLONG_MAX, this will overflow */
-        int64_t result = data * 2;
+        int64_t result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
 }
@@ -71,7 +71,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (LLONG_MAX/2))
         {
-            int64_t result = data * 2;
+            int64_t result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else

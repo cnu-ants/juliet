@@ -37,7 +37,7 @@ void CWE476_NULL_Pointer_Dereference__long_34_bad()
     {
         long * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);
+        printLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
     }
 }
 

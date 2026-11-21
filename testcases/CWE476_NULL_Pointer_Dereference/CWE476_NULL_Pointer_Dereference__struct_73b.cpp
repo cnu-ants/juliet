@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__struct_73
 void badSink(list<twoIntsStruct *> dataList)
 {
     /* copy data out of dataList */
-    twoIntsStruct * data = dataList.back();
+    twoIntsStruct * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<_twoIntsStruct*, std::allocator<_twoIntsStruct*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
 }
 
 #endif /* OMITBAD */
@@ -42,19 +42,19 @@ void badSink(list<twoIntsStruct *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<twoIntsStruct *> dataList)
 {
-    twoIntsStruct * data = dataList.back();
+    twoIntsStruct * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<_twoIntsStruct*, std::allocator<_twoIntsStruct*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<twoIntsStruct *> dataList)
 {
-    twoIntsStruct * data = dataList.back();
+    twoIntsStruct * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<_twoIntsStruct*, std::allocator<_twoIntsStruct*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
     }
     else
     {

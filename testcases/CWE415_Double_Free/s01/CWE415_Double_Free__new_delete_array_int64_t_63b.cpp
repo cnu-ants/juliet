@@ -28,7 +28,7 @@ void badSink(int64_t * * dataPtr)
 {
     int64_t * data = *dataPtr;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

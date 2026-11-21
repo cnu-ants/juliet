@@ -22,7 +22,7 @@ Template File: sources-sinks-61b.tmpl.c
 int CWE126_Buffer_Overread__CWE129_fscanf_61b_badSource(int data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     return data;
 }
 
@@ -43,7 +43,7 @@ int CWE126_Buffer_Overread__CWE129_fscanf_61b_goodG2BSource(int data)
 int CWE126_Buffer_Overread__CWE129_fscanf_61b_goodB2GSource(int data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     return data;
 }
 

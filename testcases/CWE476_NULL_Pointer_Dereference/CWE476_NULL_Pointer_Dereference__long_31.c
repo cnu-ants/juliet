@@ -30,7 +30,7 @@ void CWE476_NULL_Pointer_Dereference__long_31_bad()
         long * dataCopy = data;
         long * data = dataCopy;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);
+        printLongLine(*data);/* ikos[v3.5.1]: error: pointer is null */
     }
 }
 

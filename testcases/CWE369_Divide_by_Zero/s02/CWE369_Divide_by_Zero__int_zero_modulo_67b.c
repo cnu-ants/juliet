@@ -28,7 +28,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_67b_badSink(CWE369_Divide_by_Zero__i
 {
     int data = myStruct.structFirst;
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos[v3.5.1]: error: division by zero */
 }
 
 #endif /* OMITBAD */

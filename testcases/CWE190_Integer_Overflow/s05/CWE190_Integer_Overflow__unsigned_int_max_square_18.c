@@ -33,7 +33,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos[v3.5.1]: error: unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -56,7 +56,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos[v3.5.1]: error: unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     }
     else
     {
@@ -40,7 +40,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_12_bad()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
     }
@@ -49,7 +49,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_12_bad()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
@@ -73,19 +73,19 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     }
     else
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrueOrFalse())
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
@@ -98,7 +98,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else

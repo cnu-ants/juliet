@@ -28,9 +28,9 @@ namespace CWE476_NULL_Pointer_Dereference__class_72
 void badSink(vector<TwoIntsClass *> dataVector)
 {
     /* copy data out of dataVector */
-    TwoIntsClass * data = dataVector[2];
+    TwoIntsClass * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -42,9 +42,9 @@ void badSink(vector<TwoIntsClass *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<TwoIntsClass *> dataVector)
 {
-    TwoIntsClass * data = dataVector[2];
+    TwoIntsClass * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -52,11 +52,11 @@ void goodG2BSink(vector<TwoIntsClass *> dataVector)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<TwoIntsClass *> dataVector)
 {
-    TwoIntsClass * data = dataVector[2];
+    TwoIntsClass * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
         delete data;
     }
     else

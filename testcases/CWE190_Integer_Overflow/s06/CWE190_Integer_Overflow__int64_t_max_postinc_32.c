@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__int64_t_max_postinc_32_bad()
         int64_t data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos[v3.5.1]: error: signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }

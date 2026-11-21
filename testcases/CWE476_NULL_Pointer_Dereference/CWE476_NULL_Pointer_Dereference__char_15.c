@@ -40,7 +40,7 @@ void CWE476_NULL_Pointer_Dereference__char_15_bad()
     case 7:
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);
+        printHexCharLine(data[0]);/* ikos[v3.5.1]: error: pointer 'NULL' is null */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */

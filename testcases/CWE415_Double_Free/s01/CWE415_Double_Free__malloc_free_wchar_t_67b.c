@@ -30,7 +30,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_67b_badSink(CWE415_Double_Free__mal
 {
     wchar_t * data = myStruct.structFirst;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

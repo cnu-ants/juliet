@@ -41,7 +41,7 @@ void CWE126_Buffer_Overread__malloc_char_memmove_42_bad()
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, strlen(dest)*sizeof(char));
+        memmove(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.1]: warning: possible buffer overflow */
         dest[100-1] = '\0';
         printLine(dest);
         free(data);

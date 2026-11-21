@@ -28,7 +28,7 @@ void bad()
     /* POTENTIAL FLAW: Don't initialize data */
     ; /* empty statement needed for some flow variants */
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data.intOne);
+    printIntLine(data.intOne);/* ikos[v3.5.1]: error: expression 'data.intOne' is uninitialized */
     printIntLine(data.intTwo);
 }
 

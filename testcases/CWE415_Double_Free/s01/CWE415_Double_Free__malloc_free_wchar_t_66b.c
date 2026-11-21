@@ -26,7 +26,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_66b_badSink(wchar_t * dataArray[])
     /* copy data out of dataArray */
     wchar_t * data = dataArray[2];
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_22_badSink(char data)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -57,7 +57,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_22_goodB2G1Sink(char data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;
+            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -76,7 +76,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_22_goodB2G2Sink(char data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;
+            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }

@@ -29,7 +29,7 @@ void bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     const CWE126_Buffer_Overread__CWE129_fscanf_81_base& baseObject = CWE126_Buffer_Overread__CWE129_fscanf_81_bad();
     baseObject.action(data);
 }
@@ -58,7 +58,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     const CWE126_Buffer_Overread__CWE129_fscanf_81_base& baseObject = CWE126_Buffer_Overread__CWE129_fscanf_81_goodB2G();
     baseObject.action(data);
 }

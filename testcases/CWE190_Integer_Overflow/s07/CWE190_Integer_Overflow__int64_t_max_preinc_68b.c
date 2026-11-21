@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int64_t_max_preinc_68b_badSink()
     int64_t data = CWE190_Integer_Overflow__int64_t_max_preinc_68_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: error: signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

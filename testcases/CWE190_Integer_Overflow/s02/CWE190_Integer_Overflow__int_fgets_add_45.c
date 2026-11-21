@@ -30,7 +30,7 @@ static void badSink()
     int data = CWE190_Integer_Overflow__int_fgets_add_45_badData;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;
+        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

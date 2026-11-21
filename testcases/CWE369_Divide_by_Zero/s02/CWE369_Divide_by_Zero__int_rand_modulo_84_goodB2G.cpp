@@ -33,7 +33,7 @@ CWE369_Divide_by_Zero__int_rand_modulo_84_goodB2G::~CWE369_Divide_by_Zero__int_r
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
     }
     else
     {

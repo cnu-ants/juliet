@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_pointer_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos[v3.5.1]: error: base operand is uninitialized */
         printIntLine(data->intTwo);
         break;
     }

@@ -31,7 +31,7 @@ source:
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -49,7 +49,7 @@ sink:
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
         }
         else
         {
@@ -73,7 +73,7 @@ source:
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);

@@ -99,7 +99,7 @@ void CWE126_Buffer_Overread__CWE129_listen_socket_66_bad()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -202,7 +202,7 @@ static void goodB2G()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }

@@ -25,7 +25,7 @@ CWE190_Integer_Overflow__unsigned_int_rand_add_84_goodB2G::CWE190_Integer_Overfl
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__unsigned_int_rand_add_84_goodB2G::~CWE190_Integer_Overflow__unsigned_int_rand_add_84_goodB2G()
@@ -33,7 +33,7 @@ CWE190_Integer_Overflow__unsigned_int_rand_add_84_goodB2G::~CWE190_Integer_Overf
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < UINT_MAX)
     {
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

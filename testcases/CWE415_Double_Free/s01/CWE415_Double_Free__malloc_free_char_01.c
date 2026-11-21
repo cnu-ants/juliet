@@ -31,7 +31,7 @@ void CWE415_Double_Free__malloc_free_char_01_bad()
     /* POTENTIAL FLAW: Free data in the source - the bad sink frees data as well */
     free(data);
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

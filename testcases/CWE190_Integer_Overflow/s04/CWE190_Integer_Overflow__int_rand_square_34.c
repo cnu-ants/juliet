@@ -34,13 +34,13 @@ void CWE190_Integer_Overflow__int_rand_square_34_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     myUnion.unionFirst = data;
     {
         int data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-            int result = data * data;
+            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
     }
@@ -78,14 +78,14 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     myUnion.unionFirst = data;
     {
         int data = myUnion.unionSecond;
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int_max_add_68b_badSink()
     int data = CWE190_Integer_Overflow__int_max_add_68_badData;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;
+        int result = data + 1;/* ikos[v3.5.1]: error: signed integer overflow */
         printIntLine(result);
     }
 }

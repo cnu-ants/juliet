@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_preinc_67b_badSink(CWE190_Intege
     unsigned int data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

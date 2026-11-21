@@ -31,7 +31,7 @@ void CWE190_Integer_Overflow__int_fgets_preinc_67b_badSink(CWE190_Integer_Overfl
     int data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

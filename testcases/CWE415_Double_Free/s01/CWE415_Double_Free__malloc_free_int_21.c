@@ -29,7 +29,7 @@ static void badSink(int * data)
     if(badStatic)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: error: double free */
     }
 }
 

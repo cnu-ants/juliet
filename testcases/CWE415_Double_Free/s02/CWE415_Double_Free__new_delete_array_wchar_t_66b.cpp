@@ -29,7 +29,7 @@ void badSink(wchar_t * dataArray[])
     /* copy data out of dataArray */
     wchar_t * data = dataArray[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

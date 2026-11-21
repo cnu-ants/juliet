@@ -29,7 +29,7 @@ void CWE415_Double_Free__malloc_free_int_68b_badSink()
 {
     int * data = CWE415_Double_Free__malloc_free_int_68_badData;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

@@ -29,14 +29,14 @@ namespace CWE126_Buffer_Overread__char_declare_memmove_73
 void badSink(list<char *> dataList)
 {
     /* copy data out of dataList */
-    char * data = dataList.back();
+    char * data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, strlen(dest)*sizeof(char));
+        memmove(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.1]: warning: memory access might be invalid */
         dest[100-1] = '\0';
         printLine(dest);
     }
@@ -49,14 +49,14 @@ void badSink(list<char *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<char *> dataList)
 {
-    char * data = dataList.back();
+    char * data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, strlen(dest)*sizeof(char));
+        memmove(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.1]: warning: memory access might be invalid */
         dest[100-1] = '\0';
         printLine(dest);
     }

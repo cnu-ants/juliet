@@ -45,7 +45,7 @@ void CWE190_Integer_Overflow__int_listen_socket_postinc_65b_badSink(int data)
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

@@ -36,7 +36,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_03_bad()
     if(5==5)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: error: double free */
     }
 }
 

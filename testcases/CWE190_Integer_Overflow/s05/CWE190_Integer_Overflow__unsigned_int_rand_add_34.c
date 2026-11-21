@@ -31,13 +31,13 @@ void CWE190_Integer_Overflow__unsigned_int_rand_add_34_bad()
     CWE190_Integer_Overflow__unsigned_int_rand_add_34_unionType myUnion;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     myUnion.unionFirst = data;
     {
         unsigned int data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            unsigned int result = data + 1;
+            unsigned int result = data + 1;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -73,7 +73,7 @@ static void goodB2G()
     CWE190_Integer_Overflow__unsigned_int_rand_add_34_unionType myUnion;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     myUnion.unionFirst = data;
     {
         unsigned int data = myUnion.unionSecond;

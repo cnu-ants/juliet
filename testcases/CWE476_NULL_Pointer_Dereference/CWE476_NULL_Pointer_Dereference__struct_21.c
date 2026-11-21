@@ -29,7 +29,7 @@ static void badSink(twoIntsStruct * data)
     if(badStatic)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&data->intOne' is null */
     }
 }
 

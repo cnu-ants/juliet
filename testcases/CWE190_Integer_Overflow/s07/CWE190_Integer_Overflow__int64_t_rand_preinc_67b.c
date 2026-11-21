@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int64_t_rand_preinc_67b_badSink(CWE190_Integer_Ove
     int64_t data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

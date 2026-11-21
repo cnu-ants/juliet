@@ -44,7 +44,7 @@ void bad()
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);
+            printIntLine(data[i]);/* ikos[v3.5.1]: error: expression 'data[(int64_t)i]' is uninitialized */
         }
     }
     /* deallocate the memory */

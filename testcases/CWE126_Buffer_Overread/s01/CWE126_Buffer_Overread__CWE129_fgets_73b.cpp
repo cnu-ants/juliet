@@ -28,14 +28,14 @@ namespace CWE126_Buffer_Overread__CWE129_fgets_73
 void badSink(list<int> dataList)
 {
     /* copy data out of dataList */
-    int data = dataList.back();
+    int data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
         }
         else
         {
@@ -51,14 +51,14 @@ void badSink(list<int> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<int> dataList)
 {
-    int data = dataList.back();
+    int data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
         }
         else
         {
@@ -70,7 +70,7 @@ void goodG2BSink(list<int> dataList)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<int> dataList)
 {
-    int data = dataList.back();
+    int data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* FIX: Properly validate the array index and prevent a buffer overread */

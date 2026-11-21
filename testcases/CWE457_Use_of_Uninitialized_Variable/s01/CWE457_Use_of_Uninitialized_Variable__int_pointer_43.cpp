@@ -35,7 +35,7 @@ void bad()
     int * data;
     badSource(data);
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(*data);
+    printIntLine(*data);/* ikos[v3.5.1]: error: variable 'data' is uninitialized */
 }
 
 #endif /* OMITBAD */

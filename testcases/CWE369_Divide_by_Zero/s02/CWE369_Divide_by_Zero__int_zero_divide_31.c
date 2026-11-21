@@ -30,7 +30,7 @@ void CWE369_Divide_by_Zero__int_zero_divide_31_bad()
         int dataCopy = data;
         int data = dataCopy;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos[v3.5.1]: error: division by zero */
     }
 }
 

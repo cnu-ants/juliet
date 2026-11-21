@@ -109,7 +109,7 @@ CWE369_Divide_by_Zero__int_connect_socket_divide_84_goodB2G::~CWE369_Divide_by_Z
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
     }
     else
     {

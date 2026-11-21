@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int_connect_socket_square_82_goodB2G::action(int d
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;
+        int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
     else

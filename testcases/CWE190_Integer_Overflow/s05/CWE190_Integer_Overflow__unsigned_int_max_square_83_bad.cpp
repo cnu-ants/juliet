@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__unsigned_int_max_square_83_bad::~CWE190_Integer_Overflo
 {
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos[v3.5.1]: error: unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

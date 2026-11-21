@@ -42,7 +42,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: warning: possible double free */
     }
     else
     {
@@ -115,12 +115,12 @@ static void goodG2B()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: warning: possible double free */
     }
     else
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: warning: possible double free */
     }
 }
 

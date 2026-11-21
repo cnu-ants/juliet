@@ -36,7 +36,7 @@ CWE190_Integer_Overflow__int64_t_fscanf_square_84_goodB2G::~CWE190_Integer_Overf
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;
+        int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
     else

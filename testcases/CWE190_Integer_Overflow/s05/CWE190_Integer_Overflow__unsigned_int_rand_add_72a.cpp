@@ -34,7 +34,7 @@ void bad()
     vector<unsigned int> dataVector;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     /* Put data in a vector */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
@@ -72,7 +72,7 @@ static void goodB2G()
     vector<unsigned int> dataVector;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);

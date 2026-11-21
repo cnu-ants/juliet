@@ -34,7 +34,7 @@ void bad()
         int data = dataRef;
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            int result = data + 1;
+            int result = data + 1;/* ikos[v3.5.1]: error: signed integer overflow */
             printIntLine(result);
         }
     }

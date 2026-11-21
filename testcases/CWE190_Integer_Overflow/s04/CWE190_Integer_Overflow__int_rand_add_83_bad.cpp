@@ -25,14 +25,14 @@ CWE190_Integer_Overflow__int_rand_add_83_bad::CWE190_Integer_Overflow__int_rand_
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__int_rand_add_83_bad::~CWE190_Integer_Overflow__int_rand_add_83_bad()
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;
+        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

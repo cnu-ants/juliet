@@ -35,7 +35,7 @@ void bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     /* Put data in a list */
     dataList.push_back(data);
     dataList.push_back(data);
@@ -76,7 +76,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
     dataList.push_back(data);
     dataList.push_back(data);
     dataList.push_back(data);

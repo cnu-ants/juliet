@@ -38,7 +38,7 @@ CWE126_Buffer_Overread__malloc_wchar_t_memmove_83_bad::~CWE126_Buffer_Overread__
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
         free(data);

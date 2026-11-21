@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__int64_t_max_preinc_42_bad()
     data = badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: error: signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

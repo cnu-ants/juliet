@@ -29,7 +29,7 @@ void badSource(int &data)
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -59,7 +59,7 @@ void goodB2GSource(int &data)
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);

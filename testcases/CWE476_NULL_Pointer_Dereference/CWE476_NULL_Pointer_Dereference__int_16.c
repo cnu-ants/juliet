@@ -33,7 +33,7 @@ void CWE476_NULL_Pointer_Dereference__int_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(*data);
+        printIntLine(*data);/* ikos[v3.5.1]: error: pointer is null */
         break;
     }
 }

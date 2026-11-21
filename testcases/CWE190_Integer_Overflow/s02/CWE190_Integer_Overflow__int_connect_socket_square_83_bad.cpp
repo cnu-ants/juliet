@@ -110,7 +110,7 @@ CWE190_Integer_Overflow__int_connect_socket_square_83_bad::~CWE190_Integer_Overf
 {
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;
+        int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
 }

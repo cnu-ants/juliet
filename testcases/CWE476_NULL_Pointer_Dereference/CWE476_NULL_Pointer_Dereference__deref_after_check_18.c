@@ -26,7 +26,7 @@ sink:
         int *intPointer = NULL;
         if (intPointer == NULL)
         {
-            printIntLine(*intPointer);
+            printIntLine(*intPointer);/* ikos[v3.5.1]: error: pointer is null */
         }
     }
 }

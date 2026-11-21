@@ -32,7 +32,7 @@ void CWE190_Integer_Overflow__int_max_square_61_bad()
     data = CWE190_Integer_Overflow__int_max_square_61b_badSource(data);
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;
+        int result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
         printIntLine(result);
     }
 }
@@ -69,7 +69,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;
+        int result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
         printIntLine(result);
     }
     else

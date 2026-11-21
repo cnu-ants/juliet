@@ -26,7 +26,7 @@ void CWE476_NULL_Pointer_Dereference__long_66b_badSink(long * dataArray[])
     /* copy data out of dataArray */
     long * data = dataArray[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);
+    printLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

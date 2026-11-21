@@ -95,7 +95,7 @@ void CWE126_Buffer_Overread__CWE129_listen_socket_01_bad()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -121,7 +121,7 @@ void CWE126_Buffer_Overread__CWE129_listen_socket_01_bad()
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
         }
         else
         {
@@ -213,7 +213,7 @@ static void goodB2G()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }

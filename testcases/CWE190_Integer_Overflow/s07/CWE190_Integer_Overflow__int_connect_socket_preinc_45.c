@@ -50,7 +50,7 @@ static void badSink()
     int data = CWE190_Integer_Overflow__int_connect_socket_preinc_45_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

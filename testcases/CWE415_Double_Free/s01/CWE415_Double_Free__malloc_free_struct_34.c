@@ -41,7 +41,7 @@ void CWE415_Double_Free__malloc_free_struct_34_bad()
     {
         twoIntsStruct * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: error: double free */
     }
 }
 

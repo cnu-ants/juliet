@@ -108,7 +108,7 @@ CWE190_Integer_Overflow__int_connect_socket_add_84_bad::~CWE190_Integer_Overflow
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;
+        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

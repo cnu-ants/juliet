@@ -30,7 +30,7 @@ void CWE476_NULL_Pointer_Dereference__int_67b_badSink(CWE476_NULL_Pointer_Derefe
 {
     int * data = myStruct.structFirst;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);
+    printIntLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

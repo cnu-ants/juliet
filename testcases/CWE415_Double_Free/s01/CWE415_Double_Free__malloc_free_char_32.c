@@ -39,7 +39,7 @@ void CWE415_Double_Free__malloc_free_char_32_bad()
     {
         char * data = *dataPtr2;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos[v3.5.1]: error: double free */
     }
 }
 

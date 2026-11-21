@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__int_max_multiply_66b_badSink(int dataArray[])
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;
+        int result = data * 2;/* ikos[v3.5.1]: error: signed integer overflow */
         printIntLine(result);
     }
 }

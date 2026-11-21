@@ -51,7 +51,7 @@ void CWE126_Buffer_Overread__char_alloca_loop_04_bad()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];
+            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible buffer overflow */
         }
         dest[100-1] = '\0';
         printLine(dest);

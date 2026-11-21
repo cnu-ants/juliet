@@ -32,7 +32,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_13_bad()
     if(GLOBAL_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos[v3.5.1]: error: division by zero */
     }
 }
 

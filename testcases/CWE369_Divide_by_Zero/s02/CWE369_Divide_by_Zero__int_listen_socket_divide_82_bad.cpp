@@ -25,7 +25,7 @@ namespace CWE369_Divide_by_Zero__int_listen_socket_divide_82
 void CWE369_Divide_by_Zero__int_listen_socket_divide_82_bad::action(int data)
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
 }
 
 }

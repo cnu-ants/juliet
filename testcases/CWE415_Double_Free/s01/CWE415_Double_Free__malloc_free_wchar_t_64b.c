@@ -28,7 +28,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     wchar_t * data = (*dataPtr);
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos[v3.5.1]: error: double free */
 }
 
 #endif /* OMITBAD */

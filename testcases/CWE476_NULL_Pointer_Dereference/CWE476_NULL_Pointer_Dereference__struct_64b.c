@@ -28,7 +28,7 @@ void CWE476_NULL_Pointer_Dereference__struct_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     twoIntsStruct * data = (*dataPtr);
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&data->intOne' is null */
 }
 
 #endif /* OMITBAD */

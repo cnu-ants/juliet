@@ -27,14 +27,14 @@ CWE190_Integer_Overflow__unsigned_int_rand_square_83_bad::CWE190_Integer_Overflo
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__unsigned_int_rand_square_83_bad::~CWE190_Integer_Overflow__unsigned_int_rand_square_83_bad()
 {
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
