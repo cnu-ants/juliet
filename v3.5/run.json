@@ -1,0 +1,52 @@
+{
+  "version_label": "v3.5.1",
+  "ikos_version": "ikos 3.5",
+  "root": "/work",
+  "tools": {
+    "clang": "/usr/lib/llvm-14/bin/clang",
+    "llvm-bindir": "/usr/lib/llvm-14/bin",
+    "includedir": "/opt/ikos/include",
+    "ikos": "/opt/ikos/bin/ikos",
+    "version": "ikos 3.5",
+    "binary_hashes": {
+      "/opt/ikos/bin/ikos": "0119026c6482faa99f73696807c0cafae65252eec2c2fac3c7f10f9cf4dce99e",
+      "/opt/ikos/bin/ikos-analyzer": "28cd4d0c3a450ce22b1f86b243c16513534b88b75834597f9cf0f31507e7d073",
+      "/opt/ikos/bin/ikos-pp": "b193763a4ec217d90cd338d08cc401f0dc5d6ecacdea74cda711aba7f7e4478c",
+      "/usr/lib/llvm-14/bin/clang": "b38e27a25eb20e28af90d63e2ab1a7c2f25cc9d2802dc9d9d4020bbb6169535a"
+    },
+    "compile_flags": [
+      "-c",
+      "-emit-llvm",
+      "-Wall",
+      "-U_FORTIFY_SOURCE",
+      "-D_FORTIFY_SOURCE=0",
+      "-D__IKOS__",
+      "-g",
+      "-O0",
+      "-Xclang",
+      "-disable-O0-optnone"
+    ]
+  },
+  "signature": "3427f89acfcd13cde579d48af103fb76469b09222d1d0c8df08fc2b7d8db611d",
+  "programs": 8538,
+  "test_source_files": 13465,
+  "testcase_functions": 29899,
+  "reused_programs": 0,
+  "semantic_options": "IKOS CLI defaults; only -a selects checker(s). main is the sole program entry point.",
+  "count_unit": "Each zero-argument goodG2B*, goodB2G*, good1/good2/etc, or bad driver is one testcase. Outer good dispatcher, Sink/Source, constructors/destructors are not extra testcases.",
+  "fp_fn_definition": "Juliet-label candidates, target CWE subtype only: good target alarm=FP; bad target alarm=TP; bad without target alarm=FN. Failed analyses are separate; unreachable/no-check FN subsets are explicit.",
+  "diagnostic_unit": "One IKOS native report per attributed testcase; multiple calling contexts of that testcase deduplicated. The same sink shared by different testcases is attributed to each.",
+  "safe_definition": "Raw checker safe records are not a proof of complete safety; no-check and unreachable are separate.",
+  "annotation_policy": "All IKOS warning/error messages from selected checkers, including off-target subtypes, are annotated; only target=True contributes to FP/TP. Failed/incomplete files retain previous comments.",
+  "coverage": {
+    "unassigned_test_sources": [],
+    "duplicate_test_sources": [],
+    "missing_inputs": []
+  },
+  "completed_programs": 8538,
+  "successful_programs": 8538,
+  "failed_programs": 0,
+  "interrupted": false,
+  "annotation_failures": 0,
+  "updated_at": "2026-11-20T22:02:06+0000"
+}
