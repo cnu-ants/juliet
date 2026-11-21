@@ -1,30 +1,33 @@
 #!/usr/bin/env python3
-"""Analyze six Juliet CWEs, keep compact results, and replace managed source comments.
+"""Analyze six Juliet CWEs and automatically export compact, validated results.
 
-Put this file beside testcases/ and testcasesupport/, then: python3 analyze_juliet.py
-Edit VERSION below for each release. Results always go beside this script/VERSION/.
---root PATH selects a different Juliet root; --jobs N runs independent programs.
---list only audits inputs; it does not analyze or edit sources. Ctrl-C is resumable.
-A VERSION cannot be reused for changed source/tool/settings: choose a new VERSION.
-Requires the selected IKOS installation's Python modules and matching LLVM tools;
-the script automatically switches to its bundled Python when available.
+Put this SINGLE file beside testcases/ and testcasesupport/:
+    python3 analyze_juliet.py --jobs 4
+Edit VERSION and IKOS below. Only the CWE checker(s) are selected; other IKOS
+analysis options stay at defaults. Each program's entry is its original main.
+Each goodG2B/goodB2G/good1/bad driver is one testcase, excluding good dispatchers.
 
-summary.html: readable Korean tables with testcase counts, FP/FN rates, and diagnostic counts.
---summary-only RESULT_DIR renders existing results without rerunning IKOS.
-summary.csv: individual goodG2B/goodB2G/bad testcase-function counts AND diagnostic counts.
-Counts are based on SOURCE testcase functions, never on the outer good dispatcher.
-functions.csv: every planned entry and each source implementation function; distinguishes
-compiled/no-check-records from reachable checks and unreachable-only checks.
-files.csv: source coverage, failures, and annotation-update status.
-diagnostics.csv: actual function/location, full/short diagnostic, target-CWE eligibility.
-results.sqlite: resumable normalized results, not thousands of intermediate bitcode/DBs.
-run.json: settings, count definitions, coverage, and current progress.
-failures.log: created only if compilation/analysis/annotation failed.
+Successful output in JULIET_ROOT/results/VERSION/: summary.csv + details.json.gz.
+The script stays beside testcases/; --root selects that Juliet root.
+Archive: original commands/settings, source hashes, testcase functions/statuses,
+target FP/TP messages and exact sites, FN expected manifest sites and functions.
+Counts are verified against summary.csv before temporary SQLite/CSVs are removed.
+Unfinished/failed runs retain the cache in results/VERSION/ for resuming the same command.
+Do not commit an unfinished results/VERSION folder. Completed VERSIONs are not rerun;
+choose a new VERSION for new code/tool/settings. Raw temporary bitcode is removed.
 
-FP/FN values are candidates based on Juliet good/bad labels, not independent
-proofs of defects. Inspect target_reason and actual code when researching root causes.
-FN includes successful bad runs with no TARGET diagnostic, including unreachable or
-unsupported checks. Compile/analyzer failures are not FN. No Safe comments are added.
+--list: inventory only, no analysis or source changes.
+--summary-only results/VERSION/: print a readable table and optionally save summary.html.
+--compact-only OLD_VERSION/: compact existing results without reanalysis;
+    default output is JULIET_ROOT/results/OLD_VERSION/; originals are preserved.
+    --output PATH changes this export destination.
+
+FP/FN are Juliet-label candidates for the target subtype, not independent proofs.
+Failed analyses are separate from FN; no-check/unreachable FN subsets are explicit.
+Safe locations were not retained individually: per-testcase check counts are kept.
+Native implementation definitions alone do not establish checker reachability.
+FN locations refer to Juliet expected flaws, not emitted analyzer diagnostics.
+Source Warning/Error comments are refreshed, with file ownership/mode preserved.
 """
 
 # ======================== EDIT THESE SETTINGS ========================
@@ -39,6 +42,7 @@ from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 import csv
 import hashlib
+import gzip
 import importlib
 import json
 import os
@@ -96,6 +100,7 @@ def semantic_bytes(path):
 def save_json(path, value):
     temp = path.with_name(path.name + ".tmp")
     temp.write_text(json.dumps(value, ensure_ascii=True, indent=2) + "\n")
+    output_owner(temp,path.parent)
     temp.replace(path)
 
 
@@ -107,6 +112,7 @@ def write_csv(path, fields, rows):
         for row in rows:
             writer.writerow({k: json.dumps(v, ensure_ascii=False) if isinstance(v, (list, dict)) else v
                              for k, v in row.items() if k in fields})
+    output_owner(temp,path.parent)
     temp.replace(path)
 
 
@@ -625,9 +631,16 @@ def annotate_source(path, clean, messages):
             raise ValueError('Annotation would change source tokens')
     if path.read_bytes() != updated:
         temp = path.with_name(path.name + '.ikos-tmp')
-        temp.write_bytes(updated)
-        shutil.copymode(path, temp)
-        temp.replace(path)
+        original_stat=path.stat()
+        try:
+            temp.write_bytes(updated)
+            current_stat=temp.stat()
+            if hasattr(os,'chown') and (current_stat.st_uid,current_stat.st_gid)!=(original_stat.st_uid,original_stat.st_gid):
+                os.chown(temp,original_stat.st_uid,original_stat.st_gid)
+            shutil.copymode(path,temp)
+            temp.replace(path)
+        finally:
+            if temp.exists(): temp.unlink()
     return 'updated' if updated != clean else 'clean_no_diagnostics'
 
 
@@ -735,10 +748,11 @@ table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;whit
     document += '<p><b>FP</b>: Good에서 목표 진단 발생 · <b>FN</b>: Bad에서 목표 진단 없음 · <b>TP</b>: Bad에서 목표 진단 발생 · <b>TN</b>: Good에서 목표 진단 없음.<br>비율의 분모는 FP의 경우 전체 Good, FN의 경우 전체 Bad입니다. 실패·대기 testcase는 FP/FN/TP/TN에 넣지 않습니다. 판정은 Juliet 레이블과 목표 진단 대응 기준입니다.</p>'
     document += '<h2>실제 Warning/Error 진단 건수</h2><p>위 표의 testcase 수와 다른 단위입니다. 한 testcase에 여러 진단이 생길 수 있습니다. 해당 CWE 목표 진단만 집계합니다.</p>'
     document += table(diag_headers,diagnostics)
-    document += '<p class="muted">파일·라인·실제 함수·메시지: <a href="diagnostics.csv">diagnostics.csv</a> · testcase별 판정: <a href="functions.csv">functions.csv</a> · 파일별 처리 상태: <a href="files.csv">files.csv</a></p>'
+    document += '<p class="muted">파일·라인·실제 함수·메시지: <a href="details.json.gz">details.json.gz</a></p>'
     document += '<p class="muted">FN 중 checker 기록 자체가 없는 testcase: '+number(totals,'fn_no_checker_records')+'개. 도달 불가 기록만 있는 testcase: '+number(totals,'fn_unreachable_only')+'개. 두 수치는 FN 총수에 이미 포함되어 있습니다.</p></html>'
     temp = out/'summary.html.tmp'
     temp.write_text(document,encoding='utf-8')
+    output_owner(temp,out)
     temp.replace(out/'summary.html')
     return terminal
 
@@ -841,6 +855,7 @@ def export_results(out, programs, inventory, results, annotation_status, metadat
     log = failures + ['Annotation: ' + e for e in annotation_errors]
     if log:
         (out/'failures.log').write_text('\n'.join(log), encoding='utf-8', errors='replace')
+        output_owner(out/'failures.log',out)
     elif (out/'failures.log').exists():
         (out/'failures.log').unlink()
     metadata.update(completed_programs=len(results), successful_programs=sum(r['status']=='ok' for r in results.values()),
@@ -850,8 +865,190 @@ def export_results(out, programs, inventory, results, annotation_status, metadat
     return summaries
 
 
+FIELDS = ('testcase_functions','good_functions','bad_functions','analyzed_functions','failed_functions','pending_functions',
+          'fp_functions','fn_functions','tp_functions','tn_functions','fp_diagnostics','tp_diagnostics',
+          'good_target_warnings','good_target_errors','bad_target_warnings','bad_target_errors',
+          'fn_no_checker_records','fn_unreachable_only','programs','analyzed_programs')
+
+
+def compact_clean(text):
+    return LEX.sub(lambda m: ''.join(re.findall(r'\r\n|\r|\n',m[0]))
+                   if m[0].startswith('/*') and MANAGED.fullmatch(m[0])
+                   else MANAGED.sub('',m[0]) if m[0].startswith('//') else m[0],text)
+
+
+def compact_definitions(text):
+    import bisect
+    code=LEX.sub(lambda m: re.sub(r'[^\r\n]',' ',m[0]),text)
+    offsets=[0]+[m.end() for m in re.finditer('\n',code)]
+    code=re.sub(r'^[ \t]*#[^\n]*',lambda m:' '*len(m[0]),code,flags=re.M)
+    brackets,stack={},[]
+    for m in re.finditer(r'[{}]',code):
+        if m[0]=='{': stack.append(m.start())
+        elif stack: brackets[stack.pop()]=m.start()
+    found=[]
+    for m in re.finditer(r'([~\w:]+)\s*\([^;{}]*\)\s*(?:const\s*)?(?:noexcept\s*)?(?::[^;{}]*)?\{',code):
+        if m[1] in {'if','for','while','switch','catch','sizeof','alignof'}: continue
+        start=m.end()-1
+        if start in brackets:
+            found.append(dict(function=m[1],line=bisect.bisect_right(offsets,m.start()),
+                              end_line=bisect.bisect_right(offsets,brackets[start])))
+    return found
+
+
+def expected_sites(program,scenario,root,hashes,native):
+    sites=[]
+    for f in program.get('flaws',[]):
+        if not re.match(r'^CWE-?0*'+str(program['cwe'])+r'\b',f.get('name',''),re.I): continue
+        site=dict(path=f['path'],line=f['line'],function='',expected_weakness=f.get('name',''),
+                  location_basis='juliet_manifest',source_verification='unavailable')
+        path=root/f['path']
+        if path.is_file():
+            text=compact_clean(path.read_bytes().decode('utf-8',errors='surrogateescape'))
+            wanted=hashes.get(f['path'])
+            digest=hashlib.sha256(text.encode('utf-8',errors='surrogateescape')).hexdigest()
+            site['source_verification']='matches_analyzed_source' if digest==wanted else 'changed_or_hash_unavailable'
+            if digest==wanted:
+                hits=[x for x in compact_definitions(text) if x['line']<=int(f['line'])<=x['end_line']]
+                if hits:
+                    best=min(hits,key=lambda x:x['end_line']-x['line'])
+                    names=[x['function'] for x in native if x.get('path')==f['path'] and x.get('line')==best['line']]
+                    site['function']=' | '.join(sorted(set(names))) if names else best['function']
+        sites.append(site)
+    return sites
+
+
+def prepare_result_directory(out, root):
+    """Create results/VERSION under the testcase root; preserve host ownership."""
+    results = root / 'results'
+    results.mkdir(exist_ok=True)
+    output_owner(results, root)
+    out.mkdir(exist_ok=True)
+    output_owner(out, root)
+
+
+def output_owner(path, reference):
+    # Docker root must not leave root-owned 0600 archives on the bind mount.
+    if hasattr(os, 'geteuid') and os.geteuid() == 0:
+        owner = Path(reference).stat()
+        os.chown(path, owner.st_uid, owner.st_gid)
+
+
+def compact_export(source, output, root, replace=False):
+    source=Path(source).resolve(); output=Path(output).resolve(); root=Path(root).resolve()
+    db=source/'results.sqlite'; summary=source/'summary.csv'
+    if source==output and not replace: raise ValueError('Same-folder export requires replace=True')
+    if not db.is_file() or not summary.is_file(): raise ValueError('Input folder must contain results.sqlite and summary.csv')
+    with summary.open(newline='',encoding='utf-8-sig') as stream: rows=list(csv.DictReader(stream))
+    if not rows: raise ValueError('Empty summary.csv')
+    expected={int(r['cwe']):r for r in rows}
+    con=sqlite3.connect(db.as_uri()+'?mode=ro',uri=True)
+    con.execute('BEGIN')
+    config_row=con.execute("SELECT value FROM metadata WHERE key='configuration'").fetchone()
+    if not config_row: raise ValueError('No saved configuration')
+    cfg=json.loads(config_row[0]); programs=cfg['plan']; hashes=cfg.get('sources',{})
+    ids={p['program_id'] for p in programs}
+    saved={r[0] for r in con.execute('SELECT program_id FROM results')}
+    if saved-ids: raise ValueError('Saved results not represented in the plan')
+    missing_dirs=[]
+    directory=output
+    while not directory.exists():
+        missing_dirs.append(directory);directory=directory.parent
+    output.mkdir(parents=True,exist_ok=True)
+    for directory in missing_dirs: output_owner(directory,root)
+    if not replace and ((output/'details.json.gz').exists() or (output/'summary.csv').exists()):
+        raise ValueError('Output already contains an export; choose a new output folder')
+    totals={n:Counter() for n in expected}
+    run_meta=json.loads((source/'run.json').read_text()) if (source/'run.json').is_file() else {}
+    complete=not any(int(row['failed_functions']) or int(row['pending_functions']) or int(row.get('missing_input_files',0)) for row in rows) and not run_meta.get('failed_programs',0) and not run_meta.get('annotation_failures',0) and not run_meta.get('interrupted',False)
+    header=dict(complete=complete,annotation_failures=run_meta.get('annotation_failures',0),schema_version=1,version=source.name,ikos_version=cfg['tools'].get('version'),
+                tools=cfg['tools'],analysis_script_sha256=cfg.get('script'),
+                format='programs -> testcases -> target_diagnostics / expected_flaw_sites',
+                counting='Individual testcase functions; same testcase with multiple alarms counts once.',
+                fn_locations='Juliet manifest expected flaw locations, not emitted warnings. Missing sites remain explicitly unresolved.',
+                implementation_functions='Compiled definitions; actual checker reachability is not retained for every helper.',
+                safe_checks='Counts only; no individual Safe locations were retained by the original runner.',
+                omitted='Off-target warnings, verbose call-context stacks, temporary bitcode, and resume-cache signatures.',
+                analyzed_source_hashes=hashes)
+    encoder=json.JSONEncoder(ensure_ascii=True,separators=(',',':'))
+    fd,temp=tempfile.mkstemp(prefix='.details-',suffix='.gz',dir=output);os.close(fd)
+    temp=Path(temp)
+    try:
+        with gzip.open(temp,'wt',encoding='utf-8',compresslevel=9) as out:
+            def emit(value):
+                for chunk in encoder.iterencode(value): out.write(chunk)
+            out.write('{"metadata":');emit(header);out.write(',"programs":[')
+            for index,p in enumerate(programs):
+                record=con.execute('SELECT payload FROM results WHERE program_id=?',(p['program_id'],)).fetchone()
+                r=json.loads(record[0]) if record else dict(status='pending')
+                n=p['cwe']; tally=totals[n];status=r['status'];tally['programs']+=1
+                tally['analyzed_programs']+=status=='ok'
+                targets=[d for d in r.get('diagnostics',[]) if d.get('target')]
+                fn_rows=[]
+                for s in p['scenarios']:
+                    tally['testcase_functions']+=1;tally[s['role']+'_functions']+=1
+                    cov=r.get('coverage',{}).get(s['id'],{})
+                    reachable=sum(cov.get(str(k),0) for k in (0,1,2))
+                    observation=('reachable_checker_records' if reachable else 'unreachable_checker_records_only' if cov.get('3') else 'no_checker_records') if status=='ok' else status
+                    ds=[d for d in targets if d.get('scenario_id')==s['id']]
+                    verdict=('FP' if ds else 'TN') if s['role']=='good' else ('TP' if ds else 'FN')
+                    if status=='ok':
+                        tally['analyzed_functions']+=1;tally[verdict.lower()+'_functions']+=1
+                    else:
+                        tally['pending_functions' if status=='pending' else 'failed_functions']+=1
+                        verdict='pending' if status=='pending' else 'analysis_failed'
+                    if verdict in ('FP','TP'): tally[verdict.lower()+'_diagnostics']+=len(ds)
+                    if verdict=='FN':
+                        tally['fn_no_checker_records']+=observation=='no_checker_records'
+                        tally['fn_unreachable_only']+=observation=='unreachable_checker_records_only'
+                    for d in ds: tally[s['role']+'_target_'+('warnings' if d['status']==1 else 'errors')]+=1
+                    entry=dict(id=s['id'],function=s['name'],path=s['path'],line=s['line'],end_line=s['end_line'],role=s['role'],
+                               status=status,outcome=verdict,observation=observation,checker_counts=cov,
+                               target_diagnostics=[{k:d.get(k) for k in ('path','line','column','function','severity','short_message','message','target_reason')} for d in ds])
+                    if verdict=='FN':
+                        entry['expected_flaw_sites']=expected_sites(p,s,root,hashes,r.get('definitions',[]))
+                        entry['fn_location_status']='manifest_sites_available' if entry['expected_flaw_sites'] else 'unresolved_no_manifest_site'
+                    fn_rows.append(entry)
+                compact=dict(id=p['program_id'],cwe=n,checker=expected[n]['checker'],sources=p['sources'],files=p['files'],
+                             missing_inputs=p.get('missing',[]),status=status,
+                             commands=r.get('commands',[]),settings=r.get('settings',{}),testcases=fn_rows,
+                             implementation_functions=r.get('definitions',[]))
+                if status not in ('ok','pending'): compact.update(failure_stage=r.get('stage'),failure_log=r.get('log',''))
+                if index:out.write(',')
+                emit(compact)
+                if (index+1)%500==0:print('Exported %d/%d programs'%(index+1,len(programs)),flush=True)
+            out.write(']}')
+        for n,row in expected.items():
+            for field in FIELDS:
+                if field in row and int(row[field])!=totals[n][field]:
+                    raise ValueError('Count mismatch CWE%d %s: CSV=%s export=%s'%(n,field,row[field],totals[n][field]))
+        # Reopen and fully decode the compressed document before reporting success.
+        with gzip.open(temp,'rt',encoding='utf-8') as check: document=json.load(check)
+        if len(document['programs'])!=len(programs):raise ValueError('Archive program count mismatch')
+        if sum(len(p['testcases']) for p in document['programs'])!=sum(c['testcase_functions'] for c in totals.values()):
+            raise ValueError('Archive testcase count mismatch')
+        output_owner(temp,root)
+        temp.replace(output/'details.json.gz')
+        if source != output:
+            summary_temp=output/'summary.csv.tmp'
+            shutil.copyfile(summary,summary_temp)
+            output_owner(summary_temp,root)
+            summary_temp.replace(output/'summary.csv')
+        output_owner(output/'summary.csv',root)
+        print('Verified: %d programs, %d testcases, FP=%d FN=%d'%(
+            len(programs),sum(c['testcase_functions'] for c in totals.values()),sum(c['fp_functions'] for c in totals.values()),sum(c['fn_functions'] for c in totals.values())))
+        print('Archive: %s (%.2f MiB)'%(output/'details.json.gz',(output/'details.json.gz').stat().st_size/1048576))
+        return complete
+    finally:
+        if temp.exists():temp.unlink()
+        con.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('--compact-only', type=Path, metavar='OLD_RESULT_DIR',
+                        help='Compact an existing legacy result folder without IKOS; preserve originals')
+    parser.add_argument('--output', type=Path, help='Output folder for --compact-only; default: JULIET_ROOT/results/VERSION')
     parser.add_argument('--summary-only', type=Path, metavar='RESULT_DIR',
                         help='Render an existing summary.csv as summary.html and a terminal table; no analysis or source edits')
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parent)
@@ -862,11 +1059,31 @@ def main():
     args = parser.parse_args()
     if args.summary_only is not None:
         return summary_only(args.summary_only.resolve())
+    if args.compact_only is not None:
+        source=args.compact_only.resolve()
+        target=(args.output or args.root.resolve()/'results'/source.name).resolve()
+        compact_export(source,target,args.root)
+        return 0
+    if args.output is not None:
+        parser.error('--output is only used with --compact-only')
     if not re.fullmatch(r'v[0-9]+(?:\.[0-9]+)*(?:[-+][A-Za-z0-9_.-]+)?', VERSION):
         parser.error('VERSION must be a single version name such as v3.5.1')
     if args.jobs < 1 or (args.timeout is not None and args.timeout <= 0):
         parser.error('--jobs and --timeout must be positive')
     root = args.root.resolve()
+    out = root / 'results' / VERSION
+    if not args.list and (out/'details.json.gz').is_file() and not (out/'results.sqlite').exists():
+        with gzip.open(out/'details.json.gz','rt',encoding='utf-8') as saved:
+            archive=json.load(saved)
+        if not archive['metadata'].get('complete'):
+            raise ValueError('Incomplete archive without resume cache; use a new VERSION')
+        with (out/'summary.csv').open(newline='',encoding='utf-8-sig') as saved:
+            rows=list(csv.DictReader(saved))
+        _,headers,core,_,_=summary_view(rows)
+        print('This VERSION is already complete; no analysis rerun. Set a new VERSION for a new analysis.')
+        for row in [headers,*core]: print(' | '.join(row))
+        print('Results: '+str(out))
+        return 0
     if not args.list:
         ikos = find_ikos(args.ikos)
         import_runtime(ikos)
@@ -882,8 +1099,10 @@ def main():
         print('Audit complete. No source files changed; no analysis performed.', flush=True)
         return 0
     tools = tools_config(ikos)
-    out = Path(__file__).resolve().parent / VERSION
-    out.mkdir(exist_ok=True)
+    out = root / 'results' / VERSION
+    if (out/'summary.csv').exists() and not (out/'results.sqlite').exists() and not (out/'details.json.gz').exists():
+        raise ValueError('Existing output without resume cache. Choose a new VERSION or use --compact-only.')
+    prepare_result_directory(out,root)
     support_dir = root / 'testcasesupport'
     support_inputs = sorted(p for p in support_dir.rglob('*') if p.is_file() and p.suffix.lower() in CODE_EXT)
     if not support_inputs or not (support_dir/'io.c').is_file():
@@ -894,6 +1113,7 @@ def main():
         plan=programs, root=str(root), timeout=args.timeout)
     signature = digest(json.dumps(signature_data, sort_keys=True).encode())
     con = sqlite3.connect(out/'results.sqlite')
+    output_owner(out/'results.sqlite',out)
     con.execute('CREATE TABLE IF NOT EXISTS metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)')
     con.execute('CREATE TABLE IF NOT EXISTS results (program_id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
     previous = con.execute("SELECT value FROM metadata WHERE key='signature'").fetchone()
@@ -979,6 +1199,14 @@ def main():
         summaries = export_results(out,programs,inventory,results,statuses,metadata,errors)
     con.close()
     print(write_readable_summary(out, summaries), flush=True)
+    complete=compact_export(out,out,root,replace=True)
+    if complete and not STOP.is_set() and not metadata['failed_programs'] and not errors:
+        for filename in ('results.sqlite','results.sqlite-journal','functions.csv','files.csv','diagnostics.csv','run.json','summary.html','failures.log'):
+            intermediate=out/filename
+            if intermediate.is_file(): intermediate.unlink()
+        print('Compact output verified. Intermediate results removed; summary.csv and details.json.gz retained.',flush=True)
+    else:
+        print('Incomplete/failed run: intermediate files retained for resume and diagnosis.',flush=True)
     print('Results: ' + str(out),flush=True)
     return 130 if STOP.is_set() else 1 if metadata['failed_programs'] or errors else 0
 
