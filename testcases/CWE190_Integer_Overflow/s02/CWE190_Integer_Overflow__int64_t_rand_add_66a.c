@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int64_t_rand_add_66_bad()
     int64_t dataArray[5];
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* put data in array */
     dataArray[2] = data;
     CWE190_Integer_Overflow__int64_t_rand_add_66b_badSink(dataArray);
@@ -61,7 +61,7 @@ static void goodB2G()
     int64_t dataArray[5];
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     dataArray[2] = data;
     CWE190_Integer_Overflow__int64_t_rand_add_66b_goodB2GSink(dataArray);
 }

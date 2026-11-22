@@ -46,7 +46,7 @@ void bad()
     if(staticReturnsTrue())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data.intOne);/* ikos[v3.5.1]: error: expression 'data.intOne' is uninitialized */
+        printIntLine(data.intOne);/* ikos[v3.5.2]: error: expression 'data.intOne' is uninitialized */
         printIntLine(data.intTwo);
     }
 }

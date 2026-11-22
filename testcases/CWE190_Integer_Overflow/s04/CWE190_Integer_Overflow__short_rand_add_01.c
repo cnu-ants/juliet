@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__short_rand_add_01_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
         short result = data + 1;
@@ -56,7 +56,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {

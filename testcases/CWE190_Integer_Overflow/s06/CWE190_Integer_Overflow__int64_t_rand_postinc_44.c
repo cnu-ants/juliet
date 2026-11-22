@@ -23,7 +23,7 @@ static void badSink(int64_t data)
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        data++;/* ikos[v3.5.2]: warning: possible signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }
@@ -36,7 +36,7 @@ void CWE190_Integer_Overflow__int64_t_rand_postinc_44_bad()
     void (*funcPtr) (int64_t) = badSink;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -88,7 +88,7 @@ static void goodB2G()
     void (*funcPtr) (int64_t) = goodB2GSink;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

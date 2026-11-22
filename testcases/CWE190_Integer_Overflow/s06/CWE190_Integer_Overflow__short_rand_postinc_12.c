@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
@@ -37,7 +37,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_12_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -47,7 +47,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_12_bad()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -72,19 +72,19 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrueOrFalse())
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -98,7 +98,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }

@@ -25,7 +25,7 @@ namespace CWE476_NULL_Pointer_Dereference__class_53
 void badSink_d(TwoIntsClass * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&data->intOne' is null */
+    printIntLine(data->intOne);/* ikos[v3.5.2]: error: pointer '&data->intOne' is null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }

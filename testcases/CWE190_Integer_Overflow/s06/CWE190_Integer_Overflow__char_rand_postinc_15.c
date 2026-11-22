@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_15_bad()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -39,7 +39,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         char result = data;
         printHexCharLine(result);
     }
@@ -64,7 +64,7 @@ static void goodB2G1()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -81,7 +81,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -102,7 +102,7 @@ static void goodB2G2()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -115,7 +115,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }

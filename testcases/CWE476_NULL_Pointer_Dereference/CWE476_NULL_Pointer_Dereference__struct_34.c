@@ -37,7 +37,7 @@ void CWE476_NULL_Pointer_Dereference__struct_34_bad()
     {
         twoIntsStruct * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&data->intOne' is null */
+        printIntLine(data->intOne);/* ikos[v3.5.2]: error: pointer '&data->intOne' is null */
     }
 }
 

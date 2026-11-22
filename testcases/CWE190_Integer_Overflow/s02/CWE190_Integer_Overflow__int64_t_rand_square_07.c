@@ -34,13 +34,13 @@ void CWE190_Integer_Overflow__int64_t_rand_square_07_bad()
     if(staticFive==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(staticFive==5)
     {
         {
             /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
     }
@@ -58,7 +58,7 @@ static void goodB2G1()
     if(staticFive==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(staticFive!=5)
     {
@@ -70,7 +70,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
@@ -88,14 +88,14 @@ static void goodB2G2()
     if(staticFive==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(staticFive==5)
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else

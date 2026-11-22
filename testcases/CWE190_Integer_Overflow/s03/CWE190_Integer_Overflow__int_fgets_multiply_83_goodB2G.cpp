@@ -48,7 +48,7 @@ CWE190_Integer_Overflow__int_fgets_multiply_83_goodB2G::~CWE190_Integer_Overflow
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (INT_MAX/2))
         {
-            int result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * 2;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

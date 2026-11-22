@@ -32,7 +32,7 @@ static void badSink(int data)
              * This check does not check the upper bounds of the array index */
             if (data >= 0)
             {
-                printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+                printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
             }
             else
             {

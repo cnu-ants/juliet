@@ -32,7 +32,7 @@ void CWE457_Use_of_Uninitialized_Variable__char_pointer_09_bad()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printLine(data);/* ikos[v3.5.1]: error: first argument is uninitialized */
+        printLine(data);/* ikos[v3.5.2]: error: first argument is uninitialized */
     }
 }
 

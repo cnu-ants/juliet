@@ -42,7 +42,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+        int64_t result = data * data;/* ikos[v3.5.2]: error: signed integer overflow */
         printLongLongLine(result);
     }
     break;
@@ -83,7 +83,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+            int64_t result = data * data;/* ikos[v3.5.2]: error: signed integer overflow */
             printLongLongLine(result);
         }
         else
@@ -116,7 +116,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+            int64_t result = data * data;/* ikos[v3.5.2]: error: signed integer overflow */
             printLongLongLine(result);
         }
         else

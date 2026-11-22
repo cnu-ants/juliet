@@ -27,7 +27,7 @@ namespace CWE190_Integer_Overflow__char_rand_square_43
 static void badSource(char &data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
 }
 
 void bad()
@@ -69,7 +69,7 @@ static void goodG2B()
 static void goodB2GSource(char &data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
 }
 
 static void goodB2G()

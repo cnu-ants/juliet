@@ -38,7 +38,7 @@ void CWE457_Use_of_Uninitialized_Variable__int64_t_04_bad()
     if(STATIC_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printLongLongLine(data);/* ikos[v3.5.1]: error: first argument is uninitialized */
+        printLongLongLine(data);/* ikos[v3.5.2]: error: first argument is uninitialized */
     }
 }
 

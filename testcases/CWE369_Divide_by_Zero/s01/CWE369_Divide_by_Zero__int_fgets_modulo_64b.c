@@ -28,7 +28,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     int data = (*dataPtr);
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -56,7 +56,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_64b_goodB2GSink(void * dataVoidPtr)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
     else
     {

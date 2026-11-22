@@ -29,7 +29,7 @@ static void badSink(int64_t * data)
     if(badStatic)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+        printLongLongLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
     }
 }
 

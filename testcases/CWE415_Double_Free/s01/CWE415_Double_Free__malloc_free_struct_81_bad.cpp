@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__malloc_free_struct_81
 void CWE415_Double_Free__malloc_free_struct_81_bad::action(twoIntsStruct * data) const
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos[v3.5.2]: error: double free */
 }
 
 }

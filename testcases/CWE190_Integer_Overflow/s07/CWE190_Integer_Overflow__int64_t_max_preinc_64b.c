@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__int64_t_max_preinc_64b_badSink(void * dataVoidPtr)
     int64_t data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.1]: error: signed integer overflow */
+        ++data;/* ikos[v3.5.2]: error: signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

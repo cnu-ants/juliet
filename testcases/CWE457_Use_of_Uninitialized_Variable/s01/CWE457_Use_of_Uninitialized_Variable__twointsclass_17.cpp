@@ -33,7 +33,7 @@ void bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data.intOne);/* ikos[v3.5.1]: error: expression 'data.intOne' is uninitialized */
+        printIntLine(data.intOne);/* ikos[v3.5.2]: error: expression 'data.intOne' is uninitialized */
         printIntLine(data.intTwo);
     }
 }
@@ -76,8 +76,8 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data.intOne);/* ikos[v3.5.1]: warning: expression 'data.intOne' might be uninitialized */
-        printIntLine(data.intTwo);/* ikos[v3.5.1]: warning: expression 'data.intTwo' might be uninitialized */
+        printIntLine(data.intOne);/* ikos[v3.5.2]: warning: expression 'data.intOne' might be uninitialized */
+        printIntLine(data.intTwo);/* ikos[v3.5.2]: warning: expression 'data.intTwo' might be uninitialized */
     }
 }
 

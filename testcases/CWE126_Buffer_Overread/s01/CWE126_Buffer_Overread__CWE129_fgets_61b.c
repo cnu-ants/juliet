@@ -26,7 +26,7 @@ int CWE126_Buffer_Overread__CWE129_fgets_61b_badSource(int data)
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.2]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -58,7 +58,7 @@ int CWE126_Buffer_Overread__CWE129_fgets_61b_goodB2GSource(int data)
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.2]: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);

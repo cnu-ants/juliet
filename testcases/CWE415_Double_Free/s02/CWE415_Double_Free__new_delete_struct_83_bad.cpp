@@ -32,7 +32,7 @@ CWE415_Double_Free__new_delete_struct_83_bad::CWE415_Double_Free__new_delete_str
 CWE415_Double_Free__new_delete_struct_83_bad::~CWE415_Double_Free__new_delete_struct_83_bad()
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;/* ikos[v3.5.1]: error: double free */
+    delete data;/* ikos[v3.5.2]: error: double free */
 }
 }
 #endif /* OMITBAD */

@@ -25,7 +25,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_66b_badSink(short dataArray[])
     short data = dataArray[2];
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -54,7 +54,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_66b_goodB2GSink(short dataArray
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }

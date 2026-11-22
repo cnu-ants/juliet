@@ -38,8 +38,8 @@ void bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data.intOne);/* ikos[v3.5.1]: warning: expression 'data.intOne' might be uninitialized */
-        printIntLine(data.intTwo);/* ikos[v3.5.1]: warning: expression 'data.intTwo' might be uninitialized */
+        printIntLine(data.intOne);/* ikos[v3.5.2]: warning: expression 'data.intOne' might be uninitialized */
+        printIntLine(data.intTwo);/* ikos[v3.5.2]: warning: expression 'data.intTwo' might be uninitialized */
     }
     else
     {

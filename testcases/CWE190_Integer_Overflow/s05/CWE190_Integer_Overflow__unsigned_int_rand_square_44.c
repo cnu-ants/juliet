@@ -25,7 +25,7 @@ static void badSink(unsigned int data)
 {
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -37,7 +37,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_44_bad()
     void (*funcPtr) (unsigned int) = badSink;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -72,7 +72,7 @@ static void goodB2GSink(unsigned int data)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else
@@ -87,7 +87,7 @@ static void goodB2G()
     void (*funcPtr) (unsigned int) = goodB2GSink;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

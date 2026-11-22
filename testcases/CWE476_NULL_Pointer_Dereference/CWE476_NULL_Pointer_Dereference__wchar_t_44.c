@@ -25,7 +25,7 @@ static void badSink(wchar_t * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printWcharLine(data[0]);/* ikos[v3.5.2]: error: pointer 'data' is null */
 }
 
 void CWE476_NULL_Pointer_Dereference__wchar_t_44_bad()

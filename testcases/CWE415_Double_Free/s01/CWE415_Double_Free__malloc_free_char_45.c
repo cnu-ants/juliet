@@ -29,7 +29,7 @@ static void badSink()
 {
     char * data = CWE415_Double_Free__malloc_free_char_45_badData;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos[v3.5.2]: error: double free */
 }
 
 void CWE415_Double_Free__malloc_free_char_45_bad()

@@ -33,7 +33,7 @@ CWE415_Double_Free__malloc_free_struct_83_bad::CWE415_Double_Free__malloc_free_s
 CWE415_Double_Free__malloc_free_struct_83_bad::~CWE415_Double_Free__malloc_free_struct_83_bad()
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos[v3.5.2]: error: double free */
 }
 }
 #endif /* OMITBAD */

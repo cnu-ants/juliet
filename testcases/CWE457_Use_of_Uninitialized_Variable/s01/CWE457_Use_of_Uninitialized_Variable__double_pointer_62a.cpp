@@ -32,7 +32,7 @@ void bad()
     double * data;
     badSource(data);
     /* POTENTIAL FLAW: Use data without initializing it */
-    printDoubleLine(*data);/* ikos[v3.5.1]: error: variable 'data' is uninitialized */
+    printDoubleLine(*data);/* ikos[v3.5.2]: error: variable 'data' is uninitialized */
 }
 
 #endif /* OMITBAD */

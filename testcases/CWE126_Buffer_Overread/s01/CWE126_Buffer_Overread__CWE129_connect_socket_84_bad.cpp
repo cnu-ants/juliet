@@ -86,7 +86,7 @@ CWE126_Buffer_Overread__CWE129_connect_socket_84_bad::CWE126_Buffer_Overread__CW
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -112,7 +112,7 @@ CWE126_Buffer_Overread__CWE129_connect_socket_84_bad::~CWE126_Buffer_Overread__C
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         else
         {

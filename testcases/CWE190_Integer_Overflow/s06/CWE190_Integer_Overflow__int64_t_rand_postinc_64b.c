@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__int64_t_rand_postinc_64b_badSink(void * dataVoidPt
     int64_t data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        data++;/* ikos[v3.5.2]: warning: possible signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

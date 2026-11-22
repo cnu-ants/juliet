@@ -28,7 +28,7 @@ static void badSink()
     int64_t data = CWE190_Integer_Overflow__int64_t_max_postinc_45_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: error: signed integer overflow */
+        data++;/* ikos[v3.5.2]: error: signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

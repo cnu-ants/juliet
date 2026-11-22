@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__short_rand_square_18_bad()
     goto source;
 source:
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     goto sink;
 sink:
     {
@@ -50,7 +50,7 @@ static void goodB2G()
     goto source;
 source:
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     goto sink;
 sink:
     /* FIX: Add a check to prevent an overflow from occurring */

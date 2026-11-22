@@ -44,7 +44,7 @@ Template File: sources-sinks-41.tmpl.c
 static void badSink(int data)
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 void CWE369_Divide_by_Zero__int_connect_socket_divide_41_bad()
@@ -138,7 +138,7 @@ static void goodB2GSink(int data)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
     else
     {

@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__int_72
 void badSink(vector<int *> dataVector)
 {
     /* copy data out of dataVector */
-    int * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<int*, std::allocator<int*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printIntLine(*data);
 }
 
 #endif /* OMITBAD */
@@ -42,15 +42,15 @@ void badSink(vector<int *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<int *> dataVector)
 {
-    int * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<int*, std::allocator<int*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printIntLine(*data);
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<int *> dataVector)
 {
-    int * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<int*, std::allocator<int*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int * data = dataVector[2];
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

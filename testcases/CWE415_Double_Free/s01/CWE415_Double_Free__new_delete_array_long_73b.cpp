@@ -32,7 +32,7 @@ void badSink(list<long *> dataList)
     /* copy data out of dataList */
     long * data = dataList.back();
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.1]: warning: ignored memory deallocation */
+    delete [] data;/* ikos[v3.5.2]: warning: ignored memory deallocation */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(list<long *> dataList)
 {
     long * data = dataList.back();
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.1]: warning: ignored memory deallocation */
+    delete [] data;/* ikos[v3.5.2]: warning: ignored memory deallocation */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

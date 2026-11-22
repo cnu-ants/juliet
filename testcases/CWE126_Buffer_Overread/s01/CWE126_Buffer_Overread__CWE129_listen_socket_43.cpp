@@ -95,7 +95,7 @@ static void badSource(int &data)
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -129,7 +129,7 @@ void bad()
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         else
         {
@@ -223,7 +223,7 @@ static void goodB2GSource(int &data)
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -256,7 +256,7 @@ static void goodB2G()
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         else
         {

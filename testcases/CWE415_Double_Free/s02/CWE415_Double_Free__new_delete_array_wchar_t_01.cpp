@@ -33,7 +33,7 @@ void bad()
     /* POTENTIAL FLAW: delete the array data in the source - the bad sink deletes the array data as well */
     delete [] data;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.1]: error: double free */
+    delete [] data;/* ikos[v3.5.2]: error: double free */
 }
 
 #endif /* OMITBAD */

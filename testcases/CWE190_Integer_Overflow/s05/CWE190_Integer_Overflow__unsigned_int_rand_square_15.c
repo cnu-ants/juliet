@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_15_bad()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -41,7 +41,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     break;
@@ -65,7 +65,7 @@ static void goodB2G1()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -82,7 +82,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else
@@ -102,7 +102,7 @@ static void goodB2G2()
     {
     case 6:
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -115,7 +115,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

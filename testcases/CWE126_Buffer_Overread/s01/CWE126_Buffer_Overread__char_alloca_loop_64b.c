@@ -36,7 +36,7 @@ void CWE126_Buffer_Overread__char_alloca_loop_64b_badSink(void * dataVoidPtr)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         dest[100-1] = '\0';
         printLine(dest);

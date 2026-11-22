@@ -23,7 +23,7 @@ static void badSink(char data)
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        ++data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         char result = data;
         printHexCharLine(result);
     }
@@ -36,7 +36,7 @@ void CWE190_Integer_Overflow__char_rand_preinc_44_bad()
     void (*funcPtr) (char) = badSink;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -72,7 +72,7 @@ static void goodB2GSink(char data)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < CHAR_MAX)
     {
-        ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        ++data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         char result = data;
         printHexCharLine(result);
     }
@@ -88,7 +88,7 @@ static void goodB2G()
     void (*funcPtr) (char) = goodB2GSink;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

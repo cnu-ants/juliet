@@ -24,7 +24,7 @@ void CWE476_NULL_Pointer_Dereference__deref_after_check_01_bad()
         int *intPointer = NULL;
         if (intPointer == NULL)
         {
-            printIntLine(*intPointer);/* ikos[v3.5.1]: error: pointer is null */
+            printIntLine(*intPointer);/* ikos[v3.5.2]: error: pointer is null */
         }
     }
 }

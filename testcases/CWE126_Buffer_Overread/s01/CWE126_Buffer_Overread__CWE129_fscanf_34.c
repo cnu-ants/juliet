@@ -32,7 +32,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_34_bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
     myUnion.unionFirst = data;
     {
         int data = myUnion.unionSecond;
@@ -93,7 +93,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
     myUnion.unionFirst = data;
     {
         int data = myUnion.unionSecond;

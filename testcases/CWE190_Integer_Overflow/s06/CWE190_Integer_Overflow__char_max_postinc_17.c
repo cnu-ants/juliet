@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__char_max_postinc_17_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -86,7 +86,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            data++;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }

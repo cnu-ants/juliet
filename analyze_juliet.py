@@ -31,7 +31,7 @@ Source Warning/Error comments are refreshed, with file ownership/mode preserved.
 """
 
 # ======================== EDIT THESE SETTINGS ========================
-VERSION = "v3.5.1"                 # Result directory name; NOT an IKOS --version override.
+VERSION = "v3.5.2"                 # Result directory name; NOT an IKOS --version override.
 IKOS = "ikos"                      # Or an absolute path, e.g. /opt/ikos/bin/ikos.
 JOBS = 1                           # Independent processes; not IKOS's -j option.
 TIMEOUT_SECONDS = None             # External wall timeout; None leaves it unlimited.

@@ -29,14 +29,14 @@ void CWE190_Integer_Overflow__int_rand_preinc_32_bad()
     {
         int data = *dataPtr1;
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {
         int data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+            ++data;/* ikos[v3.5.2]: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }
@@ -83,7 +83,7 @@ static void goodB2G()
     {
         int data = *dataPtr1;
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {

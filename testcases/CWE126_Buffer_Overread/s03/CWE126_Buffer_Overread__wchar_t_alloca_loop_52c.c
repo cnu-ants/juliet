@@ -34,7 +34,7 @@ void CWE126_Buffer_Overread__wchar_t_alloca_loop_52c_badSink(wchar_t * data)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
@@ -58,7 +58,7 @@ void CWE126_Buffer_Overread__wchar_t_alloca_loop_52c_goodG2BSink(wchar_t * data)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);

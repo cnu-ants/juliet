@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_82_bad::action(unsigned i
 {
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

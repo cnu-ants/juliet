@@ -32,7 +32,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_68_bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_68_badData = data;
     CWE126_Buffer_Overread__CWE129_fscanf_68b_badSink();
 }
@@ -65,7 +65,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_68_goodB2GData = data;
     CWE126_Buffer_Overread__CWE129_fscanf_68b_goodB2GSink();
 }

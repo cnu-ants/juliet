@@ -24,7 +24,7 @@ static void badSink(int data)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.1]: error: signed integer overflow */
+        int result = data * 2;/* ikos[v3.5.2]: error: signed integer overflow */
         printIntLine(result);
     }
 }

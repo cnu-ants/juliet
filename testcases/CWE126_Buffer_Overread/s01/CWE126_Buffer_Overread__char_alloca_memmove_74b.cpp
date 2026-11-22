@@ -29,14 +29,14 @@ namespace CWE126_Buffer_Overread__char_alloca_memmove_74
 void badSink(map<int, char *> dataMap)
 {
     /* copy data out of dataMap */
-    char * data = dataMap[2];
+    char * data = dataMap[2];/* ikos[v3.5.2]: warning: memory access might be invalid */
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, strlen(dest)*sizeof(char));
+        memmove(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.2]: warning: memory access might be invalid */
         dest[100-1] = '\0';
         printLine(dest);
     }
@@ -49,14 +49,14 @@ void badSink(map<int, char *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, char *> dataMap)
 {
-    char * data = dataMap[2];
+    char * data = dataMap[2];/* ikos[v3.5.2]: warning: memory access might be invalid */
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, strlen(dest)*sizeof(char));
+        memmove(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.2]: warning: memory access might be invalid */
         dest[100-1] = '\0';
         printLine(dest);
     }

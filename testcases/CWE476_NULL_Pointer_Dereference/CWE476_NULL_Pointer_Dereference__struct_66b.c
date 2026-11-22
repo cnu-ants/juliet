@@ -26,7 +26,7 @@ void CWE476_NULL_Pointer_Dereference__struct_66b_badSink(twoIntsStruct * dataArr
     /* copy data out of dataArray */
     twoIntsStruct * data = dataArray[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&data->intOne' is null */
+    printIntLine(data->intOne);/* ikos[v3.5.2]: error: pointer '&data->intOne' is null */
 }
 
 #endif /* OMITBAD */

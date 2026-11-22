@@ -29,7 +29,7 @@ void CWE476_NULL_Pointer_Dereference__int64_t_68b_badSink()
 {
     int64_t * data = CWE476_NULL_Pointer_Dereference__int64_t_68_badData;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printLongLongLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

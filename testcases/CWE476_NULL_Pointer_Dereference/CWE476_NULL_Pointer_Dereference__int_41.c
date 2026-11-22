@@ -24,7 +24,7 @@ Template File: sources-sinks-41.tmpl.c
 static void badSink(int * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printIntLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
 }
 
 void CWE476_NULL_Pointer_Dereference__int_41_bad()

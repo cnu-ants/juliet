@@ -30,7 +30,7 @@ void badSink(list<int> dataList)
     /* copy data out of dataList */
     int data = dataList.back();
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -42,7 +42,7 @@ void goodG2BSink(list<int> dataList)
 {
     int data = dataList.back();
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
@@ -52,7 +52,7 @@ void goodB2GSink(list<int> dataList)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
     else
     {

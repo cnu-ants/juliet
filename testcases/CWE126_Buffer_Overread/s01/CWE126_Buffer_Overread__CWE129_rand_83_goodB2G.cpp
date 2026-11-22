@@ -35,7 +35,7 @@ CWE126_Buffer_Overread__CWE129_rand_83_goodB2G::~CWE126_Buffer_Overread__CWE129_
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
         }
         else
         {

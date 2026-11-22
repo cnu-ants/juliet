@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__int_max_add_63b_badSink(int * dataPtr)
     int data = *dataPtr;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.1]: error: signed integer overflow */
+        int result = data + 1;/* ikos[v3.5.2]: error: signed integer overflow */
         printIntLine(result);
     }
 }

@@ -51,7 +51,7 @@ void bad()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible use after free */
+            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible use after free */
         }
         dest[100-1] = '\0';
         printLine(dest);
@@ -93,7 +93,7 @@ static void goodG2B()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: possible use after free */
+            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible use after free */
         }
         dest[100-1] = '\0';
         printLine(dest);

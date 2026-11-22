@@ -45,7 +45,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        ++data;/* ikos[v3.5.2]: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int_rand_square_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
@@ -40,7 +40,7 @@ void CWE190_Integer_Overflow__int_rand_square_12_bad()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
     }
@@ -49,7 +49,7 @@ void CWE190_Integer_Overflow__int_rand_square_12_bad()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else
@@ -74,19 +74,19 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrueOrFalse())
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else
@@ -99,7 +99,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

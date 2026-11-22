@@ -28,14 +28,14 @@ namespace CWE126_Buffer_Overread__CWE129_listen_socket_72
 void badSink(vector<int> dataVector)
 {
     /* copy data out of dataVector */
-    int data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    int data = dataVector[2];
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);
         }
         else
         {
@@ -51,14 +51,14 @@ void badSink(vector<int> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<int> dataVector)
 {
-    int data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    int data = dataVector[2];
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);
         }
         else
         {
@@ -70,7 +70,7 @@ void goodG2BSink(vector<int> dataVector)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<int> dataVector)
 {
-    int data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    int data = dataVector[2];
     {
         int buffer[10] = { 0 };
         /* FIX: Properly validate the array index and prevent a buffer overread */

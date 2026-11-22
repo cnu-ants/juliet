@@ -113,7 +113,7 @@ void CWE369_Divide_by_Zero__int_connect_socket_modulo_34_bad()
     {
         int data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
 }
 
@@ -207,7 +207,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+            printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
         }
         else
         {

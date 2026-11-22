@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int64_t_rand_postinc_65_bad()
     void (*funcPtr) (int64_t) = CWE190_Integer_Overflow__int64_t_rand_postinc_65b_badSink;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -60,7 +60,7 @@ static void goodB2G()
     void (*funcPtr) (int64_t) = CWE190_Integer_Overflow__int64_t_rand_postinc_65b_goodB2GSink;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

@@ -119,7 +119,7 @@ void CWE369_Divide_by_Zero__int_listen_socket_divide_31_bad()
         int dataCopy = data;
         int data = dataCopy;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
 }
 
@@ -224,7 +224,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+            printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
         }
         else
         {

@@ -36,7 +36,7 @@ void bad()
     {
         TwoIntsClass * data = *dataPtr2;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&NULL->0' is null */
+        printIntLine(data->intOne);/* ikos[v3.5.2]: error: pointer '&NULL->0' is null */
         /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
         delete data;
     }

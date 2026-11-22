@@ -30,10 +30,10 @@ namespace CWE476_NULL_Pointer_Dereference__wchar_t_73
 void badSink(list<wchar_t *> dataList)
 {
     /* copy data out of dataList */
-    wchar_t * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
+    wchar_t * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -43,21 +43,21 @@ void badSink(list<wchar_t *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<wchar_t *> dataList)
 {
-    wchar_t * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
+    wchar_t * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<wchar_t *> dataList)
 {
-    wchar_t * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
+    wchar_t * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<wchar_t*, std::allocator<wchar_t*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+        printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
     }
     else
     {

@@ -86,7 +86,7 @@ void badSource(int &data)
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -159,7 +159,7 @@ void goodB2GSource(int &data)
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.1]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }

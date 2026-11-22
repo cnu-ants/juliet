@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__malloc_free_char_81
 void CWE415_Double_Free__malloc_free_char_81_bad::action(char * data) const
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos[v3.5.2]: error: double free */
 }
 
 }

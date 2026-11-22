@@ -44,7 +44,7 @@ void CWE126_Buffer_Overread__wchar_t_declare_memcpy_06_bad()
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.2]: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -80,7 +80,7 @@ static void goodG2B1()
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.2]: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -107,7 +107,7 @@ static void goodG2B2()
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.2]: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }

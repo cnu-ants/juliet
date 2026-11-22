@@ -29,7 +29,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_61_bad()
     data = -1;
     data = CWE369_Divide_by_Zero__int_zero_modulo_61b_badSource(data);
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: error: division by zero */
+    printIntLine(100 % data);/* ikos[v3.5.2]: error: division by zero */
 }
 
 #endif /* OMITBAD */

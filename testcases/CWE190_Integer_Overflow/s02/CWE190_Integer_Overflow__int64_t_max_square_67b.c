@@ -32,7 +32,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_67b_badSink(CWE190_Integer_Over
     int64_t data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+        int64_t result = data * data;/* ikos[v3.5.2]: error: signed integer overflow */
         printLongLongLine(result);
     }
 }
@@ -59,7 +59,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_67b_goodB2GSink(CWE190_Integer_
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+        int64_t result = data * data;/* ikos[v3.5.2]: error: signed integer overflow */
         printLongLongLine(result);
     }
     else

@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__unsigned_int_max_postinc_42_bad()
     data = badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: error: unsigned integer overflow */
+        data++;/* ikos[v3.5.2]: error: unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

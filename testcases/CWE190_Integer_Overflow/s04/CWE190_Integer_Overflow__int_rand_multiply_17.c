@@ -28,14 +28,14 @@ void CWE190_Integer_Overflow__int_rand_multiply_17_bad()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     for(j = 0; j < 1; j++)
     {
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-            int result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+            int result = data * 2;/* ikos[v3.5.2]: warning: possible signed integer overflow */
             printIntLine(result);
         }
     }
@@ -55,7 +55,7 @@ static void goodB2G()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     for(k = 0; k < 1; k++)
     {

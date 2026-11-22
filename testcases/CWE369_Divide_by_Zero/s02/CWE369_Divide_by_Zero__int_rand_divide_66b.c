@@ -24,7 +24,7 @@ void CWE369_Divide_by_Zero__int_rand_divide_66b_badSink(int dataArray[])
     /* copy data out of dataArray */
     int data = dataArray[2];
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -46,7 +46,7 @@ void CWE369_Divide_by_Zero__int_rand_divide_66b_goodB2GSink(int dataArray[])
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
     else
     {

@@ -35,7 +35,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos[v3.5.2]: error: double free */
 }
 
 #endif /* OMITBAD */

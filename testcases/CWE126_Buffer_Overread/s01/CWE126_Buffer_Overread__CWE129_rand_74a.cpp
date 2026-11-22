@@ -37,9 +37,9 @@ void bad()
     /* POTENTIAL FLAW: Set data to a random value */
     data = RAND32();
     /* Put data in a map */
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -60,9 +60,9 @@ static void goodG2B()
      * access an index of the array in the sink that is out-of-bounds */
     data = 7;
     /* Put data in a map */
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -77,9 +77,9 @@ static void goodB2G()
     data = -1;
     /* POTENTIAL FLAW: Set data to a random value */
     data = RAND32();
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

@@ -31,7 +31,7 @@ void badSink(vector<int> dataVector)
     int data = dataVector[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data + 1;
         printIntLine(result);
     }
 }
@@ -46,7 +46,7 @@ void goodG2BSink(vector<int> dataVector)
     int data = dataVector[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data + 1;
         printIntLine(result);
     }
 }

@@ -29,7 +29,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_68b_badSink()
 {
     int data = CWE369_Divide_by_Zero__int_fgets_modulo_68_badData;
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -51,7 +51,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_68b_goodB2GSink()
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
     }
     else
     {

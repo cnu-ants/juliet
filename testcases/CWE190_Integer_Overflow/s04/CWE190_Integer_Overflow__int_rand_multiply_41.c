@@ -24,7 +24,7 @@ static void badSink(int data)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data * 2;/* ikos[v3.5.2]: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }
@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__int_rand_multiply_41_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     badSink(data);
 }
 
@@ -88,7 +88,7 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     goodB2GSink(data);
 }
 

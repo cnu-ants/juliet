@@ -32,7 +32,7 @@ void badSink(vector<int *> dataVector)
     /* copy data out of dataVector */
     int * data = dataVector[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.1]: warning: ignored memory deallocation */
+    delete [] data;
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(vector<int *> dataVector)
 {
     int * data = dataVector[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.1]: warning: ignored memory deallocation */
+    delete [] data;
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

@@ -29,14 +29,14 @@ namespace CWE126_Buffer_Overread__new_char_memcpy_72
 void badSink(vector<char *> dataVector)
 {
     /* copy data out of dataVector */
-    char * data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    char * data = dataVector[2];
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.1]: warning: memory access might be invalid */
+        memcpy(dest, data, strlen(dest)*sizeof(char));
         dest[100-1] = '\0';
         printLine(dest);
         delete [] data;
@@ -50,14 +50,14 @@ void badSink(vector<char *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<char *> dataVector)
 {
-    char * data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    char * data = dataVector[2];
     {
         char dest[100];
         memset(dest, 'C', 100-1);
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.1]: warning: memory access might be invalid */
+        memcpy(dest, data, strlen(dest)*sizeof(char));
         dest[100-1] = '\0';
         printLine(dest);
         delete [] data;

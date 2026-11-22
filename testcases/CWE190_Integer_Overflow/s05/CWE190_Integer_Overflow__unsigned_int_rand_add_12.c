@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_add_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
@@ -37,7 +37,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_add_12_bad()
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            unsigned int result = data + 1;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            unsigned int result = data + 1;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -70,12 +70,12 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     else
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrueOrFalse())
     {
