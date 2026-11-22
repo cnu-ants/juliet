@@ -34,7 +34,7 @@ void CWE190_Integer_Overflow__int_rand_add_67_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     myStruct.structFirst = data;
     CWE190_Integer_Overflow__int_rand_add_67b_badSink(myStruct);
 }
@@ -68,7 +68,7 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     myStruct.structFirst = data;
     CWE190_Integer_Overflow__int_rand_add_67b_goodB2GSink(myStruct);
 }

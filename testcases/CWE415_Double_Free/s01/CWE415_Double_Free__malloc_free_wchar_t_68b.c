@@ -29,7 +29,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_68b_badSink()
 {
     wchar_t * data = CWE415_Double_Free__malloc_free_wchar_t_68_badData;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.2]: error: double free */
+    free(data);/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

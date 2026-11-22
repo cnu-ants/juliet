@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__int64_t_fscanf_square_84_bad::~CWE190_Integer_Overflow_
 {
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
 }

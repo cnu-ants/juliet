@@ -28,13 +28,13 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_11_bad()
     if(globalReturnsTrue())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrue())
     {
         {
             /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -52,7 +52,7 @@ static void goodB2G1()
     if(globalReturnsTrue())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalReturnsFalse())
     {
@@ -64,7 +64,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else
@@ -82,14 +82,14 @@ static void goodB2G2()
     if(globalReturnsTrue())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrue())
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

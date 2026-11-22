@@ -25,7 +25,7 @@ namespace CWE126_Buffer_Overread__CWE129_fscanf_43
 static void badSource(int &data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 void bad()
@@ -40,7 +40,7 @@ void bad()
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {
@@ -86,7 +86,7 @@ static void goodG2B()
 static void goodB2GSource(int &data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 static void goodB2G()
@@ -100,7 +100,7 @@ static void goodB2G()
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

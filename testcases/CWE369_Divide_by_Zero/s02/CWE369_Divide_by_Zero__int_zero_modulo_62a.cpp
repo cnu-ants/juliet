@@ -32,7 +32,7 @@ void bad()
     data = -1;
     badSource(data);
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.2]: error: division by zero */
+    printIntLine(100 % data);/* ikos: error: division by zero */
 }
 
 #endif /* OMITBAD */

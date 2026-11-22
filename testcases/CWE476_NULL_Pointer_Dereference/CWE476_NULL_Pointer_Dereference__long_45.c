@@ -29,7 +29,7 @@ static void badSink()
 {
     long * data = CWE476_NULL_Pointer_Dereference__long_45_badData;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
+    printLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 void CWE476_NULL_Pointer_Dereference__long_45_bad()

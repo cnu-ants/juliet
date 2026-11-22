@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int64_t_rand_add_22_bad()
     int64_t data;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int64_t_rand_add_22_badGlobal = 1; /* true */
     CWE190_Integer_Overflow__int64_t_rand_add_22_badSink(data);
 }
@@ -51,7 +51,7 @@ static void goodB2G1()
     int64_t data;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int64_t_rand_add_22_goodB2G1Global = 0; /* false */
     CWE190_Integer_Overflow__int64_t_rand_add_22_goodB2G1Sink(data);
 }
@@ -64,7 +64,7 @@ static void goodB2G2()
     int64_t data;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int64_t_rand_add_22_goodB2G2Global = 1; /* true */
     CWE190_Integer_Overflow__int64_t_rand_add_22_goodB2G2Sink(data);
 }

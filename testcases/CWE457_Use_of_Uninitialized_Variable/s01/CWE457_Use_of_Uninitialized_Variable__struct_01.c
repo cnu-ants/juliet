@@ -27,7 +27,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_01_bad()
     /* POTENTIAL FLAW: Don't initialize data */
     ; /* empty statement needed for some flow variants */
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data.intOne);/* ikos[v3.5.2]: error: expression 'data.intOne' is uninitialized */
+    printIntLine(data.intOne);/* ikos: error: expression 'data.intOne' is uninitialized */
     printIntLine(data.intTwo);
 }
 

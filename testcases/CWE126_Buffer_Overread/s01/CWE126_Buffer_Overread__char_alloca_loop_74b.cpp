@@ -29,7 +29,7 @@ namespace CWE126_Buffer_Overread__char_alloca_loop_74
 void badSink(map<int, char *> dataMap)
 {
     /* copy data out of dataMap */
-    char * data = dataMap[2];/* ikos[v3.5.2]: warning: memory access might be invalid */
+    char * data = dataMap[2];/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         char dest[100];
@@ -40,7 +40,7 @@ void badSink(map<int, char *> dataMap)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);
@@ -54,7 +54,7 @@ void badSink(map<int, char *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, char *> dataMap)
 {
-    char * data = dataMap[2];/* ikos[v3.5.2]: warning: memory access might be invalid */
+    char * data = dataMap[2];/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         char dest[100];
@@ -65,7 +65,7 @@ void goodG2BSink(map<int, char *> dataMap)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);

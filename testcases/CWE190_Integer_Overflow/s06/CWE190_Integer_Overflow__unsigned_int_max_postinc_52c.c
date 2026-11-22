@@ -23,7 +23,7 @@ void CWE190_Integer_Overflow__unsigned_int_max_postinc_52c_badSink(unsigned int 
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.2]: error: unsigned integer overflow */
+        data++;/* ikos: error: unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

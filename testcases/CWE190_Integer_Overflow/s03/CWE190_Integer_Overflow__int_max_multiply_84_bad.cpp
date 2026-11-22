@@ -33,7 +33,7 @@ CWE190_Integer_Overflow__int_max_multiply_84_bad::~CWE190_Integer_Overflow__int_
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.2]: error: signed integer overflow */
+        int result = data * 2;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

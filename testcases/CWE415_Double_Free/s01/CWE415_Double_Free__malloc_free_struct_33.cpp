@@ -37,7 +37,7 @@ void bad()
     {
         twoIntsStruct * data = dataRef;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.2]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

@@ -25,7 +25,7 @@ namespace CWE190_Integer_Overflow__int_rand_add_43
 static void badSource(int &data)
 {
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 void bad()
@@ -36,7 +36,7 @@ void bad()
     badSource(data);
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }
@@ -69,7 +69,7 @@ static void goodG2B()
 static void goodB2GSource(int &data)
 {
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 static void goodB2G()
@@ -81,7 +81,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < INT_MAX)
     {
-        int result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
     else

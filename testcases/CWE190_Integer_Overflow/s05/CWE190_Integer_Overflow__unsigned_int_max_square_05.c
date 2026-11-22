@@ -40,7 +40,7 @@ void CWE190_Integer_Overflow__unsigned_int_max_square_05_bad()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-            unsigned int result = data * data;/* ikos[v3.5.2]: error: unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: error: unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -70,7 +70,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: error: unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: error: unsigned integer overflow */
             printUnsignedLine(result);
         }
         else
@@ -95,7 +95,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: error: unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: error: unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

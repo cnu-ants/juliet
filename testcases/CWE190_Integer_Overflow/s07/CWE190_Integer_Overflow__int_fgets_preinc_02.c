@@ -46,7 +46,7 @@ void CWE190_Integer_Overflow__int_fgets_preinc_02_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+            ++data;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }

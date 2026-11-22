@@ -29,7 +29,7 @@ static void badSink(unsigned int data)
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > UINT_MAX, this will overflow */
-            unsigned int result = data * 2;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * 2;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -40,7 +40,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_multiply_21_bad()
     unsigned int data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     badStatic = 1; /* true */
     badSink(data);
 }
@@ -85,7 +85,7 @@ static void goodB2G1()
     unsigned int data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     goodB2G1Static = 0; /* false */
     goodB2G1Sink(data);
 }
@@ -116,7 +116,7 @@ static void goodB2G2()
     unsigned int data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     goodB2G2Static = 1; /* true */
     goodB2G2Sink(data);
 }

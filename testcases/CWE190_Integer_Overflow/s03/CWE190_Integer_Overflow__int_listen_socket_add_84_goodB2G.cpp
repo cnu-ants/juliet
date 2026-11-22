@@ -122,7 +122,7 @@ CWE190_Integer_Overflow__int_listen_socket_add_84_goodB2G::~CWE190_Integer_Overf
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < INT_MAX)
     {
-        int result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
     else

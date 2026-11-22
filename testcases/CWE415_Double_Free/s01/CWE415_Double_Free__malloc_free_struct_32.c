@@ -39,7 +39,7 @@ void CWE415_Double_Free__malloc_free_struct_32_bad()
     {
         twoIntsStruct * data = *dataPtr2;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.2]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

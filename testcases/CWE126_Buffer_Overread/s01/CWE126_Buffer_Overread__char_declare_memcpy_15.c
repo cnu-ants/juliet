@@ -46,7 +46,7 @@ void CWE126_Buffer_Overread__char_declare_memcpy_15_bad()
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.2]: warning: possible buffer overflow */
+        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos: warning: possible buffer overflow */
         dest[100-1] = '\0';
         printLine(dest);
     }

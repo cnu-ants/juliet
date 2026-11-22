@@ -29,7 +29,7 @@ void CWE126_Buffer_Overread__char_alloca_memcpy_81_bad::action(char * data) cons
         dest[100-1] = '\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos[v3.5.2]: warning: possible buffer overflow */
+        memcpy(dest, data, strlen(dest)*sizeof(char));/* ikos: warning: possible buffer overflow */
         dest[100-1] = '\0';
         printLine(dest);
     }

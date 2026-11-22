@@ -28,14 +28,14 @@ void CWE190_Integer_Overflow__int64_t_rand_add_32_bad()
     {
         int64_t data = *dataPtr1;
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {
         int64_t data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            int64_t result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+            int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
             printLongLongLine(result);
         }
     }
@@ -78,7 +78,7 @@ static void goodB2G()
     {
         int64_t data = *dataPtr1;
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {

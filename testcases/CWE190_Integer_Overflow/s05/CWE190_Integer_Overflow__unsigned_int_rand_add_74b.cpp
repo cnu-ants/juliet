@@ -31,7 +31,7 @@ void badSink(map<int, unsigned int> dataMap)
     unsigned int data = dataMap[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -46,7 +46,7 @@ void goodG2BSink(map<int, unsigned int> dataMap)
     unsigned int data = dataMap[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

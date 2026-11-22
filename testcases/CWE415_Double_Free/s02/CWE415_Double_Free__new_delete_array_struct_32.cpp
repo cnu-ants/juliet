@@ -41,7 +41,7 @@ void bad()
     {
         twoIntsStruct * data = *dataPtr2;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;/* ikos[v3.5.2]: error: double free */
+        delete [] data;/* ikos: error: double free */
     }
 }
 

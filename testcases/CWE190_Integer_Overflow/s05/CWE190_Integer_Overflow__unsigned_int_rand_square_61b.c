@@ -24,7 +24,7 @@ Template File: sources-sinks-61b.tmpl.c
 unsigned int CWE190_Integer_Overflow__unsigned_int_rand_square_61b_badSource(unsigned int data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -44,7 +44,7 @@ unsigned int CWE190_Integer_Overflow__unsigned_int_rand_square_61b_goodG2BSource
 unsigned int CWE190_Integer_Overflow__unsigned_int_rand_square_61b_goodB2GSource(unsigned int data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 

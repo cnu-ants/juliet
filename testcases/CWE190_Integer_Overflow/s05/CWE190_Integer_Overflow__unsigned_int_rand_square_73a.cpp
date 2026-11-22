@@ -34,7 +34,7 @@ void bad()
     list<unsigned int> dataList;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* Put data in a list */
     dataList.push_back(data);
     dataList.push_back(data);
@@ -72,7 +72,7 @@ static void goodB2G()
     list<unsigned int> dataList;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     dataList.push_back(data);
     dataList.push_back(data);
     dataList.push_back(data);

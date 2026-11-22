@@ -34,13 +34,13 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_05_bad()
     if(staticTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(staticTrue)
     {
         {
             /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -58,7 +58,7 @@ static void goodB2G1()
     if(staticTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(staticFalse)
     {
@@ -70,7 +70,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else
@@ -88,14 +88,14 @@ static void goodB2G2()
     if(staticTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(staticTrue)
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

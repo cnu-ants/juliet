@@ -38,7 +38,7 @@ void bad()
     {
         TwoIntsClass * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.2]: error: pointer '&data->intOne' is null */
+        printIntLine(data->intOne);/* ikos: error: pointer '&data->intOne' is null */
         /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
         delete data;
     }

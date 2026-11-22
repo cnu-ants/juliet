@@ -37,7 +37,7 @@ void CWE190_Integer_Overflow__int64_t_max_preinc_34_bad()
         int64_t data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.2]: error: signed integer overflow */
+            ++data;/* ikos: error: signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }

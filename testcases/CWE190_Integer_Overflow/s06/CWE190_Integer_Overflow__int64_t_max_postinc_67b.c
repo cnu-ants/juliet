@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int64_t_max_postinc_67b_badSink(CWE190_Integer_Ove
     int64_t data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.2]: error: signed integer overflow */
+        data++;/* ikos: error: signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

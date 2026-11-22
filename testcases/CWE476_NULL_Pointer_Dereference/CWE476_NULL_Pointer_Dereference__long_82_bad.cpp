@@ -25,7 +25,7 @@ namespace CWE476_NULL_Pointer_Dereference__long_82
 void CWE476_NULL_Pointer_Dereference__long_82_bad::action(long * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
+    printLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 }

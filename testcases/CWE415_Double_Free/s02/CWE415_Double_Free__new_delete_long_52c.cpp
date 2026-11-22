@@ -27,7 +27,7 @@ namespace CWE415_Double_Free__new_delete_long_52
 void badSink_c(long * data)
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;/* ikos[v3.5.2]: error: double free */
+    delete data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

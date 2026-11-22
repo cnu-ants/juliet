@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__char_rand_square_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     else
     {
@@ -72,12 +72,12 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     else
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalReturnsTrueOrFalse())
     {

@@ -33,7 +33,7 @@ void badSink(map<int, wchar_t *> dataMap)
     wchar_t * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -46,7 +46,7 @@ void goodG2BSink(map<int, wchar_t *> dataMap)
     wchar_t * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
@@ -57,7 +57,7 @@ void goodB2GSink(map<int, wchar_t *> dataMap)
     if (data != NULL)
     {
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+        printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

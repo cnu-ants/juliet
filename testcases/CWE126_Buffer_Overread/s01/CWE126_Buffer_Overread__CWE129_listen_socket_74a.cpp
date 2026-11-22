@@ -105,7 +105,7 @@ void bad()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -126,9 +126,9 @@ void bad()
 #endif
     }
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -149,9 +149,9 @@ static void goodG2B()
      * access an index of the array in the sink that is out-of-bounds */
     data = 7;
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -213,7 +213,7 @@ static void goodB2G()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos[v3.5.2]: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -233,9 +233,9 @@ static void goodB2G()
         }
 #endif
     }
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

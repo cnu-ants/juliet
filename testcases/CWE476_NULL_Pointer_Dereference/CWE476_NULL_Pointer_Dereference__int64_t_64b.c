@@ -28,7 +28,7 @@ void CWE476_NULL_Pointer_Dereference__int64_t_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     int64_t * data = (*dataPtr);
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.2]: error: pointer 'data' is null */
+    printLongLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

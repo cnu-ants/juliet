@@ -38,7 +38,7 @@ void CWE476_NULL_Pointer_Dereference__wchar_t_12_bad()
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+        printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

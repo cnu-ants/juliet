@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__int_rand_add_22_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int_rand_add_22_badGlobal = 1; /* true */
     CWE190_Integer_Overflow__int_rand_add_22_badSink(data);
 }
@@ -53,7 +53,7 @@ static void goodB2G1()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int_rand_add_22_goodB2G1Global = 0; /* false */
     CWE190_Integer_Overflow__int_rand_add_22_goodB2G1Sink(data);
 }
@@ -67,7 +67,7 @@ static void goodB2G2()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__int_rand_add_22_goodB2G2Global = 1; /* true */
     CWE190_Integer_Overflow__int_rand_add_22_goodB2G2Sink(data);
 }

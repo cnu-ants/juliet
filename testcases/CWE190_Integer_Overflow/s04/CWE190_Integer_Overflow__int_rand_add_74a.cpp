@@ -35,7 +35,7 @@ void bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* Put data in a map */
     dataMap[0] = data;
     dataMap[1] = data;
@@ -75,7 +75,7 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     dataMap[0] = data;
     dataMap[1] = data;
     dataMap[2] = data;

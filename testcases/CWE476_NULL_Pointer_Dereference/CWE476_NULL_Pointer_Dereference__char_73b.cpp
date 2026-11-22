@@ -30,10 +30,10 @@ namespace CWE476_NULL_Pointer_Dereference__char_73
 void badSink(list<char *> dataList)
 {
     /* copy data out of dataList */
-    char * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
+    char * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -43,21 +43,21 @@ void badSink(list<char *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<char *> dataList)
 {
-    char * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
+    char * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<char *> dataList)
 {
-    char * data = dataList.back();/* ikos[v3.5.2]: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
+    char * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<char*, std::allocator<char*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+        printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

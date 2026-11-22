@@ -52,7 +52,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_15_bad()
     {
     case 7:
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -103,7 +103,7 @@ static void goodB2G1()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
+            printIntLine(100 % data);/* ikos: warning: divisor might be zero */
         }
         else
         {
@@ -147,7 +147,7 @@ static void goodB2G2()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos[v3.5.2]: warning: divisor might be zero */
+            printIntLine(100 % data);/* ikos: warning: divisor might be zero */
         }
         else
         {

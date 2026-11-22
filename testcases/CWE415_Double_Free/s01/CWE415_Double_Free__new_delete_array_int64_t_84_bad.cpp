@@ -32,7 +32,7 @@ CWE415_Double_Free__new_delete_array_int64_t_84_bad::CWE415_Double_Free__new_del
 CWE415_Double_Free__new_delete_array_int64_t_84_bad::~CWE415_Double_Free__new_delete_array_int64_t_84_bad()
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.2]: error: double free */
+    delete [] data;/* ikos: error: double free */
 }
 }
 #endif /* OMITBAD */

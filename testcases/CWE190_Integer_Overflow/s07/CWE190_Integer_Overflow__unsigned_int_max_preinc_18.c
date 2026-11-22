@@ -31,7 +31,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.2]: error: unsigned integer overflow */
+        ++data;/* ikos: error: unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

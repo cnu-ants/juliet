@@ -32,7 +32,7 @@ void badSink(map<int, int64_t *> dataMap)
     /* copy data out of dataMap */
     int64_t * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(map<int, int64_t *> dataMap)
 {
     int64_t * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.2]: warning: pointer 'data' might be null */
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

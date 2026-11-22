@@ -32,7 +32,7 @@ void badSink(map<int, int> dataMap)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int result = data * 2;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(map<int, int> dataMap)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int result = data * 2;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

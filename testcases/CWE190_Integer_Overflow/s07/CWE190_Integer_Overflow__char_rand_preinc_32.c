@@ -28,14 +28,14 @@ void CWE190_Integer_Overflow__char_rand_preinc_32_bad()
     {
         char data = *dataPtr1;
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {
         char data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -80,7 +80,7 @@ static void goodB2G()
     {
         char data = *dataPtr1;
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
         *dataPtr1 = data;
     }
     {
@@ -88,7 +88,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            ++data;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }

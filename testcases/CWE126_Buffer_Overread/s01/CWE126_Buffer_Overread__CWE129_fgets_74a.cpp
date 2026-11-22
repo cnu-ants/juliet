@@ -39,7 +39,7 @@ void bad()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.2]: warning: memory access might be invalid */
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -50,9 +50,9 @@ void bad()
         }
     }
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -73,9 +73,9 @@ static void goodG2B()
      * access an index of the array in the sink that is out-of-bounds */
     data = 7;
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -91,7 +91,7 @@ static void goodB2G()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.2]: warning: memory access might be invalid */
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -101,9 +101,9 @@ static void goodB2G()
             printLine("fgets() failed.");
         }
     }
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

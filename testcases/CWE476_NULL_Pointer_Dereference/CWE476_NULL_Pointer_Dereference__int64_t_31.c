@@ -30,7 +30,7 @@ void CWE476_NULL_Pointer_Dereference__int64_t_31_bad()
         int64_t * dataCopy = data;
         int64_t * data = dataCopy;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLongLine(*data);/* ikos[v3.5.2]: error: pointer is null */
+        printLongLongLine(*data);/* ikos: error: pointer is null */
     }
 }
 

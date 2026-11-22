@@ -28,7 +28,7 @@ void bad()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     const CWE190_Integer_Overflow__char_rand_multiply_81_base& baseObject = CWE190_Integer_Overflow__char_rand_multiply_81_bad();
     baseObject.action(data);
 }
@@ -54,7 +54,7 @@ static void goodB2G()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     const CWE190_Integer_Overflow__char_rand_multiply_81_base& baseObject = CWE190_Integer_Overflow__char_rand_multiply_81_goodB2G();
     baseObject.action(data);
 }

@@ -33,7 +33,7 @@ void CWE476_NULL_Pointer_Dereference__int64_t_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLongLine(*data);/* ikos[v3.5.2]: error: pointer is null */
+        printLongLongLine(*data);/* ikos: error: pointer is null */
     }
 }
 

@@ -32,7 +32,7 @@ void badSink(map<int, int64_t *> dataMap)
     /* copy data out of dataMap */
     int64_t * data = dataMap[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.2]: warning: ignored memory deallocation */
+    delete [] data;/* ikos: warning: ignored memory deallocation */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(map<int, int64_t *> dataMap)
 {
     int64_t * data = dataMap[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;/* ikos[v3.5.2]: warning: ignored memory deallocation */
+    delete [] data;/* ikos: warning: ignored memory deallocation */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

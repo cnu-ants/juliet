@@ -51,7 +51,7 @@ void CWE126_Buffer_Overread__CWE129_connect_socket_66b_badSink(int dataArray[])
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.2]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

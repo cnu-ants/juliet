@@ -45,7 +45,7 @@ void CWE476_NULL_Pointer_Dereference__int_08_bad()
     if(staticReturnsTrue())
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(*data);/* ikos[v3.5.2]: error: pointer is null */
+        printIntLine(*data);/* ikos: error: pointer is null */
     }
 }
 

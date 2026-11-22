@@ -38,7 +38,7 @@ void CWE476_NULL_Pointer_Dereference__char_34_bad()
         char * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);/* ikos[v3.5.2]: error: pointer 'data' is null */
+        printHexCharLine(data[0]);/* ikos: error: pointer 'data' is null */
     }
 }
 

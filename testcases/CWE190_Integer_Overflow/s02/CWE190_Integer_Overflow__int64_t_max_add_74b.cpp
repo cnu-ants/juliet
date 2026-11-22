@@ -31,7 +31,7 @@ void badSink(map<int, int64_t> dataMap)
     int64_t data = dataMap[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int64_t result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
         printLongLongLine(result);
     }
 }
@@ -46,7 +46,7 @@ void goodG2BSink(map<int, int64_t> dataMap)
     int64_t data = dataMap[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int64_t result = data + 1;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
         printLongLongLine(result);
     }
 }

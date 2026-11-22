@@ -32,7 +32,7 @@ void badSink(map<int, twoIntsStruct *> dataMap)
     /* copy data out of dataMap */
     twoIntsStruct * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos[v3.5.2]: warning: pointer '&data->intOne' might be null */
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(map<int, twoIntsStruct *> dataMap)
 {
     twoIntsStruct * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos[v3.5.2]: warning: pointer '&data->intOne' might be null */
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
@@ -54,7 +54,7 @@ void goodB2GSink(map<int, twoIntsStruct *> dataMap)
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);/* ikos[v3.5.2]: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     }
     else
     {

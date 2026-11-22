@@ -39,9 +39,9 @@ void bad()
     memset(data, 'A', 50-1); /* fill with 'A's */
     data[50-1] = '\0'; /* null terminate */
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -64,9 +64,9 @@ static void goodG2B()
     memset(data, 'A', 100-1); /* fill with 'A's */
     data[100-1] = '\0'; /* null terminate */
     /* Put data in a map */
-    dataMap[0] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[1] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
-    dataMap[2] = data;/* ikos[v3.5.2]: warning: memory access might be invalid */
+    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 

@@ -25,7 +25,7 @@ namespace CWE126_Buffer_Overread__CWE129_fscanf_62
 void badSource(int &data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSource(int &data)
 void goodB2GSource(int &data)
 {
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.2]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 #endif /* OMITGOOD */

@@ -43,7 +43,7 @@ void bad()
     {
         wchar_t * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;/* ikos[v3.5.2]: error: double free */
+        delete data;/* ikos: error: double free */
     }
 }
 

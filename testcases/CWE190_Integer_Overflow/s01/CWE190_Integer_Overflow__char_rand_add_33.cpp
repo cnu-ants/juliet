@@ -28,7 +28,7 @@ void bad()
     char &dataRef = data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         char data = dataRef;
         {
@@ -68,7 +68,7 @@ static void goodB2G()
     char &dataRef = data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         char data = dataRef;
         /* FIX: Add a check to prevent an overflow from occurring */

@@ -29,7 +29,7 @@ namespace CWE126_Buffer_Overread__malloc_char_loop_73
 void badSink(list<char *> dataList)
 {
     /* copy data out of dataList */
-    char * data = dataList.back();/* ikos[v3.5.2]: warning: memory access might be invalid */
+    char * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         char dest[100];
@@ -40,7 +40,7 @@ void badSink(list<char *> dataList)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);
@@ -55,7 +55,7 @@ void badSink(list<char *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<char *> dataList)
 {
-    char * data = dataList.back();/* ikos[v3.5.2]: warning: memory access might be invalid */
+    char * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         char dest[100];
@@ -66,7 +66,7 @@ void goodG2BSink(list<char *> dataList)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);

@@ -26,7 +26,7 @@ void CWE415_Double_Free__malloc_free_long_66b_badSink(long * dataArray[])
     /* copy data out of dataArray */
     long * data = dataArray[2];
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.2]: error: double free */
+    free(data);/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

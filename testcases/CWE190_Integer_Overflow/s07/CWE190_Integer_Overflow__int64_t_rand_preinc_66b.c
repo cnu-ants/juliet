@@ -25,7 +25,7 @@ void CWE190_Integer_Overflow__int64_t_rand_preinc_66b_badSink(int64_t dataArray[
     int64_t data = dataArray[2];
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.2]: warning: possible signed integer overflow */
+        ++data;/* ikos: warning: possible signed integer overflow */
         int64_t result = data;
         printLongLongLine(result);
     }

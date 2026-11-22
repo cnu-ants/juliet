@@ -39,7 +39,7 @@ void CWE457_Use_of_Uninitialized_Variable__wchar_t_pointer_15_bad()
     {
     case 7:
         /* POTENTIAL FLAW: Use data without initializing it */
-        printWLine(data);/* ikos[v3.5.2]: error: first argument is uninitialized */
+        printWLine(data);/* ikos: error: first argument is uninitialized */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */

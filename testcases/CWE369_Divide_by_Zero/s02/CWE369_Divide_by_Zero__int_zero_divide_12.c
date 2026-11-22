@@ -37,7 +37,7 @@ void CWE369_Divide_by_Zero__int_zero_divide_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);/* ikos[v3.5.2]: warning: divisor might be zero */
+        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
     }
     else
     {

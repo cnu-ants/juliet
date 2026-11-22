@@ -26,14 +26,14 @@ void CWE190_Integer_Overflow__unsigned_int_rand_multiply_09_bad()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_TRUE)
     {
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > UINT_MAX, this will overflow */
-            unsigned int result = data * 2;/* ikos[v3.5.2]: warning: possible unsigned integer overflow */
+            unsigned int result = data * 2;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -51,7 +51,7 @@ static void goodB2G1()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_FALSE)
     {
@@ -84,7 +84,7 @@ static void goodB2G2()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_TRUE)
     {

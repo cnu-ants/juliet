@@ -36,7 +36,7 @@ void CWE415_Double_Free__malloc_free_long_10_bad()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.2]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

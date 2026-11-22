@@ -28,7 +28,7 @@ void bad()
     short &dataRef = data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         short data = dataRef;
         if(data > 0) /* ensure we won't have an underflow */
@@ -70,7 +70,7 @@ static void goodB2G()
     short &dataRef = data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.2]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         short data = dataRef;
         if(data > 0) /* ensure we won't have an underflow */

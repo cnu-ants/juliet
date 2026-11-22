@@ -34,7 +34,7 @@ void badSink(map<int, int64_t> dataMap)
     int64_t data = dataMap[2];
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
 }
@@ -49,7 +49,7 @@ void goodG2BSink(map<int, int64_t> dataMap)
     int64_t data = dataMap[2];
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
 }
@@ -61,7 +61,7 @@ void goodB2GSink(map<int, int64_t> dataMap)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;/* ikos[v3.5.2]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
     else

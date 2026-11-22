@@ -50,7 +50,7 @@ void bad()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
@@ -90,7 +90,7 @@ static void goodG2B1()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
@@ -126,7 +126,7 @@ static void goodG2B2()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.2]: warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
