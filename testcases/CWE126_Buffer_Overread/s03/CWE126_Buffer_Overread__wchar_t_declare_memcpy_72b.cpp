@@ -29,14 +29,14 @@ namespace CWE126_Buffer_Overread__wchar_t_declare_memcpy_72
 void badSink(vector<wchar_t *> dataVector)
 {
     /* copy data out of dataVector */
-    wchar_t * data = dataVector[2];/* ikos: warning: possible use after free */
+    wchar_t * data = dataVector[2];
     {
         wchar_t dest[100];
         wmemset(dest, L'C', 100-1);
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -49,14 +49,14 @@ void badSink(vector<wchar_t *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<wchar_t *> dataVector)
 {
-    wchar_t * data = dataVector[2];/* ikos: warning: possible use after free */
+    wchar_t * data = dataVector[2];
     {
         wchar_t dest[100];
         wmemset(dest, L'C', 100-1);
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));
         dest[100-1] = L'\0';
         printWLine(dest);
     }

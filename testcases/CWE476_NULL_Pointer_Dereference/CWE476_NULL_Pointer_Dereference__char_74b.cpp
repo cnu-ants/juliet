@@ -33,7 +33,7 @@ void badSink(map<int, char *> dataMap)
     char * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -46,7 +46,7 @@ void goodG2BSink(map<int, char *> dataMap)
     char * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
@@ -57,7 +57,7 @@ void goodB2GSink(map<int, char *> dataMap)
     if (data != NULL)
     {
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);
+        printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

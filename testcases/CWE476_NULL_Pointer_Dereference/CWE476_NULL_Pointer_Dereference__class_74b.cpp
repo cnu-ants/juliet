@@ -30,7 +30,7 @@ void badSink(map<int, TwoIntsClass *> dataMap)
     /* copy data out of dataMap */
     TwoIntsClass * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -44,7 +44,7 @@ void goodG2BSink(map<int, TwoIntsClass *> dataMap)
 {
     TwoIntsClass * data = dataMap[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -56,7 +56,7 @@ void goodB2GSink(map<int, TwoIntsClass *> dataMap)
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
         delete data;
     }
     else

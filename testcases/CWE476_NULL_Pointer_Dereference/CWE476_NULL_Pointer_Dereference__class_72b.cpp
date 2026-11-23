@@ -28,9 +28,9 @@ namespace CWE476_NULL_Pointer_Dereference__class_72
 void badSink(vector<TwoIntsClass *> dataVector)
 {
     /* copy data out of dataVector */
-    TwoIntsClass * data = dataVector[2];/* ikos: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    TwoIntsClass * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+    printIntLine(data->intOne);
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -42,9 +42,9 @@ void badSink(vector<TwoIntsClass *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<TwoIntsClass *> dataVector)
 {
-    TwoIntsClass * data = dataVector[2];/* ikos: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    TwoIntsClass * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+    printIntLine(data->intOne);
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -52,11 +52,11 @@ void goodG2BSink(vector<TwoIntsClass *> dataVector)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<TwoIntsClass *> dataVector)
 {
-    TwoIntsClass * data = dataVector[2];/* ikos: warning: pointer 'std::vector<TwoIntsClass*, std::allocator<TwoIntsClass*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    TwoIntsClass * data = dataVector[2];
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);
         delete data;
     }
     else

@@ -32,7 +32,7 @@ void badSink(vector<int64_t> dataVector)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > LLONG_MAX, this will overflow */
-        int64_t result = data * 2;/* ikos: warning: possible signed integer overflow */
+        int64_t result = data * 2;
         printLongLongLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(vector<int64_t> dataVector)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > LLONG_MAX, this will overflow */
-        int64_t result = data * 2;/* ikos: warning: possible signed integer overflow */
+        int64_t result = data * 2;
         printLongLongLine(result);
     }
 }

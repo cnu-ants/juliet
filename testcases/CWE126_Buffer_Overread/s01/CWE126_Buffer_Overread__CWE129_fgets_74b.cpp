@@ -28,14 +28,14 @@ namespace CWE126_Buffer_Overread__CWE129_fgets_74
 void badSink(map<int, int> dataMap)
 {
     /* copy data out of dataMap */
-    int data = dataMap[2];
+    int data = dataMap[2];/* ikos: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {
@@ -51,14 +51,14 @@ void badSink(map<int, int> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, int> dataMap)
 {
-    int data = dataMap[2];
+    int data = dataMap[2];/* ikos: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* POTENTIAL FLAW: Attempt to access an index of the array that is above the upper bound
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {
@@ -70,7 +70,7 @@ void goodG2BSink(map<int, int> dataMap)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, int> dataMap)
 {
-    int data = dataMap[2];
+    int data = dataMap[2];/* ikos: warning: memory access might be invalid */
     {
         int buffer[10] = { 0 };
         /* FIX: Properly validate the array index and prevent a buffer overread */

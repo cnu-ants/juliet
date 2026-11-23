@@ -30,10 +30,10 @@ namespace CWE476_NULL_Pointer_Dereference__char_72
 void badSink(vector<char *> dataVector)
 {
     /* copy data out of dataVector */
-    char * data = dataVector[2];/* ikos: warning: pointer 'std::vector<char*, std::allocator<char*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    char * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
+    printHexCharLine(data[0]);
 }
 
 #endif /* OMITBAD */
@@ -43,21 +43,21 @@ void badSink(vector<char *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<char *> dataVector)
 {
-    char * data = dataVector[2];/* ikos: warning: pointer 'std::vector<char*, std::allocator<char*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    char * data = dataVector[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
+    printHexCharLine(data[0]);
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<char *> dataVector)
 {
-    char * data = dataVector[2];/* ikos: warning: pointer 'std::vector<char*, std::allocator<char*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    char * data = dataVector[2];
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
+        printHexCharLine(data[0]);
     }
     else
     {

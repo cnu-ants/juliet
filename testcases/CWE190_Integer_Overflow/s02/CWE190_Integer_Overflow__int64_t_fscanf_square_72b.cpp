@@ -34,7 +34,7 @@ void badSink(vector<int64_t> dataVector)
     int64_t data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;
         printLongLongLine(result);
     }
 }
@@ -49,7 +49,7 @@ void goodG2BSink(vector<int64_t> dataVector)
     int64_t data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;
         printLongLongLine(result);
     }
 }
@@ -61,7 +61,7 @@ void goodB2GSink(vector<int64_t> dataVector)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;
         printLongLongLine(result);
     }
     else

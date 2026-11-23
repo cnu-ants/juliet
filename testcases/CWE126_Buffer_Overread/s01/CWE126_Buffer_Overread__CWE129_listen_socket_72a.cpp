@@ -105,7 +105,7 @@ void bad()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -213,7 +213,7 @@ static void goodB2G()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
+            inputBuffer[recvResult] = '\0';
             /* Convert to int */
             data = atoi(inputBuffer);
         }

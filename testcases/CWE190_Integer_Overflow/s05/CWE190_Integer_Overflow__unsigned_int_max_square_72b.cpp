@@ -33,7 +33,7 @@ void badSink(vector<unsigned int> dataVector)
     unsigned int data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;
         printUnsignedLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(vector<unsigned int> dataVector)
     unsigned int data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;
         printUnsignedLine(result);
     }
 }
@@ -60,7 +60,7 @@ void goodB2GSink(vector<unsigned int> dataVector)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;
         printUnsignedLine(result);
     }
     else
