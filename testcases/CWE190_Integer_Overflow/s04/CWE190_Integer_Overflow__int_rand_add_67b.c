@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int_rand_add_67b_badSink(CWE190_Integer_Overflow__
     int data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

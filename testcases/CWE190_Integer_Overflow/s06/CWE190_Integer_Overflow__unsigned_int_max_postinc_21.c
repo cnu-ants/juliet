@@ -28,7 +28,7 @@ static void badSink(unsigned int data)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos[v3.5.1]: error: unsigned integer overflow */
+            data++;/* ikos: error: unsigned integer overflow */
             unsigned int result = data;
             printUnsignedLine(result);
         }

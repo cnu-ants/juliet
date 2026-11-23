@@ -29,7 +29,7 @@ static void badSink()
 {
     twoIntsStruct * data = CWE415_Double_Free__malloc_free_struct_45_badData;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos: error: double free */
 }
 
 void CWE415_Double_Free__malloc_free_struct_45_bad()

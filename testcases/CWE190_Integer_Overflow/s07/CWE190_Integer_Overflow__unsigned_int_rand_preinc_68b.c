@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_preinc_68b_badSink()
     unsigned int data = CWE190_Integer_Overflow__unsigned_int_rand_preinc_68_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        ++data;/* ikos: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

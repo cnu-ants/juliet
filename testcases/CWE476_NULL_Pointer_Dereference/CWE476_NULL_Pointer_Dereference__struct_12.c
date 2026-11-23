@@ -42,7 +42,7 @@ void CWE476_NULL_Pointer_Dereference__struct_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     }
     else
     {

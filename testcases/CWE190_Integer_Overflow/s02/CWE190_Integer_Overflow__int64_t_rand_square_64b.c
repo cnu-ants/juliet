@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_64b_badSink(void * dataVoidPtr
     int64_t data = (*dataPtr);
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
 }
@@ -63,7 +63,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_64b_goodB2GSink(void * dataVoi
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;/* ikos[v3.5.1]: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
     else

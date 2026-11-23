@@ -38,7 +38,7 @@ void bad()
     if(1)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;/* ikos[v3.5.1]: error: double free */
+        delete data;/* ikos: error: double free */
     }
 }
 

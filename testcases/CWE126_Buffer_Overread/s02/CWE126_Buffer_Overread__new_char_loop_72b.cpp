@@ -29,7 +29,7 @@ namespace CWE126_Buffer_Overread__new_char_loop_72
 void badSink(vector<char *> dataVector)
 {
     /* copy data out of dataVector */
-    char * data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    char * data = dataVector[2];/* ikos: warning: possible use after free */
     {
         size_t i, destLen;
         char dest[100];
@@ -40,7 +40,7 @@ void badSink(vector<char *> dataVector)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);
@@ -55,7 +55,7 @@ void badSink(vector<char *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<char *> dataVector)
 {
-    char * data = dataVector[2];/* ikos[v3.5.1]: warning: possible use after free */
+    char * data = dataVector[2];/* ikos: warning: possible use after free */
     {
         size_t i, destLen;
         char dest[100];
@@ -66,7 +66,7 @@ void goodG2BSink(vector<char *> dataVector)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos[v3.5.1]: warning: memory access might be invalid */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = '\0';
         printLine(dest);

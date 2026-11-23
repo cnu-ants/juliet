@@ -41,7 +41,7 @@ void CWE415_Double_Free__malloc_free_int_06_bad()
     if(STATIC_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.1]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

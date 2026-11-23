@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__malloc_free_wchar_t_81
 void CWE415_Double_Free__malloc_free_wchar_t_81_bad::action(wchar_t * data) const
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);/* ikos[v3.5.1]: error: double free */
+    free(data);/* ikos: error: double free */
 }
 
 }

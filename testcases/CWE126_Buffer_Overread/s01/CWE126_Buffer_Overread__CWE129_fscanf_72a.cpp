@@ -35,7 +35,7 @@ void bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     /* Put data in a vector */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
@@ -76,7 +76,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);

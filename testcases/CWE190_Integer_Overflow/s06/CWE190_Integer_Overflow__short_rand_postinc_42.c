@@ -22,7 +22,7 @@ Template File: sources-sinks-42.tmpl.c
 static short badSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_42_bad()
     data = badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        data++;/* ikos: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -68,7 +68,7 @@ static void goodG2B()
 static short goodB2GSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -80,7 +80,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        data++;/* ikos: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }

@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__int64_t_72
 void badSink(vector<int64_t *> dataVector)
 {
     /* copy data out of dataVector */
-    int64_t * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int64_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -42,15 +42,15 @@ void badSink(vector<int64_t *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<int64_t *> dataVector)
 {
-    int64_t * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int64_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<int64_t *> dataVector)
 {
-    int64_t * data = dataVector[2];/* ikos[v3.5.1]: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
+    int64_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<long*, std::allocator<long*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

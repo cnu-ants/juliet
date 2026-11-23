@@ -28,7 +28,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     int data = (*dataPtr);
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data);/* ikos[v3.5.1]: error: variable 'data' is uninitialized */
+    printIntLine(data);/* ikos: error: variable 'data' is uninitialized */
 }
 
 #endif /* OMITBAD */

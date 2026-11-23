@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__int_73
 void badSink(list<int *> dataList)
 {
     /* copy data out of dataList */
-    int * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
+    int * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printIntLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -42,15 +42,15 @@ void badSink(list<int *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<int *> dataList)
 {
-    int * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
+    int * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: warning: pointer 'data' might be null */
+    printIntLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<int *> dataList)
 {
-    int * data = dataList.back();/* ikos[v3.5.1]: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
+    int * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<int*, std::allocator<int*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

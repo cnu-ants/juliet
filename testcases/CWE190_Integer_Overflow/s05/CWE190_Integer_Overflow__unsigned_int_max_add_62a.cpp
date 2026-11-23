@@ -32,7 +32,7 @@ void bad()
     badSource(data);
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;/* ikos[v3.5.1]: error: unsigned integer overflow */
+        unsigned int result = data + 1;/* ikos: error: unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

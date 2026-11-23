@@ -31,7 +31,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&NULL->0' is null */
+    printIntLine(data->intOne);/* ikos: error: pointer '&NULL->0' is null */
 }
 
 #endif /* OMITBAD */

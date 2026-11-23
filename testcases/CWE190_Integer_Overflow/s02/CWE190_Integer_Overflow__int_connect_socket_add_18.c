@@ -108,7 +108,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

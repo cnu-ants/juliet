@@ -25,7 +25,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_pointer_63b_badSink(twoIntsStr
 {
     twoIntsStruct * data = *dataPtr;
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data->intOne);/* ikos[v3.5.1]: error: variable 'data' is uninitialized */
+    printIntLine(data->intOne);/* ikos: error: variable 'data' is uninitialized */
     printIntLine(data->intTwo);
 }
 

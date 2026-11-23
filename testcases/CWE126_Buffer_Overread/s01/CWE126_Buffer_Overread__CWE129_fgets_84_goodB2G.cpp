@@ -29,7 +29,7 @@ CWE126_Buffer_Overread__CWE129_fgets_84_goodB2G::CWE126_Buffer_Overread__CWE129_
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos[v3.5.1]: warning: memory access might be invalid */
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -48,7 +48,7 @@ CWE126_Buffer_Overread__CWE129_fgets_84_goodB2G::~CWE126_Buffer_Overread__CWE129
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

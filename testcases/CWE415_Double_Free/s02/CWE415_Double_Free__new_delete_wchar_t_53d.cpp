@@ -27,7 +27,7 @@ namespace CWE415_Double_Free__new_delete_wchar_t_53
 void badSink_d(wchar_t * data)
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;/* ikos[v3.5.1]: error: double free */
+    delete data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

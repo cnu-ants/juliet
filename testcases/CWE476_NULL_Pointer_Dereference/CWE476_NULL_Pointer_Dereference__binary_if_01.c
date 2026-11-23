@@ -23,7 +23,7 @@ void CWE476_NULL_Pointer_Dereference__binary_if_01_bad()
         twoIntsStruct *twoIntsStructPointer = NULL;
         /* FLAW: Using a single & in the if statement will cause both sides of the expression to be evaluated
          * thus causing a NPD */
-        if ((twoIntsStructPointer != NULL) & (twoIntsStructPointer->intOne == 5))/* ikos[v3.5.1]: error: pointer '&NULL->0' is null */
+        if ((twoIntsStructPointer != NULL) & (twoIntsStructPointer->intOne == 5))/* ikos: error: pointer '&NULL->0' is null */
         {
             printLine("intOne == 5");
         }

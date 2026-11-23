@@ -22,7 +22,7 @@ Template File: sources-sinks-42.tmpl.c
 static short badSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -66,7 +66,7 @@ static void goodG2B()
 static short goodB2GSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 

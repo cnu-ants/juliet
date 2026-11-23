@@ -25,7 +25,7 @@ namespace CWE476_NULL_Pointer_Dereference__int64_t_81
 void CWE476_NULL_Pointer_Dereference__int64_t_81_bad::action(int64_t * data) const
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printLongLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 }

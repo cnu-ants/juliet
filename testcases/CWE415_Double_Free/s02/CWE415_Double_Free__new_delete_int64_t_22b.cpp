@@ -33,7 +33,7 @@ void badSink(int64_t * data)
     if(badGlobal)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;/* ikos[v3.5.1]: error: double free */
+        delete data;/* ikos: error: double free */
     }
 }
 

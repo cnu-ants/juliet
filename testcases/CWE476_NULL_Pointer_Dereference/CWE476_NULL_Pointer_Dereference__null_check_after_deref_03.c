@@ -24,7 +24,7 @@ void CWE476_NULL_Pointer_Dereference__null_check_after_deref_03_bad()
         {
             int *intPointer = NULL;
             intPointer = (int *)malloc(sizeof(int));
-            *intPointer = 5;/* ikos[v3.5.1]: warning: pointer 'intPointer' might be null */
+            *intPointer = 5;/* ikos: warning: pointer 'intPointer' might be null */
             printIntLine(*intPointer);
             /* FLAW: Check for NULL after dereferencing the pointer. This NULL check is unnecessary. */
             if (intPointer != NULL)
@@ -53,7 +53,7 @@ static void good1()
         {
             int *intPointer = NULL;
             intPointer = (int *)malloc(sizeof(int));
-            *intPointer = 5;/* ikos[v3.5.1]: warning: pointer 'intPointer' might be null */
+            *intPointer = 5;/* ikos: warning: pointer 'intPointer' might be null */
             printIntLine(*intPointer);
             /* FIX: Don't check for NULL since we wouldn't reach this line if the pointer was NULL */
             *intPointer = 10;
@@ -70,7 +70,7 @@ static void good2()
         {
             int *intPointer = NULL;
             intPointer = (int *)malloc(sizeof(int));
-            *intPointer = 5;/* ikos[v3.5.1]: warning: pointer 'intPointer' might be null */
+            *intPointer = 5;/* ikos: warning: pointer 'intPointer' might be null */
             printIntLine(*intPointer);
             /* FIX: Don't check for NULL since we wouldn't reach this line if the pointer was NULL */
             *intPointer = 10;

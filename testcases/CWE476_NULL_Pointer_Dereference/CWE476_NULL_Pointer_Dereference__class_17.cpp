@@ -33,7 +33,7 @@ void bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.1]: error: pointer '&NULL->0' is null */
+        printIntLine(data->intOne);/* ikos: error: pointer '&NULL->0' is null */
         /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
         delete data;
     }
@@ -86,7 +86,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos[v3.5.1]: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
         /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
         delete data;
     }

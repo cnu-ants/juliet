@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int_max_square_81_bad::action(int data) const
 {
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;/* ikos[v3.5.1]: error: signed integer overflow */
+        int result = data * data;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

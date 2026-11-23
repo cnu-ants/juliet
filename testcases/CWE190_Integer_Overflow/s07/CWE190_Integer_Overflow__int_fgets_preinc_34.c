@@ -51,7 +51,7 @@ void CWE190_Integer_Overflow__int_fgets_preinc_34_bad()
         int data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+            ++data;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }

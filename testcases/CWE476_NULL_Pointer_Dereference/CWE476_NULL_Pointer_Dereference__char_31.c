@@ -31,7 +31,7 @@ void CWE476_NULL_Pointer_Dereference__char_31_bad()
         char * data = dataCopy;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);/* ikos[v3.5.1]: error: pointer 'NULL' is null */
+        printHexCharLine(data[0]);/* ikos: error: pointer 'NULL' is null */
     }
 }
 

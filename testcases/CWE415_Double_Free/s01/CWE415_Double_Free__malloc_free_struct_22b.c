@@ -29,7 +29,7 @@ void CWE415_Double_Free__malloc_free_struct_22_badSink(twoIntsStruct * data)
     if(CWE415_Double_Free__malloc_free_struct_22_badGlobal)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.1]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

@@ -28,7 +28,7 @@ void CWE476_NULL_Pointer_Dereference__int_64b_badSink(void * dataVoidPtr)
     /* dereference dataPtr into data */
     int * data = (*dataPtr);
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printIntLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

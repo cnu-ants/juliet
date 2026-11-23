@@ -30,7 +30,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_22_bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_22_badGlobal = 1; /* true */
     CWE126_Buffer_Overread__CWE129_fscanf_22_badSink(data);
 }
@@ -53,7 +53,7 @@ static void goodB2G1()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_22_goodB2G1Global = 0; /* false */
     CWE126_Buffer_Overread__CWE129_fscanf_22_goodB2G1Sink(data);
 }
@@ -67,7 +67,7 @@ static void goodB2G2()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_22_goodB2G2Global = 1; /* true */
     CWE126_Buffer_Overread__CWE129_fscanf_22_goodB2G2Sink(data);
 }

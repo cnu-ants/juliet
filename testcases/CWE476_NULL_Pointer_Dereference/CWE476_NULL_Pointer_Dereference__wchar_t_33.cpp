@@ -34,7 +34,7 @@ void bad()
         wchar_t * data = dataRef;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);/* ikos[v3.5.1]: error: pointer 'NULL' is null */
+        printWcharLine(data[0]);/* ikos: error: pointer 'NULL' is null */
     }
 }
 

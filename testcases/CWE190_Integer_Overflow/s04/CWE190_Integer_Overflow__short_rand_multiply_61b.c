@@ -22,7 +22,7 @@ Template File: sources-sinks-61b.tmpl.c
 short CWE190_Integer_Overflow__short_rand_multiply_61b_badSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -42,7 +42,7 @@ short CWE190_Integer_Overflow__short_rand_multiply_61b_goodG2BSource(short data)
 short CWE190_Integer_Overflow__short_rand_multiply_61b_goodB2GSource(short data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 

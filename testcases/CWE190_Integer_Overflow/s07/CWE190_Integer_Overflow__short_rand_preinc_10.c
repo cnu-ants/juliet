@@ -26,13 +26,13 @@ void CWE190_Integer_Overflow__short_rand_preinc_10_bad()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalTrue)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -51,7 +51,7 @@ static void goodB2G1()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalFalse)
     {
@@ -63,7 +63,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -82,14 +82,14 @@ static void goodB2G2()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (short)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+        data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     if(globalTrue)
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            ++data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }

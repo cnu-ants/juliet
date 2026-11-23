@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__wchar_t_pointer_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printWLine(data);/* ikos[v3.5.1]: error: first argument is uninitialized */
+        printWLine(data);/* ikos: error: first argument is uninitialized */
     }
 }
 

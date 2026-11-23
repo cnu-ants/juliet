@@ -50,7 +50,7 @@ void CWE190_Integer_Overflow__int_connect_socket_multiply_64b_badSink(void * dat
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;/* ikos[v3.5.1]: warning: possible signed integer overflow */
+        int result = data * 2;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

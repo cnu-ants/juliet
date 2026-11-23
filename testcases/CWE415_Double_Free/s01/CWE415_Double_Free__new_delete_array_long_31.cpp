@@ -36,7 +36,7 @@ void bad()
         long * dataCopy = data;
         long * data = dataCopy;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;/* ikos[v3.5.1]: error: double free */
+        delete [] data;/* ikos: error: double free */
     }
 }
 

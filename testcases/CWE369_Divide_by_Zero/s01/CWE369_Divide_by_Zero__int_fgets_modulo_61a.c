@@ -31,7 +31,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_61_bad()
     data = -1;
     data = CWE369_Divide_by_Zero__int_fgets_modulo_61b_badSource(data);
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -63,7 +63,7 @@ static void goodB2G()
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos[v3.5.1]: warning: divisor might be zero */
+        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
     }
     else
     {

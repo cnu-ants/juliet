@@ -37,7 +37,7 @@ void bad()
     {
         char * data = dataRef;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos[v3.5.1]: error: double free */
+        free(data);/* ikos: error: double free */
     }
 }
 

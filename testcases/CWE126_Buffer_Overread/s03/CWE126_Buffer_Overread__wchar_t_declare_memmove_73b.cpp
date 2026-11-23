@@ -29,14 +29,14 @@ namespace CWE126_Buffer_Overread__wchar_t_declare_memmove_73
 void badSink(list<wchar_t *> dataList)
 {
     /* copy data out of dataList */
-    wchar_t * data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
+    wchar_t * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         wchar_t dest[100];
         wmemset(dest, L'C', 100-1);
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: memory access might be invalid; warning: possible buffer overflow */
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -49,14 +49,14 @@ void badSink(list<wchar_t *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<wchar_t *> dataList)
 {
-    wchar_t * data = dataList.back();/* ikos[v3.5.1]: warning: memory access might be invalid */
+    wchar_t * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         wchar_t dest[100];
         wmemset(dest, L'C', 100-1);
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos[v3.5.1]: warning: memory access might be invalid; warning: possible buffer overflow */
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }

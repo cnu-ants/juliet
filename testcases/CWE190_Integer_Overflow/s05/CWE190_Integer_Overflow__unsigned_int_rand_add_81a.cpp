@@ -28,7 +28,7 @@ void bad()
     unsigned int data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     const CWE190_Integer_Overflow__unsigned_int_rand_add_81_base& baseObject = CWE190_Integer_Overflow__unsigned_int_rand_add_81_bad();
     baseObject.action(data);
 }
@@ -54,7 +54,7 @@ static void goodB2G()
     unsigned int data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();/* ikos[v3.5.1]: warning: possible unsigned integer underflow */
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     const CWE190_Integer_Overflow__unsigned_int_rand_add_81_base& baseObject = CWE190_Integer_Overflow__unsigned_int_rand_add_81_goodB2G();
     baseObject.action(data);
 }

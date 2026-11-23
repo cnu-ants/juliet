@@ -42,7 +42,7 @@ void CWE126_Buffer_Overread__CWE129_rand_34_bad()
              * This check does not check the upper bounds of the array index */
             if (data >= 0)
             {
-                printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {

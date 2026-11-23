@@ -32,7 +32,7 @@ void CWE476_NULL_Pointer_Dereference__long_02_bad()
     if(1)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);/* ikos[v3.5.1]: error: pointer is null */
+        printLongLine(*data);/* ikos: error: pointer is null */
     }
 }
 

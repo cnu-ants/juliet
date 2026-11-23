@@ -33,7 +33,7 @@ void badSink(list<unsigned int> dataList)
     unsigned int data = dataList.back();
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(list<unsigned int> dataList)
     unsigned int data = dataList.back();
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -60,7 +60,7 @@ void goodB2GSink(list<unsigned int> dataList)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;/* ikos[v3.5.1]: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

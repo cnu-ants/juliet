@@ -25,7 +25,7 @@ void CWE476_NULL_Pointer_Dereference__long_63b_badSink(long * * dataPtr)
 {
     long * data = *dataPtr;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);/* ikos[v3.5.1]: error: pointer 'data' is null */
+    printLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

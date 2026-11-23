@@ -27,7 +27,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_no_init_63b_badSink(
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);/* ikos[v3.5.1]: error: expression 'data[(int64_t)i]' is uninitialized */
+            printIntLine(data[i]);/* ikos: error: expression 'data[(int64_t)i]' is uninitialized */
         }
     }
 }

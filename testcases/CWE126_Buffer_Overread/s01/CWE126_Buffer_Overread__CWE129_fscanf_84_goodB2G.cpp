@@ -25,7 +25,7 @@ CWE126_Buffer_Overread__CWE129_fscanf_84_goodB2G::CWE126_Buffer_Overread__CWE129
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);/* ikos[v3.5.1]: warning: memory access might be invalid */
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 CWE126_Buffer_Overread__CWE129_fscanf_84_goodB2G::~CWE126_Buffer_Overread__CWE129_fscanf_84_goodB2G()
@@ -35,7 +35,7 @@ CWE126_Buffer_Overread__CWE129_fscanf_84_goodB2G::~CWE126_Buffer_Overread__CWE12
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos[v3.5.1]: warning: possible buffer overflow */
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

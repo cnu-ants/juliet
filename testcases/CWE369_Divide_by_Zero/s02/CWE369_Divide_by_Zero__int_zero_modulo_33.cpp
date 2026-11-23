@@ -33,7 +33,7 @@ void bad()
     {
         int data = dataRef;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);/* ikos[v3.5.1]: error: division by zero */
+        printIntLine(100 % data);/* ikos: error: division by zero */
     }
 }
 

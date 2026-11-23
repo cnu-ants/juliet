@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_pointer_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(*data);/* ikos[v3.5.1]: error: pointer is uninitialized */
+        printDoubleLine(*data);/* ikos: error: pointer is uninitialized */
     }
 }
 
@@ -78,7 +78,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(*data);/* ikos[v3.5.1]: warning: variable 'data' might be uninitialized */
+        printDoubleLine(*data);/* ikos: warning: variable 'data' might be uninitialized */
     }
 }
 
