@@ -37,7 +37,7 @@ void bad()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: error: expression 'data[(int64_t)i]' is uninitialized */
             }
         }
         /* deallocate the memory */
