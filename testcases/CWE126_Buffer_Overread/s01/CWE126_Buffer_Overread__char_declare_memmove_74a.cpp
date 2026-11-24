@@ -42,7 +42,7 @@ void bad()
     /* FLAW: Set data pointer to a small buffer */
     data = dataBadBuffer;
     /* Put data in a map */
-    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[0] = data;
     dataMap[1] = data;/* ikos: warning: memory access might be invalid */
     dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
@@ -70,7 +70,7 @@ static void goodG2B()
     /* FIX: Set data pointer to a large buffer */
     data = dataGoodBuffer;
     /* Put data in a map */
-    dataMap[0] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[0] = data;
     dataMap[1] = data;/* ikos: warning: memory access might be invalid */
     dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
