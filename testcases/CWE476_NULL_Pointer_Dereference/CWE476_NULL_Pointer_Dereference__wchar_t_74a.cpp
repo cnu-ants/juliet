@@ -37,9 +37,9 @@ void bad()
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
     /* Put data in a map */
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     badSink(dataMap);
 }
 
@@ -57,9 +57,9 @@ static void goodG2B()
     /* FIX: Initialize data */
     data = L"Good";
     /* Put data in a map */
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     goodG2BSink(dataMap);
 }
 
@@ -72,9 +72,9 @@ static void goodB2G()
     map<int, wchar_t *> dataMap;
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
-    dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[0] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     goodB2GSink(dataMap);
 }
 

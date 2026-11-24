@@ -30,7 +30,7 @@ namespace CWE476_NULL_Pointer_Dereference__int64_t_74
 void badSink(map<int, int64_t *> dataMap)
 {
     /* copy data out of dataMap */
-    int64_t * data = dataMap[2];
+    int64_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, long*, std::less<int>, std::allocator<std::pair<int const, long*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
@@ -42,7 +42,7 @@ void badSink(map<int, int64_t *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, int64_t *> dataMap)
 {
-    int64_t * data = dataMap[2];
+    int64_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, long*, std::less<int>, std::allocator<std::pair<int const, long*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
@@ -50,7 +50,7 @@ void goodG2BSink(map<int, int64_t *> dataMap)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, int64_t *> dataMap)
 {
-    int64_t * data = dataMap[2];
+    int64_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, long*, std::less<int>, std::allocator<std::pair<int const, long*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

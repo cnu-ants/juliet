@@ -28,7 +28,7 @@ namespace CWE476_NULL_Pointer_Dereference__class_74
 void badSink(map<int, TwoIntsClass *> dataMap)
 {
     /* copy data out of dataMap */
-    TwoIntsClass * data = dataMap[2];
+    TwoIntsClass * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
@@ -42,7 +42,7 @@ void badSink(map<int, TwoIntsClass *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, TwoIntsClass *> dataMap)
 {
-    TwoIntsClass * data = dataMap[2];
+    TwoIntsClass * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
@@ -52,7 +52,7 @@ void goodG2BSink(map<int, TwoIntsClass *> dataMap)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, TwoIntsClass *> dataMap)
 {
-    TwoIntsClass * data = dataMap[2];
+    TwoIntsClass * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

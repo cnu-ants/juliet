@@ -30,7 +30,7 @@ void badSink(vector<int> dataVector)
     /* copy data out of dataVector */
     int data = dataVector[2];
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -42,7 +42,7 @@ void goodG2BSink(vector<int> dataVector)
 {
     int data = dataVector[2];
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: warning: divisor might be zero */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
@@ -52,7 +52,7 @@ void goodB2GSink(vector<int> dataVector)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
     }
     else
     {

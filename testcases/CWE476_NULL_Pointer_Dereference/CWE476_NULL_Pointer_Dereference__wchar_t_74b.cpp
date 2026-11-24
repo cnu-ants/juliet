@@ -30,7 +30,7 @@ namespace CWE476_NULL_Pointer_Dereference__wchar_t_74
 void badSink(map<int, wchar_t *> dataMap)
 {
     /* copy data out of dataMap */
-    wchar_t * data = dataMap[2];
+    wchar_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
     printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
@@ -43,7 +43,7 @@ void badSink(map<int, wchar_t *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, wchar_t *> dataMap)
 {
-    wchar_t * data = dataMap[2];
+    wchar_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
     printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
@@ -52,7 +52,7 @@ void goodG2BSink(map<int, wchar_t *> dataMap)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, wchar_t *> dataMap)
 {
-    wchar_t * data = dataMap[2];
+    wchar_t * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, wchar_t*, std::less<int>, std::allocator<std::pair<int const, wchar_t*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

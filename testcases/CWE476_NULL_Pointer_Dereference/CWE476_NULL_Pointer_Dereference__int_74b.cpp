@@ -30,7 +30,7 @@ namespace CWE476_NULL_Pointer_Dereference__int_74
 void badSink(map<int, int *> dataMap)
 {
     /* copy data out of dataMap */
-    int * data = dataMap[2];
+    int * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, int*, std::less<int>, std::allocator<std::pair<int const, int*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printIntLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
@@ -42,7 +42,7 @@ void badSink(map<int, int *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, int *> dataMap)
 {
-    int * data = dataMap[2];
+    int * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, int*, std::less<int>, std::allocator<std::pair<int const, int*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     printIntLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
@@ -50,7 +50,7 @@ void goodG2BSink(map<int, int *> dataMap)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, int *> dataMap)
 {
-    int * data = dataMap[2];
+    int * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, int*, std::less<int>, std::allocator<std::pair<int const, int*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

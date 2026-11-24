@@ -27,11 +27,16 @@ Failed analyses are separate from FN; no-check/unreachable FN subsets are explic
 Safe locations were not retained individually: per-testcase check counts are kept.
 Native implementation definitions alone do not establish checker reachability.
 FN locations refer to Juliet expected flaws, not emitted analyzer diagnostics.
-Source Warning/Error comments are refreshed, with file ownership/mode preserved.
+Source Warning/Error comments use /* ikos: warning: ... */ with no version tag.
+An unchanged diagnostic leaves its existing canonical comment byte-identical.
+A disappearing diagnostic removes the managed comment after successful analysis.
+File ownership/mode are preserved. VERSION names result folders only.
 """
 
+import os
+
 # ======================== EDIT THESE SETTINGS ========================
-VERSION = "v3.5.2"                 # Result directory name; NOT an IKOS --version override.
+VERSION = os.environ.get("IKOS_VERSION", "v3.5.3")                 # Result directory only; source comments never include VERSION.
 IKOS = "ikos"                      # Or an absolute path, e.g. /opt/ikos/bin/ikos.
 JOBS = 1                           # Independent processes; not IKOS's -j option.
 TIMEOUT_SECONDS = None             # External wall timeout; None leaves it unlimited.
@@ -45,7 +50,6 @@ import hashlib
 import gzip
 import importlib
 import json
-import os
 from pathlib import Path
 import re
 import shlex
@@ -71,7 +75,10 @@ CHECKERS = {
 CODE_EXT = {".c", ".cpp", ".cc", ".cxx", ".h", ".hpp"}
 SOURCE_EXT = {".c", ".cpp", ".cc", ".cxx"}
 MANAGED = re.compile(r"/\*\s*ikos(?:\[[^\]\r\n]*\])?\s*:[\s\S]*?\*/", re.I)
-LEX = re.compile(r'/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'', re.S)
+LEX = re.compile(
+    r'/\*.*?\*/|//[^\n]*|'
+    r'(?:u8|u|U|L)?R"(?P<ikos_raw_delim>[^\s()\\]{0,16})\(.*?\)(?P=ikos_raw_delim)"|'
+    r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'', re.S)
 STOP = threading.Event()
 ACTIVE = set()
 ACTIVE_LOCK = threading.Lock()
@@ -621,7 +628,7 @@ def annotate_source(path, clean, messages):
                     break
                 raise ValueError('Cannot annotate safely inside a multiline token at line ' + str(number))
         safe = [e.replace('*/', '* /').replace('\r', ' ').replace('\n', ' ') for e in sorted(set(entries))]
-        comment = '/* ikos[' + VERSION + ']: ' + '; '.join(safe) + ' */'
+        comment = '/* ikos: ' + '; '.join(safe) + ' */'
         lines[number-1] = body[:end] + comment + body[end:] + ending
     updated = ''.join(lines).encode('utf-8', errors='surrogateescape')
     # A semantic comparison also catches accidental insertion within literals.
