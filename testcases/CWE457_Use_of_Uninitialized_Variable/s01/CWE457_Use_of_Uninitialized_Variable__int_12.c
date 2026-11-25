@@ -37,7 +37,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data);
+        printIntLine(data);/* ikos: warning: variable 'data' might be uninitialized */
     }
     else
     {

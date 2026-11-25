@@ -45,7 +45,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_pointer_08_bad()
     if(staticReturnsTrue())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(*data);/* ikos: error: pointer is uninitialized */
+        printIntLine(*data);/* ikos: error: variable 'data' is uninitialized */
     }
 }
 
