@@ -31,7 +31,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -54,7 +54,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < UINT_MAX)
     {
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

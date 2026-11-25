@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_postinc_42_bad()
     data = badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

@@ -25,7 +25,7 @@ namespace CWE369_Divide_by_Zero__int_fscanf_modulo_82
 void CWE369_Divide_by_Zero__int_fscanf_modulo_82_bad::action(int data)
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 
 }

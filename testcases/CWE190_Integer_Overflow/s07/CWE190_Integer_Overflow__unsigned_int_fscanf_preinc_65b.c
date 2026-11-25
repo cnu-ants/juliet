@@ -23,7 +23,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_65b_badSink(unsigned in
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

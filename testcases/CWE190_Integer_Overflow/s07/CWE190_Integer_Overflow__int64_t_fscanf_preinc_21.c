@@ -29,7 +29,7 @@ static void badSink(int64_t data)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }

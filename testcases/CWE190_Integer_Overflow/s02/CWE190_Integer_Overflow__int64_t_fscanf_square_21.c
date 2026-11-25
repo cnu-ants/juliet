@@ -31,7 +31,7 @@ static void badSink(int64_t data)
     {
         {
             /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
     }
@@ -69,7 +69,7 @@ static void goodB2G1Sink(int64_t data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
@@ -97,7 +97,7 @@ static void goodB2G2Sink(int64_t data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else

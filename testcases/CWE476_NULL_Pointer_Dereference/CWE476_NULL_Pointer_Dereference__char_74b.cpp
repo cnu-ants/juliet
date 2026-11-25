@@ -57,7 +57,7 @@ void goodB2GSink(map<int, char *> dataMap)
     if (data != NULL)
     {
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
+        printHexCharLine(data[0]);
     }
     else
     {

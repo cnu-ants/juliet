@@ -34,7 +34,7 @@ void CWE190_Integer_Overflow__int_fscanf_add_16_bad()
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            int result = data + 1;
+            int result = data + 1;/* ikos: warning: possible signed integer overflow */
             printIntLine(result);
         }
         break;
@@ -62,7 +62,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < INT_MAX)
         {
-            int result = data + 1;
+            int result = data + 1;/* ikos: warning: possible signed integer overflow */
             printIntLine(result);
         }
         else

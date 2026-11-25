@@ -54,7 +54,7 @@ void goodB2GSink(list<twoIntsStruct *> dataList)
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);
     }
     else
     {

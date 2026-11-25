@@ -32,7 +32,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int result = data + 1;
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }
@@ -56,7 +56,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < INT_MAX)
     {
-        int result = data + 1;
+        int result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
     else

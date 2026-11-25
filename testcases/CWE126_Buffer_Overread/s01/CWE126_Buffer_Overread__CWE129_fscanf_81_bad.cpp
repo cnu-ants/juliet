@@ -30,7 +30,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_81_bad::action(int data) const
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {
