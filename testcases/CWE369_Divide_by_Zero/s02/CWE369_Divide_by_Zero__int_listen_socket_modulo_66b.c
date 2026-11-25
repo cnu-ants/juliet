@@ -68,7 +68,7 @@ void CWE369_Divide_by_Zero__int_listen_socket_modulo_66b_goodB2GSink(int dataArr
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
+        printIntLine(100 % data);
     }
     else
     {

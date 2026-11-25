@@ -64,7 +64,7 @@ void CWE369_Divide_by_Zero__int_connect_socket_divide_53d_goodB2GSink(int data)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
+        printIntLine(100 / data);
     }
     else
     {

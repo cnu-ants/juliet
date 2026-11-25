@@ -204,7 +204,7 @@ static void goodB2G1()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
+            printIntLine(100 / data);
         }
         else
         {
@@ -283,7 +283,7 @@ static void goodB2G2()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
+            printIntLine(100 / data);
         }
         else
         {
