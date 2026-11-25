@@ -80,7 +80,7 @@ sink:
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
+            printIntLine(data[i]);
         }
     }
 }
@@ -108,7 +108,7 @@ sink:
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
+            printIntLine(data[i]);
         }
     }
 }

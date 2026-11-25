@@ -82,7 +82,7 @@ static void goodB2G1()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
+                printDoubleLine(data[i]);
             }
         }
     }
@@ -113,7 +113,7 @@ static void goodB2G2()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
+                printDoubleLine(data[i]);
             }
         }
     }
