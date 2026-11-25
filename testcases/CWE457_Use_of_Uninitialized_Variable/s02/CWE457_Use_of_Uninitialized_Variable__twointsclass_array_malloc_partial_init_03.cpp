@@ -41,8 +41,8 @@ void bad()
         /* POTENTIAL FLAW: Use data without initializing it */
         for(int i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }
@@ -81,8 +81,8 @@ static void goodB2G1()
         }
         for(int i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }
@@ -112,8 +112,8 @@ static void goodB2G2()
         }
         for(int i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }
@@ -143,8 +143,8 @@ static void goodG2B1()
         /* POTENTIAL FLAW: Use data without initializing it */
         for(int i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }
@@ -169,8 +169,8 @@ static void goodG2B2()
         /* POTENTIAL FLAW: Use data without initializing it */
         for(int i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }

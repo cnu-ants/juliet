@@ -52,7 +52,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_12_bad(
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -70,7 +70,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_partial_init_12_bad(
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -123,7 +123,7 @@ static void goodB2G()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -141,7 +141,7 @@ static void goodB2G()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -183,7 +183,7 @@ static void goodG2B()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -194,7 +194,7 @@ static void goodG2B()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }

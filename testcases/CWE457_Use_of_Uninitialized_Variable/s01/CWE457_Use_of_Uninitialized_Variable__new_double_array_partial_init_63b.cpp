@@ -30,7 +30,7 @@ void badSink(double * * dataPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */
@@ -50,7 +50,7 @@ void goodG2BSink(double * * dataPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */
@@ -73,7 +73,7 @@ void goodB2GSink(double * * dataPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */

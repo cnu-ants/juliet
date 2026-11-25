@@ -52,8 +52,8 @@ void CWE457_Use_of_Uninitialized_Variable__struct_array_alloca_no_init_64b_goodG
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }
@@ -78,8 +78,8 @@ void CWE457_Use_of_Uninitialized_Variable__struct_array_alloca_no_init_64b_goodB
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
 }

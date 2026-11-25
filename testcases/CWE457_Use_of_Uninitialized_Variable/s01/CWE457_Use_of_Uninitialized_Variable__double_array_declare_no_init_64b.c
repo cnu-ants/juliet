@@ -51,7 +51,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_64b_good
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
 }
@@ -75,7 +75,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_array_declare_no_init_64b_good
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
 }

@@ -55,7 +55,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_array_malloc_partial_init_08_b
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -101,7 +101,7 @@ static void goodB2G1()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -138,7 +138,7 @@ static void goodB2G2()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -173,7 +173,7 @@ static void goodG2B1()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -203,7 +203,7 @@ static void goodG2B2()
             int i;
             for(i=0; i<10; i++)
             {
-                printDoubleLine(data[i]);
+                printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
