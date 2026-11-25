@@ -80,7 +80,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < UINT_MAX)
         {
-            unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
+            unsigned int result = data + 1;
             printUnsignedLine(result);
         }
         else
@@ -113,7 +113,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < UINT_MAX)
         {
-            unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
+            unsigned int result = data + 1;
             printUnsignedLine(result);
         }
         else
