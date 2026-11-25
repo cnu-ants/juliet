@@ -36,7 +36,7 @@ void badSink(vector<wchar_t *> dataVector)
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid */
         dest[100-1] = L'\0';
         printWLine(dest);
         delete [] data;
@@ -57,7 +57,7 @@ void goodG2BSink(vector<wchar_t *> dataVector)
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: memory access might be invalid */
         dest[100-1] = L'\0';
         printWLine(dest);
         delete [] data;

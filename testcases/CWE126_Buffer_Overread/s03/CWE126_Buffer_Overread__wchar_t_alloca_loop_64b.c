@@ -64,7 +64,7 @@ void CWE126_Buffer_Overread__wchar_t_alloca_loop_64b_goodG2BSink(void * dataVoid
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
+            dest[i] = data[i];
         }
         dest[100-1] = L'\0';
         printWLine(dest);

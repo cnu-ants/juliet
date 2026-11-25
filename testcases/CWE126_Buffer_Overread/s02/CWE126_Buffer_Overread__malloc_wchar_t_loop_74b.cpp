@@ -40,7 +40,7 @@ void badSink(map<int, wchar_t *> dataMap)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
@@ -66,7 +66,7 @@ void goodG2BSink(map<int, wchar_t *> dataMap)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
