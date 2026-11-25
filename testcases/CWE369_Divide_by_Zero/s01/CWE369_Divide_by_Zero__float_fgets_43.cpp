@@ -75,7 +75,7 @@ static void goodG2B()
     goodG2BSource(data);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
+        int result = (int)(100.0 / data);
         printIntLine(result);
     }
 }

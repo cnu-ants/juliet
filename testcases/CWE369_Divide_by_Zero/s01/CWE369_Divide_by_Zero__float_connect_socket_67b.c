@@ -68,7 +68,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_67b_goodG2BSink(CWE369_Divide_b
     float data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
+        int result = (int)(100.0 / data);
         printIntLine(result);
     }
 }
@@ -80,7 +80,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_67b_goodB2GSink(CWE369_Divide_b
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
+        int result = (int)(100.0 / data);
         printIntLine(result);
     }
     else

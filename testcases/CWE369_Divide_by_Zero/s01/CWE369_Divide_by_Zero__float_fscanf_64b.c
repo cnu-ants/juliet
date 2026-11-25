@@ -47,7 +47,7 @@ void CWE369_Divide_by_Zero__float_fscanf_64b_goodG2BSink(void * dataVoidPtr)
     float data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
+        int result = (int)(100.0 / data);
         printIntLine(result);
     }
 }
@@ -62,7 +62,7 @@ void CWE369_Divide_by_Zero__float_fscanf_64b_goodB2GSink(void * dataVoidPtr)
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
+        int result = (int)(100.0 / data);
         printIntLine(result);
     }
     else

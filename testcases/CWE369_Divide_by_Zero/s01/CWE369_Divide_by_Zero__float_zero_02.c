@@ -66,7 +66,7 @@ static void goodB2G1()
         /* FIX: Check for value of or near zero before dividing */
         if(fabs(data) > 0.000001)
         {
-            int result = (int)(100.0 / data);/* ikos: error: floating point division by zero */
+            int result = (int)(100.0 / data);
             printIntLine(result);
         }
         else
@@ -92,7 +92,7 @@ static void goodB2G2()
         /* FIX: Check for value of or near zero before dividing */
         if(fabs(data) > 0.000001)
         {
-            int result = (int)(100.0 / data);/* ikos: error: floating point division by zero */
+            int result = (int)(100.0 / data);
             printIntLine(result);
         }
         else
