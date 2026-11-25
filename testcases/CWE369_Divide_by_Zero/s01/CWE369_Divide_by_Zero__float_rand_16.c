@@ -36,7 +36,7 @@ void CWE369_Divide_by_Zero__float_rand_16_bad()
     {
         {
             /* POTENTIAL FLAW: Possibly divide by zero */
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
         break;
@@ -64,7 +64,7 @@ static void goodB2G()
         /* FIX: Check for value of or near zero before dividing */
         if(fabs(data) > 0.000001)
         {
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
         else

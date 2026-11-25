@@ -122,7 +122,7 @@ void CWE369_Divide_by_Zero__float_listenSocket_31_bad()
         float data = dataCopy;
         {
             /* POTENTIAL FLAW: Possibly divide by zero */
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
     }
@@ -232,7 +232,7 @@ static void goodB2G()
         /* FIX: Check for value of or near zero before dividing */
         if(fabs(data) > 0.000001)
         {
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
         else

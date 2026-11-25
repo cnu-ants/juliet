@@ -32,7 +32,7 @@ CWE369_Divide_by_Zero__float_zero_84_bad::~CWE369_Divide_by_Zero__float_zero_84_
 {
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }

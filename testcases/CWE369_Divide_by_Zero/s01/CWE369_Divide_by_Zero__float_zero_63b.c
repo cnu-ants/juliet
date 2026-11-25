@@ -26,7 +26,7 @@ void CWE369_Divide_by_Zero__float_zero_63b_badSink(float * dataPtr)
     float data = *dataPtr;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -41,7 +41,7 @@ void CWE369_Divide_by_Zero__float_zero_63b_goodG2BSink(float * dataPtr)
     float data = *dataPtr;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -53,7 +53,7 @@ void CWE369_Divide_by_Zero__float_zero_63b_goodB2GSink(float * dataPtr)
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

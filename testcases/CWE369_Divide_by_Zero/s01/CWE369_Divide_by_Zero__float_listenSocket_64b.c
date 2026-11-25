@@ -51,7 +51,7 @@ void CWE369_Divide_by_Zero__float_listenSocket_64b_badSink(void * dataVoidPtr)
     float data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -69,7 +69,7 @@ void CWE369_Divide_by_Zero__float_listenSocket_64b_goodG2BSink(void * dataVoidPt
     float data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -84,7 +84,7 @@ void CWE369_Divide_by_Zero__float_listenSocket_64b_goodB2GSink(void * dataVoidPt
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

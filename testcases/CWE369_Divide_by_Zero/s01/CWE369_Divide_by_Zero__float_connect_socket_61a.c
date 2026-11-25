@@ -54,7 +54,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_61_bad()
     data = CWE369_Divide_by_Zero__float_connect_socket_61b_badSource(data);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -74,7 +74,7 @@ static void goodG2B()
     data = CWE369_Divide_by_Zero__float_connect_socket_61b_goodG2BSource(data);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -91,7 +91,7 @@ static void goodB2G()
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

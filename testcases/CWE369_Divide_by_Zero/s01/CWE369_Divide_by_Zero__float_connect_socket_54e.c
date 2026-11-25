@@ -47,7 +47,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_54e_badSink(float data)
 {
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -61,7 +61,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_54e_goodG2BSink(float data)
 {
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -72,7 +72,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_54e_goodB2GSink(float data)
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

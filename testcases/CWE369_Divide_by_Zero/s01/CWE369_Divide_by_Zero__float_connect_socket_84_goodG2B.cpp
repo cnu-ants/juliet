@@ -54,7 +54,7 @@ CWE369_Divide_by_Zero__float_connect_socket_84_goodG2B::~CWE369_Divide_by_Zero__
 {
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }

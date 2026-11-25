@@ -27,7 +27,7 @@ void CWE369_Divide_by_Zero__float_fgets_82_goodB2G::action(float data)
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

@@ -31,7 +31,7 @@ void CWE369_Divide_by_Zero__float_fscanf_67b_badSink(CWE369_Divide_by_Zero__floa
     float data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -46,7 +46,7 @@ void CWE369_Divide_by_Zero__float_fscanf_67b_goodG2BSink(CWE369_Divide_by_Zero__
     float data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -58,7 +58,7 @@ void CWE369_Divide_by_Zero__float_fscanf_67b_goodB2GSink(CWE369_Divide_by_Zero__
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else
