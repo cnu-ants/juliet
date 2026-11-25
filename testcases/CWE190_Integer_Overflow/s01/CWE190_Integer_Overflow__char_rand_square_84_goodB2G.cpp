@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__char_rand_square_84_goodB2G::~CWE190_Integer_Overflow__
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) <= (long)sqrt((double)CHAR_MAX))
     {
-        char result = data * data;
+        char result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printHexCharLine(result);
     }
     else

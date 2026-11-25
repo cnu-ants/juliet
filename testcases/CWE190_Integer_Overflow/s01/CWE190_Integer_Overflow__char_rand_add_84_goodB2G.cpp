@@ -33,7 +33,7 @@ CWE190_Integer_Overflow__char_rand_add_84_goodB2G::~CWE190_Integer_Overflow__cha
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < CHAR_MAX)
     {
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
     else

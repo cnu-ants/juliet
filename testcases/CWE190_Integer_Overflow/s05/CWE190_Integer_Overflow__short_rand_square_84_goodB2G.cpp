@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__short_rand_square_84_goodB2G::~CWE190_Integer_Overflow_
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) <= (long)sqrt((double)SHRT_MAX))
     {
-        short result = data * data;
+        short result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
     else

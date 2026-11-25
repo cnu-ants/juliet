@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__short_fscanf_multiply_84_goodB2G::~CWE190_Integer_Overf
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (SHRT_MAX/2))
         {
-            short result = data * 2;
+            short result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

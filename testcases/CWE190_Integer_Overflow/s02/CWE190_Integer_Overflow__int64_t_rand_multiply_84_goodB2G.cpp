@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__int64_t_rand_multiply_84_goodB2G::~CWE190_Integer_Overf
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (LLONG_MAX/2))
         {
-            int64_t result = data * 2;
+            int64_t result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
