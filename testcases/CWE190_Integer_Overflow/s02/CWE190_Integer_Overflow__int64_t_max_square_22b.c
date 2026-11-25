@@ -59,7 +59,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_22_goodB2G1Sink(int64_t data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos: error: signed integer overflow */
+            int64_t result = data * data;
             printLongLongLine(result);
         }
         else
@@ -77,7 +77,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_22_goodB2G2Sink(int64_t data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;/* ikos: error: signed integer overflow */
+            int64_t result = data * data;
             printLongLongLine(result);
         }
         else

@@ -53,7 +53,7 @@ void CWE190_Integer_Overflow__int_rand_square_63b_goodB2GSink(int * dataPtr)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+        int result = data * data;
         printIntLine(result);
     }
     else
