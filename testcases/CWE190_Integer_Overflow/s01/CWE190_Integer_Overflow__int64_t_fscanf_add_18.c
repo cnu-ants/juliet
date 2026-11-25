@@ -55,7 +55,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < LLONG_MAX)
     {
-        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
+        int64_t result = data + 1;
         printLongLongLine(result);
     }
     else

@@ -48,7 +48,7 @@ void CWE190_Integer_Overflow__int64_t_fscanf_preinc_12_bad()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < LLONG_MAX)
         {
-            ++data;/* ikos: warning: possible signed integer overflow */
+            ++data;
             int64_t result = data;
             printLongLongLine(result);
         }
@@ -85,7 +85,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < LLONG_MAX)
         {
-            ++data;/* ikos: warning: possible signed integer overflow */
+            ++data;
             int64_t result = data;
             printLongLongLine(result);
         }
@@ -99,7 +99,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < LLONG_MAX)
         {
-            ++data;/* ikos: warning: possible signed integer overflow */
+            ++data;
             int64_t result = data;
             printLongLongLine(result);
         }

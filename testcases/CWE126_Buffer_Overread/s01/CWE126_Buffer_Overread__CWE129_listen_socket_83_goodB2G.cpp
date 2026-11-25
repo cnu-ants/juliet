@@ -124,7 +124,7 @@ CWE126_Buffer_Overread__CWE129_listen_socket_83_goodB2G::~CWE126_Buffer_Overread
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
+            printIntLine(buffer[data]);
         }
         else
         {
