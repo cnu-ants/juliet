@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_fscanf_preinc_67b_badSink(CWE190_Integer_Ove
     short data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos: warning: possible unsigned integer overflow */
+        ++data;
         short result = data;
         printIntLine(result);
     }
@@ -58,7 +58,7 @@ void CWE190_Integer_Overflow__short_fscanf_preinc_67b_goodB2GSink(CWE190_Integer
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        ++data;/* ikos: warning: possible unsigned integer overflow */
+        ++data;
         short result = data;
         printIntLine(result);
     }

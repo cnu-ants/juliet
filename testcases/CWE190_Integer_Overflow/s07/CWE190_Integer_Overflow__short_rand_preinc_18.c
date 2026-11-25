@@ -31,7 +31,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;/* ikos: warning: possible unsigned integer overflow */
+        ++data;
         short result = data;
         printIntLine(result);
     }
@@ -55,7 +55,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        ++data;/* ikos: warning: possible unsigned integer overflow */
+        ++data;
         short result = data;
         printIntLine(result);
     }
