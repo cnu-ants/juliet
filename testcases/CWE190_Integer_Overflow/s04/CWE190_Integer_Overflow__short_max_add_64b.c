@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__short_max_add_64b_badSink(void * dataVoidPtr)
     short data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        short result = data + 1;
+        short result = data + 1;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

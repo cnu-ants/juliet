@@ -32,7 +32,7 @@ void CWE190_Integer_Overflow__char_max_square_31_bad()
         char data = dataCopy;
         {
             /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-            char result = data * data;
+            char result = data * data;/* ikos: error: signed integer overflow */
             printHexCharLine(result);
         }
     }

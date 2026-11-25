@@ -32,7 +32,7 @@ CWE190_Integer_Overflow__char_rand_add_83_bad::~CWE190_Integer_Overflow__char_ra
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
 }

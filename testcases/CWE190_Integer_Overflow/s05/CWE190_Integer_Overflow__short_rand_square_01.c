@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_rand_square_01_bad()
     data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
-        short result = data * data;
+        short result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
 }

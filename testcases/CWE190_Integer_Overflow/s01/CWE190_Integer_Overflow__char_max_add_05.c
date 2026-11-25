@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__char_max_add_05_bad()
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            char result = data + 1;
+            char result = data + 1;/* ikos: error: signed integer overflow */
             printHexCharLine(result);
         }
     }

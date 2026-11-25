@@ -25,7 +25,7 @@ void CWE190_Integer_Overflow__short_rand_add_66b_badSink(short dataArray[])
     short data = dataArray[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        short result = data + 1;
+        short result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

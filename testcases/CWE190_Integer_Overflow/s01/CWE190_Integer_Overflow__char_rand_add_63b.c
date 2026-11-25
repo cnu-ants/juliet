@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__char_rand_add_63b_badSink(char * dataPtr)
     char data = *dataPtr;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
 }

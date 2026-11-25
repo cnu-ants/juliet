@@ -31,7 +31,7 @@ void CWE190_Integer_Overflow__char_max_square_67b_badSink(CWE190_Integer_Overflo
     char data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

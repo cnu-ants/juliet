@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__char_max_multiply_64b_badSink(void * dataVoidPtr)
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > CHAR_MAX, this will overflow */
-        char result = data * 2;
+        char result = data * 2;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

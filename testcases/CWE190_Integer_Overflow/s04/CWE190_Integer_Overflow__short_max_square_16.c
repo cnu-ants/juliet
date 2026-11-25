@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__short_max_square_16_bad()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
-            short result = data * data;
+            short result = data * data;/* ikos: error: signed integer overflow */
             printIntLine(result);
         }
         break;

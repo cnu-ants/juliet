@@ -31,7 +31,7 @@ void badSink(vector<char> dataVector)
     char data = dataVector[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
 }
@@ -46,7 +46,7 @@ void goodG2BSink(vector<char> dataVector)
     char data = dataVector[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
 }

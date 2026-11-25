@@ -31,7 +31,7 @@ void CWE190_Integer_Overflow__char_fscanf_square_61_bad()
     data = CWE190_Integer_Overflow__char_fscanf_square_61b_badSource(data);
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printHexCharLine(result);
     }
 }

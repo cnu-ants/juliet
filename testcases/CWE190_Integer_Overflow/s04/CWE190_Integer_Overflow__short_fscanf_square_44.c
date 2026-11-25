@@ -25,7 +25,7 @@ static void badSink(short data)
 {
     {
         /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
-        short result = data * data;
+        short result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
 }

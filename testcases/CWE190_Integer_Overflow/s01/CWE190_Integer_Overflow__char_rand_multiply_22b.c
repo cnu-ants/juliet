@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__char_rand_multiply_22_badSink(char data)
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > CHAR_MAX, this will overflow */
-            char result = data * 2;
+            char result = data * 2;/* ikos: warning: possible signed integer overflow */
             printHexCharLine(result);
         }
     }

@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__char_fscanf_add_81_bad::action(char data) const
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: warning: possible signed integer overflow */
         printHexCharLine(result);
     }
 }

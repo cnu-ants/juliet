@@ -31,7 +31,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }
