@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__char_rand_postinc_32_bad()
         char data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             char result = data;
             printHexCharLine(result);
         }

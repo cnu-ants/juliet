@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_67b_badSink(CWE190_Integer_Over
     short data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }

@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__char_rand_preinc_68b_badSink()
     char data = CWE190_Integer_Overflow__char_rand_preinc_68_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos: warning: possible signed integer overflow */
         char result = data;
         printHexCharLine(result);
     }

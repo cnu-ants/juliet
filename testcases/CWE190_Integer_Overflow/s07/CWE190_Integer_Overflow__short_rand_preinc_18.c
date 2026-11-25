@@ -31,7 +31,7 @@ source:
 sink:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }

@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__short_fscanf_postinc_64b_badSink(void * dataVoidPt
     short data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }

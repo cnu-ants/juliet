@@ -37,7 +37,7 @@ void CWE190_Integer_Overflow__char_fscanf_preinc_34_bad()
         char data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible signed integer overflow */
             char result = data;
             printHexCharLine(result);
         }

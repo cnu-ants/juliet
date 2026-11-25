@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__char_fscanf_postinc_67b_badSink(CWE190_Integer_Ove
     char data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         char result = data;
         printHexCharLine(result);
     }

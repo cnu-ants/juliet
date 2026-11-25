@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_31_bad()
         short data = dataCopy;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             short result = data;
             printIntLine(result);
         }
