@@ -33,7 +33,7 @@ void CWE476_NULL_Pointer_Dereference__long_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);/* ikos: warning: pointer 'data' might be null */
+        printLongLine(*data);/* ikos: error: pointer 'data' is null */
     }
 }
 
@@ -81,7 +81,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);/* ikos: warning: pointer 'data' might be null */
+        printLongLine(*data);
     }
 }
 

@@ -89,7 +89,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos: warning: possible signed integer overflow */
+            data++;
             int result = data;
             printIntLine(result);
         }

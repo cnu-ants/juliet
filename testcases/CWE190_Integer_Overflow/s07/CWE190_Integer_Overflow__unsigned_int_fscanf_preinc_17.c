@@ -86,7 +86,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos: warning: possible unsigned integer overflow */
+            ++data;
             unsigned int result = data;
             printUnsignedLine(result);
         }
