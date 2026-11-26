@@ -76,7 +76,7 @@ static void goodG2BSink()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
+            dest[i] = data[i];
         }
         dest[100-1] = L'\0';
         printWLine(dest);
