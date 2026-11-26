@@ -27,7 +27,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_pointer_01_bad()
     /* POTENTIAL FLAW: Don't initialize data */
     ; /* empty statement needed for some flow variants */
     /* POTENTIAL FLAW: Use data without initializing it */
-    printDoubleLine(*data);/* ikos: error: pointer is uninitialized */
+    printDoubleLine(*data);/* ikos: error: variable 'data' is uninitialized */
 }
 
 #endif /* OMITBAD */

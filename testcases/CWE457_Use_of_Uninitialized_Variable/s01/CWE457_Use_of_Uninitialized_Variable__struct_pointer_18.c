@@ -31,7 +31,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data->intOne);/* ikos: error: base operand is uninitialized */
+    printIntLine(data->intOne);/* ikos: error: variable 'data' is uninitialized */
     printIntLine(data->intTwo);
 }
 

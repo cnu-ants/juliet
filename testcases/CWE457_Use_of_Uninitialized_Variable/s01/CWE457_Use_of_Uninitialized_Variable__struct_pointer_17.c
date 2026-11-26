@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_pointer_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data->intOne);/* ikos: error: base operand is uninitialized */
+        printIntLine(data->intOne);/* ikos: error: variable 'data' is uninitialized */
         printIntLine(data->intTwo);
     }
 }
@@ -83,7 +83,7 @@ static void goodG2B()
     {
         /* POTENTIAL FLAW: Use data without initializing it */
         printIntLine(data->intOne);/* ikos: warning: variable 'data' might be uninitialized */
-        printIntLine(data->intTwo);
+        printIntLine(data->intTwo);/* ikos: warning: expression 'data->intTwo' might be uninitialized; warning: variable 'data' might be uninitialized */
     }
 }
 
