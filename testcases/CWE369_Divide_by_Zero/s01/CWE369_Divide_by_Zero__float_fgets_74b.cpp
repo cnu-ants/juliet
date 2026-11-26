@@ -33,7 +33,7 @@ void badSink(map<int, float> dataMap)
     float data = dataMap[2];
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(map<int, float> dataMap)
     float data = dataMap[2];
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
@@ -60,7 +60,7 @@ void goodB2GSink(map<int, float> dataMap)
     /* FIX: Check for value of or near zero before dividing */
     if(fabs(data) > 0.000001)
     {
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
     else

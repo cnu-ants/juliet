@@ -27,7 +27,7 @@ void CWE369_Divide_by_Zero__float_zero_66b_badSink(float dataArray[])
     float data = dataArray[2];
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: error: floating point division by zero */
         printIntLine(result);
     }
 }

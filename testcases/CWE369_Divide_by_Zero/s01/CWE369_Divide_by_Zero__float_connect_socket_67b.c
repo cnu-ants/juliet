@@ -53,7 +53,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_67b_badSink(CWE369_Divide_by_Ze
     float data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }

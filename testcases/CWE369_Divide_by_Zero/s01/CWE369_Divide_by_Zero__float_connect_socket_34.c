@@ -116,7 +116,7 @@ void CWE369_Divide_by_Zero__float_connect_socket_34_bad()
         float data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Possibly divide by zero */
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
     }

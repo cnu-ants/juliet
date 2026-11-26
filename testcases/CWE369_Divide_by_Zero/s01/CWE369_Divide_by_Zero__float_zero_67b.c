@@ -31,7 +31,7 @@ void CWE369_Divide_by_Zero__float_zero_67b_badSink(CWE369_Divide_by_Zero__float_
     float data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: error: floating point division by zero */
         printIntLine(result);
     }
 }

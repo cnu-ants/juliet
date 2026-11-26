@@ -36,7 +36,7 @@ void CWE369_Divide_by_Zero__float_zero_17_bad()
     {
         {
             /* POTENTIAL FLAW: Possibly divide by zero */
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: error: floating point division by zero */
             printIntLine(result);
         }
     }
@@ -89,7 +89,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: Possibly divide by zero */
-            int result = (int)(100.0 / data);
+            int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
             printIntLine(result);
         }
     }

@@ -34,7 +34,7 @@ void CWE369_Divide_by_Zero__float_fgets_61_bad()
     data = CWE369_Divide_by_Zero__float_fgets_61b_badSource(data);
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        int result = (int)(100.0 / data);
+        int result = (int)(100.0 / data);/* ikos: warning: floating point divisor might be zero */
         printIntLine(result);
     }
 }
