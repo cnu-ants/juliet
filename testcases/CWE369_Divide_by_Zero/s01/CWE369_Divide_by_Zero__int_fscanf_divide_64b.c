@@ -54,7 +54,7 @@ void CWE369_Divide_by_Zero__int_fscanf_divide_64b_goodB2GSink(void * dataVoidPtr
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
+        printIntLine(100 / data);
     }
     else
     {

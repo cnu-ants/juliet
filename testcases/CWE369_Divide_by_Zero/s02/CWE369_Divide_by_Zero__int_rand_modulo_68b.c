@@ -49,7 +49,7 @@ void CWE369_Divide_by_Zero__int_rand_modulo_68b_goodB2GSink()
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
+        printIntLine(100 % data);
     }
     else
     {

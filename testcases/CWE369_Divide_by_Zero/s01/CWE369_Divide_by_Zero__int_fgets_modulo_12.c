@@ -57,7 +57,7 @@ void CWE369_Divide_by_Zero__int_fgets_modulo_12_bad()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos: warning: divisor might be zero */
+            printIntLine(100 % data);
         }
         else
         {
@@ -115,7 +115,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos: warning: divisor might be zero */
+            printIntLine(100 % data);
         }
         else
         {
@@ -127,7 +127,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 % data);/* ikos: warning: divisor might be zero */
+            printIntLine(100 % data);
         }
         else
         {
