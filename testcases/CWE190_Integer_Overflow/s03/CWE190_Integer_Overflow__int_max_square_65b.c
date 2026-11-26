@@ -50,7 +50,7 @@ void CWE190_Integer_Overflow__int_max_square_65b_goodB2GSink(int data)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;/* ikos: error: signed integer overflow */
+        int result = data * data;
         printIntLine(result);
     }
     else

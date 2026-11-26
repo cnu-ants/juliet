@@ -60,7 +60,7 @@ void goodB2GSink(list<unsigned int> dataList)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
+        unsigned int result = data * data;
         printUnsignedLine(result);
     }
     else

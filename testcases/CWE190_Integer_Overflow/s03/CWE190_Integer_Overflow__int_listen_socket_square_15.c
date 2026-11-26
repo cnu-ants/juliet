@@ -240,7 +240,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;
             printIntLine(result);
         }
         else
@@ -341,7 +341,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
+            int result = data * data;
             printIntLine(result);
         }
         else
