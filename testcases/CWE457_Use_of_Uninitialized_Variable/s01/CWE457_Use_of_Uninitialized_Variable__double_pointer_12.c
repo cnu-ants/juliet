@@ -118,12 +118,12 @@ static void goodG2B()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(*data);/* ikos: warning: expression '*data' might be uninitialized */
+        printDoubleLine(*data);
     }
     else
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(*data);/* ikos: warning: expression '*data' might be uninitialized */
+        printDoubleLine(*data);
     }
 }
 
