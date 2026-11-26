@@ -106,7 +106,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
+        printIntLine(100 / data);
     }
 }
 

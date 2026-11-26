@@ -86,7 +86,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-            char result = data * data;/* ikos: warning: possible signed integer overflow */
+            char result = data * data;
             printHexCharLine(result);
         }
     }

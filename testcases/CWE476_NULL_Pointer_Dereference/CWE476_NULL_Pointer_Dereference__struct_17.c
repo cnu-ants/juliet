@@ -33,7 +33,7 @@ void CWE476_NULL_Pointer_Dereference__struct_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);/* ikos: error: pointer '&data->intOne' is null */
     }
 }
 
@@ -83,7 +83,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);
     }
 }
 

@@ -37,7 +37,7 @@ void CWE415_Double_Free__malloc_free_long_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos: warning: possible double free */
+        free(data);/* ikos: error: double free */
     }
 }
 
@@ -83,7 +83,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);/* ikos: warning: possible double free */
+        free(data);
     }
 }
 
