@@ -29,7 +29,7 @@ void bad()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_82_base* baseObject = new CWE126_Buffer_Overread__CWE129_fscanf_82_bad;
     baseObject->action(data);
     delete baseObject;
@@ -60,7 +60,7 @@ static void goodB2G()
     /* Initialize data */
     data = -1;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     CWE126_Buffer_Overread__CWE129_fscanf_82_base* baseObject = new CWE126_Buffer_Overread__CWE129_fscanf_82_goodB2G;
     baseObject->action(data);
     delete baseObject;

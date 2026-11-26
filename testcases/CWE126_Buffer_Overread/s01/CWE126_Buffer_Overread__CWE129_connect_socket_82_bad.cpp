@@ -30,7 +30,7 @@ void CWE126_Buffer_Overread__CWE129_connect_socket_82_bad::action(int data)
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

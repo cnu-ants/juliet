@@ -38,7 +38,7 @@ void bad()
     data = NULL;
     badSource(data);
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

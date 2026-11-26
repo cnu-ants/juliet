@@ -27,7 +27,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Read data from the console using fscanf() */
-        fscanf(stdin, "%d", &data);
+        fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     }
     else
     {
@@ -43,7 +43,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_12_bad()
              * This check does not check the upper bounds of the array index */
             if (data >= 0)
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {
@@ -58,7 +58,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_12_bad()
             /* FIX: Properly validate the array index and prevent a buffer overread */
             if (data >= 0 && data < (10))
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {
@@ -83,12 +83,12 @@ static void goodB2G()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Read data from the console using fscanf() */
-        fscanf(stdin, "%d", &data);
+        fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     }
     else
     {
         /* POTENTIAL FLAW: Read data from the console using fscanf() */
-        fscanf(stdin, "%d", &data);
+        fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
     }
     if(globalReturnsTrueOrFalse())
     {

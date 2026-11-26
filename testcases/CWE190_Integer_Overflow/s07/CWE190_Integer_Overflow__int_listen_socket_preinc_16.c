@@ -123,7 +123,7 @@ void CWE190_Integer_Overflow__int_listen_socket_preinc_16_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }

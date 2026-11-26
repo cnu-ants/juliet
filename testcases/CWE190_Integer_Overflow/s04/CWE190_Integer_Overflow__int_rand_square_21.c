@@ -30,7 +30,7 @@ static void badSink(int data)
     {
         {
             /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
     }
@@ -42,7 +42,7 @@ void CWE190_Integer_Overflow__int_rand_square_21_bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     badStatic = 1; /* true */
     badSink(data);
 }
@@ -69,7 +69,7 @@ static void goodB2G1Sink(int data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else
@@ -85,7 +85,7 @@ static void goodB2G1()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     goodB2G1Static = 0; /* false */
     goodB2G1Sink(data);
 }
@@ -98,7 +98,7 @@ static void goodB2G2Sink(int data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else
@@ -114,7 +114,7 @@ static void goodB2G2()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     goodB2G2Static = 1; /* true */
     goodB2G2Sink(data);
 }

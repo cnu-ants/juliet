@@ -29,7 +29,7 @@ namespace CWE126_Buffer_Overread__wchar_t_alloca_loop_73
 void badSink(list<wchar_t *> dataList)
 {
     /* copy data out of dataList */
-    wchar_t * data = dataList.back();
+    wchar_t * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         wchar_t dest[100];
@@ -40,7 +40,7 @@ void badSink(list<wchar_t *> dataList)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);
@@ -54,7 +54,7 @@ void badSink(list<wchar_t *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<wchar_t *> dataList)
 {
-    wchar_t * data = dataList.back();
+    wchar_t * data = dataList.back();/* ikos: warning: memory access might be invalid */
     {
         size_t i, destLen;
         wchar_t dest[100];
@@ -65,7 +65,7 @@ void goodG2BSink(list<wchar_t *> dataList)
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];
+            dest[i] = data[i];/* ikos: warning: memory access might be invalid; warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);

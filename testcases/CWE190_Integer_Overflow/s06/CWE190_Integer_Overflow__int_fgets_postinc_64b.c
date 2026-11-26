@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int_fgets_postinc_64b_badSink(void * dataVoidPtr)
     int data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

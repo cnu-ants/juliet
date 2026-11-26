@@ -38,7 +38,7 @@ void bad()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
     }
 }
 

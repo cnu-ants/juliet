@@ -31,7 +31,7 @@ void badSink(list<unsigned int> dataList)
     unsigned int data = dataList.back();
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -46,7 +46,7 @@ void goodG2BSink(list<unsigned int> dataList)
     unsigned int data = dataList.back();
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

@@ -22,7 +22,7 @@ Template File: sources-sinks-42.tmpl.c
 static unsigned int badSource(unsigned int data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_postinc_42_bad()
     data = badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }
@@ -68,7 +68,7 @@ static void goodG2B()
 static unsigned int goodB2GSource(unsigned int data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 

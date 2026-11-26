@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__new_delete_struct_82
 void CWE415_Double_Free__new_delete_struct_82_bad::action(twoIntsStruct * data)
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 
 }

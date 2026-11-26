@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__int_rand_square_15_bad()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -42,7 +42,7 @@ void CWE190_Integer_Overflow__int_rand_square_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;
+        int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
     break;
@@ -67,7 +67,7 @@ static void goodB2G1()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -84,7 +84,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else
@@ -105,7 +105,7 @@ static void goodB2G2()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -118,7 +118,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

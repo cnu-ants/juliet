@@ -27,7 +27,7 @@ void CWE476_NULL_Pointer_Dereference__struct_01_bad()
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: error: pointer '&NULL->0' is null */
 }
 
 #endif /* OMITBAD */

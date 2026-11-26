@@ -26,12 +26,12 @@ void CWE190_Integer_Overflow__unsigned_int_rand_add_18_bad()
     goto source;
 source:
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     goto sink;
 sink:
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -48,7 +48,7 @@ static void goodB2G()
     goto source;
 source:
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     goto sink;
 sink:
     /* FIX: Add a check to prevent an overflow from occurring */

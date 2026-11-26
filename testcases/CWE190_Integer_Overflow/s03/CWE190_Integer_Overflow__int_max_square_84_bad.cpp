@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__int_max_square_84_bad::~CWE190_Integer_Overflow__int_ma
 {
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;
+        int result = data * data;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

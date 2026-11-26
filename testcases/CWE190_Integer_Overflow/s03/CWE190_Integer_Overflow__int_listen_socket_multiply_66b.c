@@ -48,7 +48,7 @@ void CWE190_Integer_Overflow__int_listen_socket_multiply_66b_badSink(int dataArr
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;
+        int result = data * 2;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

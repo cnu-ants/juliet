@@ -32,7 +32,7 @@ void badSink(list<twoIntsStruct *> dataList)
     /* copy data out of dataList */
     twoIntsStruct * data = dataList.back();
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: warning: ignored memory deallocation */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(list<twoIntsStruct *> dataList)
 {
     twoIntsStruct * data = dataList.back();
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: warning: ignored memory deallocation */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

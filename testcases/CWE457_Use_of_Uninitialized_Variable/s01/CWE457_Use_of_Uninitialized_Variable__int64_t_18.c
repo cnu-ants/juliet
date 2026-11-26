@@ -31,7 +31,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Use data without initializing it */
-    printLongLongLine(data);
+    printLongLongLine(data);/* ikos: error: first argument is uninitialized */
 }
 
 #endif /* OMITBAD */

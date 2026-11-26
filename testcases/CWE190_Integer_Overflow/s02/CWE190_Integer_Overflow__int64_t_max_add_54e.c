@@ -23,7 +23,7 @@ void CWE190_Integer_Overflow__int64_t_max_add_54e_badSink(int64_t data)
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int64_t result = data + 1;
+        int64_t result = data + 1;/* ikos: error: signed integer overflow */
         printLongLongLine(result);
     }
 }

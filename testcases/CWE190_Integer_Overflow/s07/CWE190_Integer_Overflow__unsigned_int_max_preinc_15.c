@@ -39,7 +39,7 @@ void CWE190_Integer_Overflow__unsigned_int_max_preinc_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos: error: unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

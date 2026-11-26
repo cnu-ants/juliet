@@ -29,7 +29,7 @@ void badSink(twoIntsStruct * dataArray[])
     /* copy data out of dataArray */
     twoIntsStruct * data = dataArray[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

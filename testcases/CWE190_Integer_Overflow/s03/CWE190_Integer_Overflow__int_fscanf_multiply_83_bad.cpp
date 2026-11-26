@@ -33,7 +33,7 @@ CWE190_Integer_Overflow__int_fscanf_multiply_83_bad::~CWE190_Integer_Overflow__i
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-        int result = data * 2;
+        int result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
 }

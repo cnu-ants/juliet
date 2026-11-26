@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__char_rand_add_45_bad()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__char_rand_add_45_badData = data;
     badSink();
 }
@@ -89,7 +89,7 @@ static void goodB2G()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__char_rand_add_45_goodB2GData = data;
     goodB2GSink();
 }

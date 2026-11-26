@@ -24,7 +24,7 @@ Template File: sources-sinks-44.tmpl.c
 static void badSink(wchar_t * data)
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: error: double free */
 }
 
 void CWE415_Double_Free__malloc_free_wchar_t_44_bad()

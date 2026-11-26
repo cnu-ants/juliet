@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__short_rand_add_66_bad()
     short dataArray[5];
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* put data in array */
     dataArray[2] = data;
     CWE190_Integer_Overflow__short_rand_add_66b_badSink(dataArray);
@@ -61,7 +61,7 @@ static void goodB2G()
     short dataArray[5];
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     dataArray[2] = data;
     CWE190_Integer_Overflow__short_rand_add_66b_goodB2GSink(dataArray);
 }

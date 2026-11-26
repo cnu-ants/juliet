@@ -28,7 +28,7 @@ static void badSink(wchar_t * data)
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
         free(data);
@@ -63,7 +63,7 @@ static void goodG2BSink(wchar_t * data)
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
         free(data);

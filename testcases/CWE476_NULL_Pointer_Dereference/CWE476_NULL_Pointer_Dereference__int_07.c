@@ -37,7 +37,7 @@ void CWE476_NULL_Pointer_Dereference__int_07_bad()
     if(staticFive==5)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(*data);
+        printIntLine(*data);/* ikos: error: pointer is null */
     }
 }
 

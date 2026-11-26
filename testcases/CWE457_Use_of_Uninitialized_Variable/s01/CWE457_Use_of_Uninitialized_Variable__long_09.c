@@ -32,7 +32,7 @@ void CWE457_Use_of_Uninitialized_Variable__long_09_bad()
     if(GLOBAL_CONST_TRUE)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printLongLine(data);
+        printLongLine(data);/* ikos: error: first argument is uninitialized */
     }
 }
 

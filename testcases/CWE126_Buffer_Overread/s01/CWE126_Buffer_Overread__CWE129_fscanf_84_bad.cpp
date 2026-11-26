@@ -25,7 +25,7 @@ CWE126_Buffer_Overread__CWE129_fscanf_84_bad::CWE126_Buffer_Overread__CWE129_fsc
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Read data from the console using fscanf() */
-    fscanf(stdin, "%d", &data);
+    fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
 }
 
 CWE126_Buffer_Overread__CWE129_fscanf_84_bad::~CWE126_Buffer_Overread__CWE129_fscanf_84_bad()
@@ -36,7 +36,7 @@ CWE126_Buffer_Overread__CWE129_fscanf_84_bad::~CWE126_Buffer_Overread__CWE129_fs
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

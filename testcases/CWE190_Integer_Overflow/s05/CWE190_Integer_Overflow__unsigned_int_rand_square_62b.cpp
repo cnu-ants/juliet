@@ -25,7 +25,7 @@ namespace CWE190_Integer_Overflow__unsigned_int_rand_square_62
 void badSource(unsigned int &data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 #endif /* OMITBAD */
@@ -43,7 +43,7 @@ void goodG2BSource(unsigned int &data)
 void goodB2GSource(unsigned int &data)
 {
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 #endif /* OMITGOOD */

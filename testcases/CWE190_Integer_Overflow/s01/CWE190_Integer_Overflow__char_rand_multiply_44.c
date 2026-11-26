@@ -36,7 +36,7 @@ void CWE190_Integer_Overflow__char_rand_multiply_44_bad()
     void (*funcPtr) (char) = badSink;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* use the function pointer */
     funcPtr(data);
 }
@@ -90,7 +90,7 @@ static void goodB2G()
     void (*funcPtr) (char) = goodB2GSink;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     funcPtr(data);
 }
 

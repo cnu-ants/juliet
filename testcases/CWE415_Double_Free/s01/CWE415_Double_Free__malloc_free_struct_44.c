@@ -24,7 +24,7 @@ Template File: sources-sinks-44.tmpl.c
 static void badSink(twoIntsStruct * data)
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: error: double free */
 }
 
 void CWE415_Double_Free__malloc_free_struct_44_bad()

@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__char_rand_multiply_17_bad()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     for(j = 0; j < 1; j++)
     {
@@ -53,7 +53,7 @@ static void goodB2G()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     for(k = 0; k < 1; k++)
     {

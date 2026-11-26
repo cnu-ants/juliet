@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_multiply_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)
@@ -34,7 +34,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_multiply_16_bad()
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > UINT_MAX, this will overflow */
-            unsigned int result = data * 2;
+            unsigned int result = data * 2;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         break;
@@ -53,7 +53,7 @@ static void goodB2G()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)

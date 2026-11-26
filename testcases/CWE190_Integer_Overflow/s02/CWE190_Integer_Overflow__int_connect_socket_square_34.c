@@ -116,7 +116,7 @@ void CWE190_Integer_Overflow__int_connect_socket_square_34_bad()
         int data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
     }
@@ -215,7 +215,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
         {
-            int result = data * data;
+            int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
         else

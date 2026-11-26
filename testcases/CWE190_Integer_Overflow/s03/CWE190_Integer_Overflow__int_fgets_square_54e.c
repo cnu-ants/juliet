@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__int_fgets_square_54e_badSink(int data)
 {
     {
         /* POTENTIAL FLAW: if (data*data) > INT_MAX, this will overflow */
-        int result = data * data;
+        int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
 }
@@ -52,7 +52,7 @@ void CWE190_Integer_Overflow__int_fgets_square_54e_goodB2GSink(int data)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;
+        int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
     else

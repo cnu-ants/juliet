@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__char_rand_add_31_bad()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         char dataCopy = data;
         char data = dataCopy;
@@ -64,7 +64,7 @@ static void goodB2G()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         char dataCopy = data;
         char data = dataCopy;

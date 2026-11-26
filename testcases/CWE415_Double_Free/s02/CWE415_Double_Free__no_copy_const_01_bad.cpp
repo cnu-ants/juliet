@@ -29,7 +29,7 @@ class BadClass
 
         ~BadClass()
         {
-            delete [] data;
+            delete [] data;/* ikos: error: double free */
         }
 
         void printData()

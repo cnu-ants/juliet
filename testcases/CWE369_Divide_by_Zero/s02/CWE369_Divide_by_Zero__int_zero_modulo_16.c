@@ -33,7 +33,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: error: division by zero */
         break;
     }
 }

@@ -22,7 +22,7 @@ Template File: sources-sinks-65b.tmpl.c
 void CWE369_Divide_by_Zero__int_zero_divide_65b_badSink(int data)
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: error: division by zero */
 }
 
 #endif /* OMITBAD */

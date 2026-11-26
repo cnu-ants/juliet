@@ -32,7 +32,7 @@ source:
 sink:
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);
+    printWcharLine(data[0]);/* ikos: error: pointer 'NULL' is null */
 }
 
 #endif /* OMITBAD */

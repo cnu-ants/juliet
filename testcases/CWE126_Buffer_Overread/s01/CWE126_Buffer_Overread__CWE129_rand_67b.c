@@ -33,7 +33,7 @@ void CWE126_Buffer_Overread__CWE129_rand_67b_badSink(CWE126_Buffer_Overread__CWE
          * This check does not check the upper bounds of the array index */
         if (data >= 0)
         {
-            printIntLine(buffer[data]);
+            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
         }
         else
         {

@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__int64_t_73
 void badSink(list<int64_t *> dataList)
 {
     /* copy data out of dataList */
-    int64_t * data = dataList.back();
+    int64_t * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -42,15 +42,15 @@ void badSink(list<int64_t *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<int64_t *> dataList)
 {
-    int64_t * data = dataList.back();
+    int64_t * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);
+    printLongLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<int64_t *> dataList)
 {
-    int64_t * data = dataList.back();
+    int64_t * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

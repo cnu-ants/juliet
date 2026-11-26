@@ -27,7 +27,7 @@ CWE190_Integer_Overflow__short_rand_square_84_bad::CWE190_Integer_Overflow__shor
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__short_rand_square_84_bad::~CWE190_Integer_Overflow__short_rand_square_84_bad()

@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__int_fgets_square_81_goodB2G::action(int data) cons
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data > INT_MIN && abs(data) < (long)sqrt((double)INT_MAX))
     {
-        int result = data * data;
+        int result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printIntLine(result);
     }
     else

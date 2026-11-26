@@ -28,7 +28,7 @@ void badSink(twoIntsStruct * * dataPtr)
 {
     twoIntsStruct * data = *dataPtr;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

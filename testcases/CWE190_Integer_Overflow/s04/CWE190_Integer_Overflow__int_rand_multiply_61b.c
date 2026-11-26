@@ -22,7 +22,7 @@ Template File: sources-sinks-61b.tmpl.c
 int CWE190_Integer_Overflow__int_rand_multiply_61b_badSource(int data)
 {
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 
@@ -42,7 +42,7 @@ int CWE190_Integer_Overflow__int_rand_multiply_61b_goodG2BSource(int data)
 int CWE190_Integer_Overflow__int_rand_multiply_61b_goodB2GSource(int data)
 {
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     return data;
 }
 

@@ -39,7 +39,7 @@ void CWE190_Integer_Overflow__short_rand_multiply_45_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_multiply_45_badData = data;
     badSink();
 }
@@ -94,7 +94,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_multiply_45_goodB2GData = data;
     goodB2GSink();
 }

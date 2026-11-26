@@ -30,9 +30,9 @@ namespace CWE476_NULL_Pointer_Dereference__long_73
 void badSink(list<long *> dataList)
 {
     /* copy data out of dataList */
-    long * data = dataList.back();
+    long * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);
+    printLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -42,15 +42,15 @@ void badSink(list<long *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<long *> dataList)
 {
-    long * data = dataList.back();
+    long * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);
+    printLongLine(*data);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<long *> dataList)
 {
-    long * data = dataList.back();
+    long * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<long*, std::allocator<long*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {

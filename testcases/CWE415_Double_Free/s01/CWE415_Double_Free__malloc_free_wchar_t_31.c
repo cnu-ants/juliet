@@ -34,7 +34,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_31_bad()
         wchar_t * dataCopy = data;
         wchar_t * data = dataCopy;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

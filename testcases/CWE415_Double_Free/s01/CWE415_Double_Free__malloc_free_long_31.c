@@ -34,7 +34,7 @@ void CWE415_Double_Free__malloc_free_long_31_bad()
         long * dataCopy = data;
         long * data = dataCopy;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

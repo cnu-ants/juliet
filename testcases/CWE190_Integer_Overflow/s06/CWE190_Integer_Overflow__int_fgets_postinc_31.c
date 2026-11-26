@@ -44,7 +44,7 @@ void CWE190_Integer_Overflow__int_fgets_postinc_31_bad()
         int data = dataCopy;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }

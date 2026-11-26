@@ -32,7 +32,7 @@ void badSink()
 {
     TwoIntsClass * data = badData;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

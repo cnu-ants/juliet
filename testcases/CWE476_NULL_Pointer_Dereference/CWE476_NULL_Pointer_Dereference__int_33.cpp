@@ -33,7 +33,7 @@ void bad()
     {
         int * data = dataRef;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(*data);
+        printIntLine(*data);/* ikos: error: pointer is null */
     }
 }
 

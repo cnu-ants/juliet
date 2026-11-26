@@ -25,7 +25,7 @@ static void badSink(char * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);
+    printHexCharLine(data[0]);/* ikos: error: pointer 'data' is null */
 }
 
 void CWE476_NULL_Pointer_Dereference__char_44_bad()

@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__int_max_postinc_03_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: error: signed integer overflow */
             int result = data;
             printIntLine(result);
         }

@@ -32,7 +32,7 @@ static void badSink()
 {
     int * data = badData;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 void bad()

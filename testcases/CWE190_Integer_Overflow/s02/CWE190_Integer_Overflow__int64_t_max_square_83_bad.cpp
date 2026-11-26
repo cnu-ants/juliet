@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__int64_t_max_square_83_bad::~CWE190_Integer_Overflow__in
 {
     {
         /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-        int64_t result = data * data;
+        int64_t result = data * data;/* ikos: error: signed integer overflow */
         printLongLongLine(result);
     }
 }

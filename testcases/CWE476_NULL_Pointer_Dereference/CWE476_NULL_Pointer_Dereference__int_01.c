@@ -27,7 +27,7 @@ void CWE476_NULL_Pointer_Dereference__int_01_bad()
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(*data);
+    printIntLine(*data);/* ikos: error: pointer is null */
 }
 
 #endif /* OMITBAD */

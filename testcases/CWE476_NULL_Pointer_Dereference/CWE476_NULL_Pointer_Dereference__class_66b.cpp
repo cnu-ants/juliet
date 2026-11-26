@@ -27,7 +27,7 @@ void badSink(TwoIntsClass * dataArray[])
     /* copy data out of dataArray */
     TwoIntsClass * data = dataArray[2];
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: error: pointer '&data->intOne' is null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }

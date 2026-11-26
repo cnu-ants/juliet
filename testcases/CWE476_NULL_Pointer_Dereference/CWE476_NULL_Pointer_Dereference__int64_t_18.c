@@ -31,7 +31,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLongLine(*data);
+    printLongLongLine(*data);/* ikos: error: pointer is null */
 }
 
 #endif /* OMITBAD */

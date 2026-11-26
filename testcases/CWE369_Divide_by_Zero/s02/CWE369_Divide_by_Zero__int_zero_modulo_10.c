@@ -32,7 +32,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_10_bad()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: error: division by zero */
     }
 }
 

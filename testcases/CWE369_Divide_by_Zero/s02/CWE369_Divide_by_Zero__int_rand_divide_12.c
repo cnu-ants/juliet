@@ -37,14 +37,14 @@ void CWE369_Divide_by_Zero__int_rand_divide_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
     }
     else
     {
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);
+            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
         }
         else
         {
@@ -80,7 +80,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);
+            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
         }
         else
         {
@@ -92,7 +92,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);
+            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
         }
         else
         {

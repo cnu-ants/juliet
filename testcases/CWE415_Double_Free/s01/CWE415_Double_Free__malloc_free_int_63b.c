@@ -25,7 +25,7 @@ void CWE415_Double_Free__malloc_free_int_63b_badSink(int * * dataPtr)
 {
     int * data = *dataPtr;
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

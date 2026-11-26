@@ -28,7 +28,7 @@ static void badSink()
     short data = CWE190_Integer_Overflow__short_rand_postinc_45_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -39,7 +39,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_45_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_postinc_45_badData = data;
     badSink();
 }
@@ -77,7 +77,7 @@ static void goodB2GSink()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;
+        data++;/* ikos: warning: possible unsigned integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -92,7 +92,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_postinc_45_goodB2GData = data;
     goodB2GSink();
 }

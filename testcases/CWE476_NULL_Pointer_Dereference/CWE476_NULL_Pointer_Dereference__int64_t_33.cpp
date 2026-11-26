@@ -33,7 +33,7 @@ void bad()
     {
         int64_t * data = dataRef;
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLongLine(*data);
+        printLongLongLine(*data);/* ikos: error: pointer is null */
     }
 }
 

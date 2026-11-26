@@ -40,7 +40,7 @@ void CWE476_NULL_Pointer_Dereference__wchar_t_15_bad()
     case 7:
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);
+        printWcharLine(data[0]);/* ikos: error: pointer 'NULL' is null */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */

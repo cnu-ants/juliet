@@ -25,7 +25,7 @@ CWE190_Integer_Overflow__short_rand_add_83_goodB2G::CWE190_Integer_Overflow__sho
 {
     data = dataCopy;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
 }
 
 CWE190_Integer_Overflow__short_rand_add_83_goodB2G::~CWE190_Integer_Overflow__short_rand_add_83_goodB2G()

@@ -41,7 +41,7 @@ CWE126_Buffer_Overread__new_wchar_t_loop_84_goodG2B::~CWE126_Buffer_Overread__ne
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];
+            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
         }
         dest[100-1] = L'\0';
         printWLine(dest);

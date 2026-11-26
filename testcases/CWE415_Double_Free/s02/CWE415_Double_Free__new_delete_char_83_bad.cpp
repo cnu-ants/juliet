@@ -32,7 +32,7 @@ CWE415_Double_Free__new_delete_char_83_bad::CWE415_Double_Free__new_delete_char_
 CWE415_Double_Free__new_delete_char_83_bad::~CWE415_Double_Free__new_delete_char_83_bad()
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 }
 #endif /* OMITBAD */

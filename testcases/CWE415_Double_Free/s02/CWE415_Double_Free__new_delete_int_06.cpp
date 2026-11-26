@@ -43,7 +43,7 @@ void bad()
     if(STATIC_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: error: double free */
     }
 }
 

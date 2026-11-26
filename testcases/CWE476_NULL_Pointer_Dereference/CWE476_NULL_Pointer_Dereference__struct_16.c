@@ -33,7 +33,7 @@ void CWE476_NULL_Pointer_Dereference__struct_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos: error: pointer '&NULL->0' is null */
         break;
     }
 }

@@ -30,12 +30,12 @@ void bad()
     unsigned int &dataRef = data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         unsigned int data = dataRef;
         {
             /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-            unsigned int result = data * data;
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -70,13 +70,13 @@ static void goodB2G()
     unsigned int &dataRef = data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (unsigned int)RAND32();
+    data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         unsigned int data = dataRef;
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

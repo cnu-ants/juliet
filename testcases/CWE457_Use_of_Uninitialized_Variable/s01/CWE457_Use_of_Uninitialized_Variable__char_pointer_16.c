@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__char_pointer_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printLine(data);
+        printLine(data);/* ikos: error: first argument is uninitialized */
         break;
     }
 }

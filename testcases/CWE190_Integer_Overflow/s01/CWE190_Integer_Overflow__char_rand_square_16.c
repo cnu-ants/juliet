@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__char_rand_square_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)
@@ -54,7 +54,7 @@ static void goodB2G()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (char)RAND32();
+        data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)

@@ -36,7 +36,7 @@ void bad()
         TwoIntsClass * dataCopy = data;
         TwoIntsClass * data = dataCopy;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: error: double free */
     }
 }
 

@@ -32,7 +32,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_pointer_10_bad()
     if(globalTrue)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(*data);
+        printDoubleLine(*data);/* ikos: error: pointer is uninitialized */
     }
 }
 

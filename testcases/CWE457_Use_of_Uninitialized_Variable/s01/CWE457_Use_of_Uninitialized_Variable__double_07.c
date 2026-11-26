@@ -37,7 +37,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_07_bad()
     if(staticFive==5)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printDoubleLine(data);
+        printDoubleLine(data);/* ikos: error: first argument is uninitialized */
     }
 }
 

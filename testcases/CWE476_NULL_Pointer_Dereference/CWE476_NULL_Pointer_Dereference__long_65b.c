@@ -24,7 +24,7 @@ Template File: sources-sinks-65b.tmpl.c
 void CWE476_NULL_Pointer_Dereference__long_65b_badSink(long * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printLongLine(*data);
+    printLongLine(*data);/* ikos: error: pointer 'data' is null */
 }
 
 #endif /* OMITBAD */

@@ -26,7 +26,7 @@ void badSink(TwoIntsClass * dataPtr)
 {
     TwoIntsClass data = *dataPtr;
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data.intOne);
+    printIntLine(data.intOne);/* ikos: error: expression 'data.intOne' is uninitialized */
     printIntLine(data.intTwo);
 }
 

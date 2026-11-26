@@ -25,7 +25,7 @@ void bad()
 {
     /* use the class */
     BadClass * badClassObject = new BadClass;
-    printIntLine(badClassObject->intOne);
+    printIntLine(badClassObject->intOne);/* ikos: error: expression 'badClassObject->intOne' is uninitialized */
 }
 
 #endif /* OMITBAD */

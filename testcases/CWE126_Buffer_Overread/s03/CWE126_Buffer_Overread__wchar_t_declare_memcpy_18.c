@@ -39,7 +39,7 @@ source:
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -69,7 +69,7 @@ source:
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memcpy with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memcpy(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }

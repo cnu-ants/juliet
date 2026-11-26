@@ -43,7 +43,7 @@ void bad()
     {
         TwoIntsClass * data = myUnion.unionSecond;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
     }
 }
 

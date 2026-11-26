@@ -31,7 +31,7 @@ CWE369_Divide_by_Zero__int_fscanf_modulo_84_bad::CWE369_Divide_by_Zero__int_fsca
 CWE369_Divide_by_Zero__int_fscanf_modulo_84_bad::~CWE369_Divide_by_Zero__int_fscanf_modulo_84_bad()
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 }
 #endif /* OMITBAD */

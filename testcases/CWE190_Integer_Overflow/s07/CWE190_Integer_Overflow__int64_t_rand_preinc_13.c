@@ -26,13 +26,13 @@ void CWE190_Integer_Overflow__int64_t_rand_preinc_13_bad()
     if(GLOBAL_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_FIVE==5)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }
@@ -51,7 +51,7 @@ static void goodB2G1()
     if(GLOBAL_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_FIVE!=5)
     {
@@ -82,7 +82,7 @@ static void goodB2G2()
     if(GLOBAL_CONST_FIVE==5)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     }
     if(GLOBAL_CONST_FIVE==5)
     {

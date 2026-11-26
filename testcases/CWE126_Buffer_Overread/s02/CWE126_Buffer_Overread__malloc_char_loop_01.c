@@ -39,7 +39,7 @@ void CWE126_Buffer_Overread__malloc_char_loop_01_bad()
          * could be smaller than dest causing buffer overread */
         for (i = 0; i < destLen; i++)
         {
-            dest[i] = data[i];
+            dest[i] = data[i];/* ikos: warning: possible buffer overflow */
         }
         dest[100-1] = '\0';
         printLine(dest);

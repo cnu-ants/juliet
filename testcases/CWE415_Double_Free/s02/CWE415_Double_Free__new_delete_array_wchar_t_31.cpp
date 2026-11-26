@@ -36,7 +36,7 @@ void bad()
         wchar_t * dataCopy = data;
         wchar_t * data = dataCopy;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
     }
 }
 

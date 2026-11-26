@@ -34,7 +34,7 @@ void bad()
     list<int64_t> dataList;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();
+    data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     /* Put data in a list */
     dataList.push_back(data);
     dataList.push_back(data);
@@ -72,7 +72,7 @@ static void goodB2G()
     list<int64_t> dataList;
     data = 0LL;
     /* POTENTIAL FLAW: Use a random value */
-    data = (int64_t)RAND64();
+    data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
     dataList.push_back(data);
     dataList.push_back(data);
     dataList.push_back(data);

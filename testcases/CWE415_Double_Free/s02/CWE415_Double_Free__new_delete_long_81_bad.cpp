@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__new_delete_long_81
 void CWE415_Double_Free__new_delete_long_81_bad::action(long * data) const
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 
 }

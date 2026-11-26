@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__unsigned_int_fscanf_square_84_bad::~CWE190_Integer_Over
 {
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

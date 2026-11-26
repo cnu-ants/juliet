@@ -38,7 +38,7 @@ void bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: warning: possible double free */
     }
 }
 
@@ -82,7 +82,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: warning: possible double free */
     }
 }
 

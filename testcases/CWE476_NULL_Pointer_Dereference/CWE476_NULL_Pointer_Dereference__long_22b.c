@@ -29,7 +29,7 @@ void CWE476_NULL_Pointer_Dereference__long_22_badSink(long * data)
     if(CWE476_NULL_Pointer_Dereference__long_22_badGlobal)
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);
+        printLongLine(*data);/* ikos: error: pointer 'data' is null */
     }
 }
 

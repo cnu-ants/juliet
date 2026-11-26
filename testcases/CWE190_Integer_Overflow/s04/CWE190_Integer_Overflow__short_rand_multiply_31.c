@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__short_rand_multiply_31_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         short dataCopy = data;
         short data = dataCopy;
@@ -66,7 +66,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         short dataCopy = data;
         short data = dataCopy;

@@ -29,7 +29,7 @@ void CWE415_Double_Free__malloc_free_int64_t_22_badSink(int64_t * data)
     if(CWE415_Double_Free__malloc_free_int64_t_22_badGlobal)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

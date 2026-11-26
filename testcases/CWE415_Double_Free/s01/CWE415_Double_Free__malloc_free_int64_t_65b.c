@@ -24,7 +24,7 @@ Template File: sources-sinks-65b.tmpl.c
 void CWE415_Double_Free__malloc_free_int64_t_65b_badSink(int64_t * data)
 {
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

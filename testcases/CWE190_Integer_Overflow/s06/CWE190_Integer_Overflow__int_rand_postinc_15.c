@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int_rand_postinc_15_bad()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -40,7 +40,7 @@ void CWE190_Integer_Overflow__int_rand_postinc_15_bad()
     case 7:
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }
@@ -66,7 +66,7 @@ static void goodB2G1()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */
@@ -105,7 +105,7 @@ static void goodB2G2()
     {
     case 6:
         /* POTENTIAL FLAW: Set data to a random value */
-        data = RAND32();
+        data = RAND32();/* ikos: warning: possible unsigned integer underflow */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */

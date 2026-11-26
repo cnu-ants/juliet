@@ -28,9 +28,9 @@ namespace CWE476_NULL_Pointer_Dereference__class_73
 void badSink(list<TwoIntsClass *> dataList)
 {
     /* copy data out of dataList */
-    TwoIntsClass * data = dataList.back();
+    TwoIntsClass * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<TwoIntsClass*, std::allocator<TwoIntsClass*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -42,9 +42,9 @@ void badSink(list<TwoIntsClass *> dataList)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(list<TwoIntsClass *> dataList)
 {
-    TwoIntsClass * data = dataList.back();
+    TwoIntsClass * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<TwoIntsClass*, std::allocator<TwoIntsClass*> >::back()(&dataList)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
     /* avoid memory leak - deleting a NULL pointer is a no-op in C++ so no need to check for NULL */
     delete data;
 }
@@ -52,11 +52,11 @@ void goodG2BSink(list<TwoIntsClass *> dataList)
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(list<TwoIntsClass *> dataList)
 {
-    TwoIntsClass * data = dataList.back();
+    TwoIntsClass * data = dataList.back();/* ikos: warning: pointer 'std::__cxx11::list<TwoIntsClass*, std::allocator<TwoIntsClass*> >::back()(&dataList)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);
+        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
         delete data;
     }
     else

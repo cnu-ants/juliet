@@ -29,7 +29,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_32_bad()
     {
         int data = *dataPtr1;
         /* POTENTIAL FLAW: Read data from the console using fscanf() */
-        fscanf(stdin, "%d", &data);
+        fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
         *dataPtr1 = data;
     }
     {
@@ -98,7 +98,7 @@ static void goodB2G()
     {
         int data = *dataPtr1;
         /* POTENTIAL FLAW: Read data from the console using fscanf() */
-        fscanf(stdin, "%d", &data);
+        fscanf(stdin, "%d", &data);/* ikos: warning: memory access might be invalid */
         *dataPtr1 = data;
     }
     {

@@ -37,7 +37,7 @@ void bad()
     {
         wchar_t * data = dataRef;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

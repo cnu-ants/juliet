@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_66b_badSink(unsigned int 
     unsigned int data = dataArray[2];
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -54,7 +54,7 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_66b_goodB2GSink(unsigned 
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

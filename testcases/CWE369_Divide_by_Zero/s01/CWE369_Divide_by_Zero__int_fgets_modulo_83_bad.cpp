@@ -44,7 +44,7 @@ CWE369_Divide_by_Zero__int_fgets_modulo_83_bad::CWE369_Divide_by_Zero__int_fgets
 CWE369_Divide_by_Zero__int_fgets_modulo_83_bad::~CWE369_Divide_by_Zero__int_fgets_modulo_83_bad()
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 }
 #endif /* OMITBAD */

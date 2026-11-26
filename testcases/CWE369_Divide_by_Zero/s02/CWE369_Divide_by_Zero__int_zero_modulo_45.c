@@ -27,7 +27,7 @@ static void badSink()
 {
     int data = CWE369_Divide_by_Zero__int_zero_modulo_45_badData;
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: error: division by zero */
 }
 
 void CWE369_Divide_by_Zero__int_zero_modulo_45_bad()

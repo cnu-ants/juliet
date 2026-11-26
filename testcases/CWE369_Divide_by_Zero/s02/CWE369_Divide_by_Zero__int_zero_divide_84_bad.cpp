@@ -31,7 +31,7 @@ CWE369_Divide_by_Zero__int_zero_divide_84_bad::CWE369_Divide_by_Zero__int_zero_d
 CWE369_Divide_by_Zero__int_zero_divide_84_bad::~CWE369_Divide_by_Zero__int_zero_divide_84_bad()
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: error: division by zero */
 }
 }
 #endif /* OMITBAD */

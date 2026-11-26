@@ -31,7 +31,7 @@ source:
     goto sink;
 sink:
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(*data);
+    printIntLine(*data);/* ikos: error: pointer is uninitialized */
 }
 
 #endif /* OMITBAD */

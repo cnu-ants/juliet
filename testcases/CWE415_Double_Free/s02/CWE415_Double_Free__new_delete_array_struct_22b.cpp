@@ -33,7 +33,7 @@ void badSink(twoIntsStruct * data)
     if(badGlobal)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
     }
 }
 

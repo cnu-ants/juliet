@@ -38,7 +38,7 @@ void bad()
     while(1)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
         break;
     }
 }

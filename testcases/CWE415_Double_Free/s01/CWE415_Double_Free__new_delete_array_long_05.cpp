@@ -44,7 +44,7 @@ void bad()
     if(staticTrue)
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete [] data;
+        delete [] data;/* ikos: error: double free */
     }
 }
 

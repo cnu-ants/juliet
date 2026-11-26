@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__int64_t_max_square_10_bad()
     {
         {
             /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: error: signed integer overflow */
             printLongLongLine(result);
         }
     }
@@ -65,7 +65,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: error: signed integer overflow */
             printLongLongLine(result);
         }
         else
@@ -90,7 +90,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: error: signed integer overflow */
             printLongLongLine(result);
         }
         else

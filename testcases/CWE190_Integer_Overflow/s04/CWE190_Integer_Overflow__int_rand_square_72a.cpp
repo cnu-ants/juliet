@@ -35,7 +35,7 @@ void bad()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* Put data in a vector */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
@@ -75,7 +75,7 @@ static void goodB2G()
     /* Initialize data */
     data = 0;
     /* POTENTIAL FLAW: Set data to a random value */
-    data = RAND32();
+    data = RAND32();/* ikos: warning: possible unsigned integer underflow */
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);
     dataVector.insert(dataVector.end(), 1, data);

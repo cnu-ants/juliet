@@ -33,7 +33,7 @@ void badSink(structType myStruct)
 {
     wchar_t * data = myStruct.structFirst;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

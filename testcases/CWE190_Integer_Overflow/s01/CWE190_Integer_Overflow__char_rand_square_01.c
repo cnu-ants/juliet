@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__char_rand_square_01_bad()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
         char result = data * data;
@@ -58,7 +58,7 @@ static void goodB2G()
     char data;
     data = ' ';
     /* POTENTIAL FLAW: Use a random value */
-    data = (char)RAND32();
+    data = (char)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) <= (long)sqrt((double)CHAR_MAX))
     {

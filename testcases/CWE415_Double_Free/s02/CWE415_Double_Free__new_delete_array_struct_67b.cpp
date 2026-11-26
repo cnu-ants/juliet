@@ -33,7 +33,7 @@ void badSink(structType myStruct)
 {
     twoIntsStruct * data = myStruct.structFirst;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

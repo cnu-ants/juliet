@@ -26,14 +26,14 @@ void CWE190_Integer_Overflow__int64_t_rand_postinc_16_bad()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }
@@ -53,7 +53,7 @@ static void goodB2G()
     while(1)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (int64_t)RAND64();
+        data = (int64_t)RAND64();/* ikos: warning: possible unsigned integer underflow */
         break;
     }
     while(1)

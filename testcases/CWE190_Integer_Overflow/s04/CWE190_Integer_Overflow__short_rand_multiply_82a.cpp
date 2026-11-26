@@ -28,7 +28,7 @@ void bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_multiply_82_base* baseObject = new CWE190_Integer_Overflow__short_rand_multiply_82_bad;
     baseObject->action(data);
     delete baseObject;
@@ -56,7 +56,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_multiply_82_base* baseObject = new CWE190_Integer_Overflow__short_rand_multiply_82_goodB2G;
     baseObject->action(data);
     delete baseObject;

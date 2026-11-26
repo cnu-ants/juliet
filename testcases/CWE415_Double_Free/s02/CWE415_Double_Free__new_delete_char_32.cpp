@@ -41,7 +41,7 @@ void bad()
     {
         char * data = *dataPtr2;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: error: double free */
     }
 }
 

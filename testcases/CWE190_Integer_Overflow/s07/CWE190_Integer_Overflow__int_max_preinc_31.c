@@ -31,7 +31,7 @@ void CWE190_Integer_Overflow__int_max_preinc_31_bad()
         int data = dataCopy;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: error: signed integer overflow */
             int result = data;
             printIntLine(result);
         }

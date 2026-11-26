@@ -36,7 +36,7 @@ void bad()
         twoIntsStruct * dataCopy = data;
         twoIntsStruct * data = dataCopy;
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: error: double free */
     }
 }
 

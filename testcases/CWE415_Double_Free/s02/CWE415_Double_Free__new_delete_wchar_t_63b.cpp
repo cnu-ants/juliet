@@ -28,7 +28,7 @@ void badSink(wchar_t * * dataPtr)
 {
     wchar_t * data = *dataPtr;
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete data;
+    delete data;/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

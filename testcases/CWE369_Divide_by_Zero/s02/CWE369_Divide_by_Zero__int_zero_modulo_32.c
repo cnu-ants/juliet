@@ -35,7 +35,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_32_bad()
     {
         int data = *dataPtr2;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: error: division by zero */
     }
 }
 

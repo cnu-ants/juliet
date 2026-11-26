@@ -39,7 +39,7 @@ void CWE369_Divide_by_Zero__int_zero_modulo_15_bad()
     {
     case 7:
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: error: division by zero */
         break;
     default:
         /* INCIDENTAL: CWE 561 Dead Code, the code below will never run */

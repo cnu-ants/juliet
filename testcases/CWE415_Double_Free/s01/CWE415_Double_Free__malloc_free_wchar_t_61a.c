@@ -31,7 +31,7 @@ void CWE415_Double_Free__malloc_free_wchar_t_61_bad()
     data = NULL;
     data = CWE415_Double_Free__malloc_free_wchar_t_61b_badSource(data);
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: error: double free */
 }
 
 #endif /* OMITBAD */

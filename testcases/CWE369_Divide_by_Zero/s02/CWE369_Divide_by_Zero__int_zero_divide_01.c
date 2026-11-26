@@ -27,7 +27,7 @@ void CWE369_Divide_by_Zero__int_zero_divide_01_bad()
     /* POTENTIAL FLAW: Set data to zero */
     data = 0;
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: error: division by zero */
 }
 
 #endif /* OMITBAD */

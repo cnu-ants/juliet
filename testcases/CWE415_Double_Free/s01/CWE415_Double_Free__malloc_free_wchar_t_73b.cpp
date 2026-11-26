@@ -32,7 +32,7 @@ void badSink(list<wchar_t *> dataList)
     /* copy data out of dataList */
     wchar_t * data = dataList.back();
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: warning: ignored memory deallocation */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(list<wchar_t *> dataList)
 {
     wchar_t * data = dataList.back();
     /* POTENTIAL FLAW: Possibly freeing memory twice */
-    free(data);
+    free(data);/* ikos: warning: ignored memory deallocation */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

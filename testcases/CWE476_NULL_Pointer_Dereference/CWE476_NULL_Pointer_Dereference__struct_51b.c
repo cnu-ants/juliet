@@ -24,7 +24,7 @@ Template File: sources-sinks-51b.tmpl.c
 void CWE476_NULL_Pointer_Dereference__struct_51b_badSink(twoIntsStruct * data)
 {
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: error: pointer '&data->intOne' is null */
 }
 
 #endif /* OMITBAD */

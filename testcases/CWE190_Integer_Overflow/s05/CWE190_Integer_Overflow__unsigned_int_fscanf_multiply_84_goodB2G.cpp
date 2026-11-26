@@ -35,7 +35,7 @@ CWE190_Integer_Overflow__unsigned_int_fscanf_multiply_84_goodB2G::~CWE190_Intege
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < (UINT_MAX/2))
         {
-            unsigned int result = data * 2;
+            unsigned int result = data * 2;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

@@ -25,7 +25,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_pointer_63b_badSink(int * * dataP
 {
     int * data = *dataPtr;
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(*data);
+    printIntLine(*data);/* ikos: error: variable 'data' is uninitialized */
 }
 
 #endif /* OMITBAD */

@@ -29,7 +29,7 @@ void CWE126_Buffer_Overread__wchar_t_declare_memmove_63b_badSink(wchar_t * * dat
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }
@@ -49,7 +49,7 @@ void CWE126_Buffer_Overread__wchar_t_declare_memmove_63b_goodG2BSink(wchar_t * *
         dest[100-1] = L'\0'; /* null terminate */
         /* POTENTIAL FLAW: using memmove with the length of the dest where data
          * could be smaller than dest causing buffer overread */
-        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));
+        memmove(dest, data, wcslen(dest)*sizeof(wchar_t));/* ikos: warning: possible buffer overflow */
         dest[100-1] = L'\0';
         printWLine(dest);
     }

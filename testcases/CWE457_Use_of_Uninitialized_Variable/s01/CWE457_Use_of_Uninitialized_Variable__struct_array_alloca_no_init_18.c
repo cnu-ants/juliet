@@ -34,7 +34,7 @@ sink:
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
+            printIntLine(data[i].intOne);/* ikos: error: expression 'data[(int64_t)i].0' is uninitialized */
             printIntLine(data[i].intTwo);
         }
     }

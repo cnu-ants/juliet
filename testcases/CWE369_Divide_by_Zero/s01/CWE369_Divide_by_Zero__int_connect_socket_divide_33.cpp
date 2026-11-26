@@ -109,7 +109,7 @@ void bad()
     {
         int data = dataRef;
         /* POTENTIAL FLAW: Possibly divide by zero */
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
     }
 }
 
@@ -201,7 +201,7 @@ static void goodB2G()
         /* FIX: test for a zero denominator */
         if( data != 0 )
         {
-            printIntLine(100 / data);
+            printIntLine(100 / data);/* ikos: warning: divisor might be zero */
         }
         else
         {

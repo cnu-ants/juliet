@@ -34,7 +34,7 @@ static void badSink(int data)
              * This check does not check the upper bounds of the array index */
             if (data >= 0)
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {
@@ -52,7 +52,7 @@ void CWE126_Buffer_Overread__CWE129_fgets_21_bad()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -108,7 +108,7 @@ static void goodB2G1()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -150,7 +150,7 @@ static void goodB2G2()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);

@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__short_rand_square_01_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     {
         /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
         short result = data * data;
@@ -58,7 +58,7 @@ static void goodB2G()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) <= (long)sqrt((double)SHRT_MAX))
     {

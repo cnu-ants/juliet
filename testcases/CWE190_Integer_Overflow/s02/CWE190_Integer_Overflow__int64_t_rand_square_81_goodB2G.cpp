@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__int64_t_rand_square_81_goodB2G::action(int64_t dat
     /* FIX: Add a check to prevent an overflow from occurring */
     if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
     {
-        int64_t result = data * data;
+        int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printLongLongLine(result);
     }
     else

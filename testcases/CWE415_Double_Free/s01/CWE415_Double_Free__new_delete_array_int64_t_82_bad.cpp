@@ -25,7 +25,7 @@ namespace CWE415_Double_Free__new_delete_array_int64_t_82
 void CWE415_Double_Free__new_delete_array_int64_t_82_bad::action(int64_t * data)
 {
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: error: double free */
 }
 
 }

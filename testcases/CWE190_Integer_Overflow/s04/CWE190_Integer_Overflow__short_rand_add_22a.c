@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_rand_add_22_bad()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_add_22_badGlobal = 1; /* true */
     CWE190_Integer_Overflow__short_rand_add_22_badSink(data);
 }
@@ -51,7 +51,7 @@ static void goodB2G1()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_add_22_goodB2G1Global = 0; /* false */
     CWE190_Integer_Overflow__short_rand_add_22_goodB2G1Sink(data);
 }
@@ -64,7 +64,7 @@ static void goodB2G2()
     short data;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     CWE190_Integer_Overflow__short_rand_add_22_goodB2G2Global = 1; /* true */
     CWE190_Integer_Overflow__short_rand_add_22_goodB2G2Sink(data);
 }

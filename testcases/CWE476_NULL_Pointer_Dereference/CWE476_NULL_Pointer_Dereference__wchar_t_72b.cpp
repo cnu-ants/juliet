@@ -30,10 +30,10 @@ namespace CWE476_NULL_Pointer_Dereference__wchar_t_72
 void badSink(vector<wchar_t *> dataVector)
 {
     /* copy data out of dataVector */
-    wchar_t * data = dataVector[2];
+    wchar_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<wchar_t*, std::allocator<wchar_t*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);
+    printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -43,21 +43,21 @@ void badSink(vector<wchar_t *> dataVector)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(vector<wchar_t *> dataVector)
 {
-    wchar_t * data = dataVector[2];
+    wchar_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<wchar_t*, std::allocator<wchar_t*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printWLine() checks for NULL, so we cannot use it here */
-    printWcharLine(data[0]);
+    printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(vector<wchar_t *> dataVector)
 {
-    wchar_t * data = dataVector[2];
+    wchar_t * data = dataVector[2];/* ikos: warning: pointer 'std::vector<wchar_t*, std::allocator<wchar_t*> >::operator[](unsigned long)(&dataVector, 2)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);
+        printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

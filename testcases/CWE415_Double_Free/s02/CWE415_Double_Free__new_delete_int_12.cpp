@@ -42,7 +42,7 @@ void bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: warning: possible double free */
     }
     else
     {
@@ -111,12 +111,12 @@ static void goodG2B()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: warning: possible double free */
     }
     else
     {
         /* POTENTIAL FLAW: Possibly deleting memory twice */
-        delete data;
+        delete data;/* ikos: warning: possible double free */
     }
 }
 

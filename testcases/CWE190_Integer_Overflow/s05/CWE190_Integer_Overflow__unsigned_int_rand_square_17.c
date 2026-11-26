@@ -29,13 +29,13 @@ void CWE190_Integer_Overflow__unsigned_int_rand_square_17_bad()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     for(j = 0; j < 1; j++)
     {
         {
             /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-            unsigned int result = data * data;
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
     }
@@ -54,14 +54,14 @@ static void goodB2G()
     for(i = 0; i < 1; i++)
     {
         /* POTENTIAL FLAW: Use a random value */
-        data = (unsigned int)RAND32();
+        data = (unsigned int)RAND32();/* ikos: warning: possible unsigned integer underflow */
     }
     for(k = 0; k < 1; k++)
     {
         /* FIX: Add a check to prevent an overflow from occurring */
         if (abs((long)data) < (long)sqrt((double)UINT_MAX))
         {
-            unsigned int result = data * data;
+            unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
             printUnsignedLine(result);
         }
         else

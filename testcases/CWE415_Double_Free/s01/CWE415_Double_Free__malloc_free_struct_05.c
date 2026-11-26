@@ -42,7 +42,7 @@ void CWE415_Double_Free__malloc_free_struct_05_bad()
     if(staticTrue)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

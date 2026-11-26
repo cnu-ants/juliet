@@ -29,7 +29,7 @@ static void badSink(wchar_t * data)
     if(badStatic)
     {
         /* POTENTIAL FLAW: Possibly freeing memory twice */
-        free(data);
+        free(data);/* ikos: error: double free */
     }
 }
 

@@ -46,7 +46,7 @@ void CWE369_Divide_by_Zero__int_listen_socket_modulo_66b_badSink(int dataArray[]
     /* copy data out of dataArray */
     int data = dataArray[2];
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -68,7 +68,7 @@ void CWE369_Divide_by_Zero__int_listen_socket_modulo_66b_goodB2GSink(int dataArr
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
     }
     else
     {

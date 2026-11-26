@@ -35,7 +35,7 @@ void bad()
     twoIntsStruct * data;
     badSource(data);
     /* POTENTIAL FLAW: Use data without initializing it */
-    printIntLine(data->intOne);
+    printIntLine(data->intOne);/* ikos: error: variable 'data' is uninitialized */
     printIntLine(data->intTwo);
 }
 

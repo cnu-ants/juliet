@@ -46,7 +46,7 @@ void CWE190_Integer_Overflow__int_max_add_08_bad()
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            int result = data + 1;
+            int result = data + 1;/* ikos: error: signed integer overflow */
             printIntLine(result);
         }
     }

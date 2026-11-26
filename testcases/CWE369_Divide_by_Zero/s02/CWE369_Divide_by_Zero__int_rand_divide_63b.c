@@ -23,7 +23,7 @@ void CWE369_Divide_by_Zero__int_rand_divide_63b_badSink(int * dataPtr)
 {
     int data = *dataPtr;
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 / data);
+    printIntLine(100 / data);/* ikos: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -45,7 +45,7 @@ void CWE369_Divide_by_Zero__int_rand_divide_63b_goodB2GSink(int * dataPtr)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 / data);
+        printIntLine(100 / data);/* ikos: warning: divisor might be zero */
     }
     else
     {

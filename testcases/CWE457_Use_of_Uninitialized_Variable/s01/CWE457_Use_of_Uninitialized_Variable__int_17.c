@@ -33,7 +33,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_17_bad()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data);
+        printIntLine(data);/* ikos: error: first argument is uninitialized */
     }
 }
 
