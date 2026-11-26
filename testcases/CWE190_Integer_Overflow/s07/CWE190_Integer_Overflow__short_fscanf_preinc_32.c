@@ -35,7 +35,7 @@ void CWE190_Integer_Overflow__short_fscanf_preinc_32_bad()
         short data = *dataPtr2;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -88,7 +88,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            ++data;
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             short result = data;
             printIntLine(result);
         }

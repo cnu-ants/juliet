@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_square_82_goodB2G::action(unsi
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

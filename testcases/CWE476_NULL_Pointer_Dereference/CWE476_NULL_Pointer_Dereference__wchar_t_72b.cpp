@@ -57,7 +57,7 @@ void goodB2GSink(vector<wchar_t *> dataVector)
     if (data != NULL)
     {
         /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
+        printWcharLine(data[0]);
     }
     else
     {

@@ -46,7 +46,7 @@ void CWE190_Integer_Overflow__int_fscanf_postinc_08_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }
@@ -78,7 +78,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < INT_MAX)
         {
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }
@@ -105,7 +105,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < INT_MAX)
         {
-            data++;
+            data++;/* ikos: warning: possible signed integer overflow */
             int result = data;
             printIntLine(result);
         }

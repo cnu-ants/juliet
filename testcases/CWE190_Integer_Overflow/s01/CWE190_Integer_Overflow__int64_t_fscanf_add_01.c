@@ -28,7 +28,7 @@ void CWE190_Integer_Overflow__int64_t_fscanf_add_01_bad()
     fscanf (stdin, "%" SCNd64, &data);
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        int64_t result = data + 1;
+        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
         printLongLongLine(result);
     }
 }
@@ -61,7 +61,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < LLONG_MAX)
     {
-        int64_t result = data + 1;
+        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
         printLongLongLine(result);
     }
     else

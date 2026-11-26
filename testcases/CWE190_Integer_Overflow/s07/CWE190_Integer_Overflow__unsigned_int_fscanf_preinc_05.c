@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_preinc_05_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             unsigned int result = data;
             printUnsignedLine(result);
         }
@@ -69,7 +69,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < UINT_MAX)
         {
-            ++data;
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             unsigned int result = data;
             printUnsignedLine(result);
         }
@@ -95,7 +95,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < UINT_MAX)
         {
-            ++data;
+            ++data;/* ikos: warning: possible unsigned integer overflow */
             unsigned int result = data;
             printUnsignedLine(result);
         }

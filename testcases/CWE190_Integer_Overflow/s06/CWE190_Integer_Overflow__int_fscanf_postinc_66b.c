@@ -25,7 +25,7 @@ void CWE190_Integer_Overflow__int_fscanf_postinc_66b_badSink(int dataArray[])
     int data = dataArray[2];
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible signed integer overflow */
         int result = data;
         printIntLine(result);
     }

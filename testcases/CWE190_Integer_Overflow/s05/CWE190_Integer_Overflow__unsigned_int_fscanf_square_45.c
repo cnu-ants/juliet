@@ -30,7 +30,7 @@ static void badSink()
     unsigned int data = CWE190_Integer_Overflow__unsigned_int_fscanf_square_45_badData;
     {
         /* POTENTIAL FLAW: if (data*data) > UINT_MAX, this will overflow */
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }
@@ -77,7 +77,7 @@ static void goodB2GSink()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (abs((long)data) < (long)sqrt((double)UINT_MAX))
     {
-        unsigned int result = data * data;
+        unsigned int result = data * data;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
     else

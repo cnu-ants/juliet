@@ -23,7 +23,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_add_54e_badSink(unsigned int d
 {
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        unsigned int result = data + 1;
+        unsigned int result = data + 1;/* ikos: warning: possible unsigned integer overflow */
         printUnsignedLine(result);
     }
 }

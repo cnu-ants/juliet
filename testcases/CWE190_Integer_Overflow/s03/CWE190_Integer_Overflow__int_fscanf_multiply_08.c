@@ -47,7 +47,7 @@ void CWE190_Integer_Overflow__int_fscanf_multiply_08_bad()
         if(data > 0) /* ensure we won't have an underflow */
         {
             /* POTENTIAL FLAW: if (data*2) > INT_MAX, this will overflow */
-            int result = data * 2;
+            int result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printIntLine(result);
         }
     }
@@ -80,7 +80,7 @@ static void goodB2G1()
             /* FIX: Add a check to prevent an overflow from occurring */
             if (data < (INT_MAX/2))
             {
-                int result = data * 2;
+                int result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
                 printIntLine(result);
             }
             else
@@ -109,7 +109,7 @@ static void goodB2G2()
             /* FIX: Add a check to prevent an overflow from occurring */
             if (data < (INT_MAX/2))
             {
-                int result = data * 2;
+                int result = data * 2;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
                 printIntLine(result);
             }
             else

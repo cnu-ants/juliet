@@ -22,7 +22,7 @@ Template File: sources-sinks-52c.tmpl.c
 void CWE369_Divide_by_Zero__int_fscanf_modulo_52c_badSink(int data)
 {
     /* POTENTIAL FLAW: Possibly divide by zero */
-    printIntLine(100 % data);
+    printIntLine(100 % data);/* ikos: warning: divisor might be zero */
 }
 
 #endif /* OMITBAD */
@@ -42,7 +42,7 @@ void CWE369_Divide_by_Zero__int_fscanf_modulo_52c_goodB2GSink(int data)
     /* FIX: test for a zero denominator */
     if( data != 0 )
     {
-        printIntLine(100 % data);
+        printIntLine(100 % data);/* ikos: warning: divisor might be zero */
     }
     else
     {

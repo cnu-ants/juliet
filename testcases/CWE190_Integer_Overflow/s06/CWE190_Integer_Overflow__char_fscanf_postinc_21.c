@@ -28,7 +28,7 @@ static void badSink(char data)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -67,7 +67,7 @@ static void goodB2G1Sink(char data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;
+            data++;/* ikos: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -96,7 +96,7 @@ static void goodB2G2Sink(char data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;
+            data++;/* ikos: warning: possible unsigned integer overflow */
             char result = data;
             printHexCharLine(result);
         }

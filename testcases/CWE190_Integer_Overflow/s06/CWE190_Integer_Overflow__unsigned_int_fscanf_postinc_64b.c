@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__unsigned_int_fscanf_postinc_64b_badSink(void * dat
     unsigned int data = (*dataPtr);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;
+        data++;/* ikos: warning: possible unsigned integer overflow */
         unsigned int result = data;
         printUnsignedLine(result);
     }

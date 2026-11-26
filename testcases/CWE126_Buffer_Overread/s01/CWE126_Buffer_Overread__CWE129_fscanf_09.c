@@ -37,7 +37,7 @@ void CWE126_Buffer_Overread__CWE129_fscanf_09_bad()
              * This check does not check the upper bounds of the array index */
             if (data >= 0)
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {
@@ -74,7 +74,7 @@ static void goodB2G1()
             /* FIX: Properly validate the array index and prevent a buffer overread */
             if (data >= 0 && data < (10))
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {
@@ -102,7 +102,7 @@ static void goodB2G2()
             /* FIX: Properly validate the array index and prevent a buffer overread */
             if (data >= 0 && data < (10))
             {
-                printIntLine(buffer[data]);
+                printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
             }
             else
             {

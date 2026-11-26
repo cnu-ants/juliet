@@ -56,7 +56,7 @@ void goodB2GSink(vector<TwoIntsClass *> dataVector)
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
-        printIntLine(data->intOne);/* ikos: warning: pointer '&data->intOne' might be null */
+        printIntLine(data->intOne);
         delete data;
     }
     else

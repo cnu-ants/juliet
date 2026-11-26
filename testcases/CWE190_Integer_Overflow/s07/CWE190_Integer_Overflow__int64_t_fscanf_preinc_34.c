@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__int64_t_fscanf_preinc_34_bad()
         int64_t data = myUnion.unionSecond;
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;
+            ++data;/* ikos: warning: possible signed integer overflow */
             int64_t result = data;
             printLongLongLine(result);
         }

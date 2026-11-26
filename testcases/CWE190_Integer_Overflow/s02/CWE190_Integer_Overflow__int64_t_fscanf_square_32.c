@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__int64_t_fscanf_square_32_bad()
         int64_t data = *dataPtr2;
         {
             /* POTENTIAL FLAW: if (data*data) > LLONG_MAX, this will overflow */
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
     }
@@ -89,7 +89,7 @@ static void goodB2G()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (imaxabs((intmax_t)data) <= sqrtl(LLONG_MAX))
         {
-            int64_t result = data * data;
+            int64_t result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
             printLongLongLine(result);
         }
         else
