@@ -25,7 +25,7 @@ void CWE190_Integer_Overflow__char_max_add_66b_badSink(char dataArray[])
     char data = dataArray[2];
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        char result = data + 1;
+        char result = data + 1;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

@@ -34,7 +34,7 @@ void bad()
     badSource(data);
     {
         /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
-        short result = data * data;
+        short result = data * data;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

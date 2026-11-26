@@ -33,7 +33,7 @@ void badSink(vector<char> dataVector)
     char data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printHexCharLine(result);
     }
 }
@@ -48,7 +48,7 @@ void goodG2BSink(vector<char> dataVector)
     char data = dataVector[2];
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: warning: possible signed integer overflow; warning: possible signed integer underflow */
         printHexCharLine(result);
     }
 }

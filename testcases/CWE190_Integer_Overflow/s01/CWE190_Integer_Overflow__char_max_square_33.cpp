@@ -35,7 +35,7 @@ void bad()
         char data = dataRef;
         {
             /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-            char result = data * data;
+            char result = data * data;/* ikos: error: signed integer overflow */
             printHexCharLine(result);
         }
     }

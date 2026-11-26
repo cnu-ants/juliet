@@ -28,7 +28,7 @@ static void badSink(short data)
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            short result = data + 1;
+            short result = data + 1;/* ikos: warning: possible signed integer overflow */
             printIntLine(result);
         }
     }

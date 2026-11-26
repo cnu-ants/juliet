@@ -23,7 +23,7 @@ void CWE190_Integer_Overflow__short_fscanf_postinc_52c_badSink(short data)
 {
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -50,7 +50,7 @@ void CWE190_Integer_Overflow__short_fscanf_postinc_52c_goodB2GSink(short data)
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;
         short result = data;
         printIntLine(result);
     }

@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__char_max_square_84_bad::~CWE190_Integer_Overflow__char_
 {
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

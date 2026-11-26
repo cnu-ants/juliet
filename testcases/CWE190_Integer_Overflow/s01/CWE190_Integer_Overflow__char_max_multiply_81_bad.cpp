@@ -27,7 +27,7 @@ void CWE190_Integer_Overflow__char_max_multiply_81_bad::action(char data) const
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > CHAR_MAX, this will overflow */
-        char result = data * 2;
+        char result = data * 2;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

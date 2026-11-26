@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_fscanf_postinc_61_bad()
     data = CWE190_Integer_Overflow__short_fscanf_postinc_61b_badSource(data);
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -66,7 +66,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;
         short result = data;
         printIntLine(result);
     }

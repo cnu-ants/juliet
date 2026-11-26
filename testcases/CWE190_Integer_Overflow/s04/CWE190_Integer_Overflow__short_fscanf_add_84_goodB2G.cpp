@@ -33,7 +33,7 @@ CWE190_Integer_Overflow__short_fscanf_add_84_goodB2G::~CWE190_Integer_Overflow__
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        short result = data + 1;
+        short result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
     else

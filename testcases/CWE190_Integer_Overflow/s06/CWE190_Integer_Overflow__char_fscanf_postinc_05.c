@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__char_fscanf_postinc_05_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos: warning: possible unsigned integer overflow */
+            data++;/* ikos: warning: possible signed integer overflow */
             char result = data;
             printHexCharLine(result);
         }
@@ -69,7 +69,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;/* ikos: warning: possible unsigned integer overflow */
+            data++;
             char result = data;
             printHexCharLine(result);
         }
@@ -95,7 +95,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < CHAR_MAX)
         {
-            data++;/* ikos: warning: possible unsigned integer overflow */
+            data++;
             char result = data;
             printHexCharLine(result);
         }

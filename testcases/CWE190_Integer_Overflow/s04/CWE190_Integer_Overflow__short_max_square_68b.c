@@ -30,7 +30,7 @@ void CWE190_Integer_Overflow__short_max_square_68b_badSink()
     short data = CWE190_Integer_Overflow__short_max_square_68_badData;
     {
         /* POTENTIAL FLAW: if (data*data) > SHRT_MAX, this will overflow */
-        short result = data * data;
+        short result = data * data;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

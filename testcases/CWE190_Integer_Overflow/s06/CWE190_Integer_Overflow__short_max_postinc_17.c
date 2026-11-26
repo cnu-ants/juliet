@@ -33,7 +33,7 @@ void CWE190_Integer_Overflow__short_max_postinc_17_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos: warning: possible unsigned integer overflow */
+            data++;/* ikos: warning: possible signed integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -86,7 +86,7 @@ static void goodG2B()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;/* ikos: warning: possible unsigned integer overflow */
+            data++;/* ikos: warning: possible signed integer overflow */
             short result = data;
             printIntLine(result);
         }

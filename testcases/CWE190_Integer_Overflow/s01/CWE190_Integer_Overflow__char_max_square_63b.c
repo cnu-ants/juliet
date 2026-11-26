@@ -26,7 +26,7 @@ void CWE190_Integer_Overflow__char_max_square_63b_badSink(char * dataPtr)
     char data = *dataPtr;
     {
         /* POTENTIAL FLAW: if (data*data) > CHAR_MAX, this will overflow */
-        char result = data * data;
+        char result = data * data;/* ikos: error: signed integer overflow */
         printHexCharLine(result);
     }
 }

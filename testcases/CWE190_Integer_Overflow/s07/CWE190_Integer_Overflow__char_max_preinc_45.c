@@ -28,7 +28,7 @@ static void badSink()
     char data = CWE190_Integer_Overflow__char_max_preinc_45_badData;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        ++data;
+        ++data;/* ikos: error: signed integer overflow */
         char result = data;
         printHexCharLine(result);
     }

@@ -36,7 +36,7 @@ void bad()
     if(data > 0) /* ensure we won't have an underflow */
     {
         /* POTENTIAL FLAW: if (data*2) > SHRT_MAX, this will overflow */
-        short result = data * 2;
+        short result = data * 2;/* ikos: error: signed integer overflow */
         printIntLine(result);
     }
 }

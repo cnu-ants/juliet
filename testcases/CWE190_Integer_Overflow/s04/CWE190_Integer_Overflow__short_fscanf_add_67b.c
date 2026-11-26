@@ -29,7 +29,7 @@ void CWE190_Integer_Overflow__short_fscanf_add_67b_badSink(CWE190_Integer_Overfl
     short data = myStruct.structFirst;
     {
         /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-        short result = data + 1;
+        short result = data + 1;/* ikos: warning: possible signed integer overflow */
         printIntLine(result);
     }
 }

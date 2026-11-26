@@ -32,7 +32,7 @@ void CWE190_Integer_Overflow__short_fscanf_add_11_bad()
     {
         {
             /* POTENTIAL FLAW: Adding 1 to data could cause an overflow */
-            short result = data + 1;
+            short result = data + 1;/* ikos: warning: possible signed integer overflow */
             printIntLine(result);
         }
     }

@@ -38,7 +38,7 @@ void CWE190_Integer_Overflow__char_max_postinc_05_bad()
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            data++;
+            data++;/* ikos: error: signed integer overflow */
             char result = data;
             printHexCharLine(result);
         }

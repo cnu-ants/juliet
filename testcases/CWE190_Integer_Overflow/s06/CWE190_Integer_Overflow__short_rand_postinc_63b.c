@@ -24,7 +24,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_63b_badSink(short * dataPtr)
     short data = *dataPtr;
     {
         /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;/* ikos: warning: possible signed integer overflow */
         short result = data;
         printIntLine(result);
     }
@@ -53,7 +53,7 @@ void CWE190_Integer_Overflow__short_rand_postinc_63b_goodB2GSink(short * dataPtr
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < SHRT_MAX)
     {
-        data++;/* ikos: warning: possible unsigned integer overflow */
+        data++;
         short result = data;
         printIntLine(result);
     }

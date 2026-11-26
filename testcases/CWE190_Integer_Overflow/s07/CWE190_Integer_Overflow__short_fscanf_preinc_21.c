@@ -28,7 +28,7 @@ static void badSink(short data)
     {
         {
             /* POTENTIAL FLAW: Incrementing data could cause an overflow */
-            ++data;/* ikos: warning: possible unsigned integer overflow */
+            ++data;/* ikos: warning: possible signed integer overflow */
             short result = data;
             printIntLine(result);
         }
@@ -67,7 +67,7 @@ static void goodB2G1Sink(short data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            ++data;/* ikos: warning: possible unsigned integer overflow */
+            ++data;
             short result = data;
             printIntLine(result);
         }
@@ -96,7 +96,7 @@ static void goodB2G2Sink(short data)
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < SHRT_MAX)
         {
-            ++data;/* ikos: warning: possible unsigned integer overflow */
+            ++data;
             short result = data;
             printIntLine(result);
         }
