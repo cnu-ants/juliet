@@ -78,7 +78,7 @@ static void goodG2B()
     for(j = 0; j < 1; j++)
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(*data);/* ikos: warning: variable 'data' might be uninitialized */
+        printIntLine(*data);/* ikos: warning: expression '*data' might be uninitialized; warning: variable 'data' might be uninitialized */
     }
 }
 

@@ -51,8 +51,8 @@ void goodG2BSink(twoIntsStruct * * dataPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
     /* deallocate the memory */
@@ -76,8 +76,8 @@ void goodB2GSink(twoIntsStruct * * dataPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i].intOne);
-            printIntLine(data[i].intTwo);
+            printIntLine(data[i].intOne);/* ikos: warning: expression 'data[(int64_t)i].0' might be uninitialized */
+            printIntLine(data[i].intTwo);/* ikos: warning: expression 'data[(int64_t)i].1' might be uninitialized */
         }
     }
     /* deallocate the memory */

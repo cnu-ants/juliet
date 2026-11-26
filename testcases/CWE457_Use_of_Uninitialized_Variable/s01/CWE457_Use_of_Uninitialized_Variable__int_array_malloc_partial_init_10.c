@@ -42,7 +42,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_malloc_partial_init_10_bad(
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -160,7 +160,7 @@ static void goodG2B1()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }
@@ -190,7 +190,7 @@ static void goodG2B2()
             int i;
             for(i=0; i<10; i++)
             {
-                printIntLine(data[i]);
+                printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
             }
         }
     }

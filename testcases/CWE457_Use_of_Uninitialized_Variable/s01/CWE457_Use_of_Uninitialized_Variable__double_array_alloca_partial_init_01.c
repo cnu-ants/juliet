@@ -36,7 +36,7 @@ void CWE457_Use_of_Uninitialized_Variable__double_array_alloca_partial_init_01_b
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
 }

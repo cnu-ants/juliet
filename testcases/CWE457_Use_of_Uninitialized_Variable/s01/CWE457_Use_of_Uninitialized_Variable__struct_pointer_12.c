@@ -41,7 +41,7 @@ void CWE457_Use_of_Uninitialized_Variable__struct_pointer_12_bad()
     if(globalReturnsTrueOrFalse())
     {
         /* POTENTIAL FLAW: Use data without initializing it */
-        printIntLine(data->intOne);/* ikos: warning: variable 'data' might be uninitialized */
+        printIntLine(data->intOne);/* ikos: warning: expression 'data->intOne' might be uninitialized; warning: variable 'data' might be uninitialized */
         printIntLine(data->intTwo);/* ikos: warning: expression 'data->intTwo' might be uninitialized; warning: variable 'data' might be uninitialized */
     }
     else

@@ -72,7 +72,7 @@ static void goodG2B()
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);
+            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */
@@ -103,7 +103,7 @@ static void goodB2G()
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);
+            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */

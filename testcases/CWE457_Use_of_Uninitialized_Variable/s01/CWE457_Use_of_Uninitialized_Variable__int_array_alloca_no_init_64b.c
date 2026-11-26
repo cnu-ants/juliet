@@ -51,7 +51,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_no_init_64b_goodG2BS
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);
+            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
 }
@@ -75,7 +75,7 @@ void CWE457_Use_of_Uninitialized_Variable__int_array_alloca_no_init_64b_goodB2GS
         int i;
         for(i=0; i<10; i++)
         {
-            printIntLine(data[i]);
+            printIntLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
 }

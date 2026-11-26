@@ -56,7 +56,7 @@ void goodG2BSink(void * dataVoidPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */
@@ -82,7 +82,7 @@ void goodB2GSink(void * dataVoidPtr)
         int i;
         for(i=0; i<10; i++)
         {
-            printDoubleLine(data[i]);
+            printDoubleLine(data[i]);/* ikos: warning: expression 'data[(int64_t)i]' might be uninitialized */
         }
     }
     /* deallocate the memory */
