@@ -24,7 +24,7 @@ sink:
     {
         int *intPointer = NULL;
         intPointer = (int *)malloc(sizeof(int));
-        *intPointer = 5;
+        *intPointer = 5;/* ikos: warning: pointer 'intPointer' might be null */
         printIntLine(*intPointer);
         /* FLAW: Check for NULL after dereferencing the pointer. This NULL check is unnecessary. */
         if (intPointer != NULL)
@@ -47,7 +47,7 @@ sink:
     {
         int *intPointer = NULL;
         intPointer = (int *)malloc(sizeof(int));
-        *intPointer = 5;
+        *intPointer = 5;/* ikos: warning: pointer 'intPointer' might be null */
         printIntLine(*intPointer);
         /* FIX: Don't check for NULL since we wouldn't reach this line if the pointer was NULL */
         *intPointer = 10;
