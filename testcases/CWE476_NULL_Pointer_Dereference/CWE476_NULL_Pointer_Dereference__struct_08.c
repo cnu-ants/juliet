@@ -45,7 +45,7 @@ void CWE476_NULL_Pointer_Dereference__struct_08_bad()
     if(staticReturnsTrue())
     {
         /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);/* ikos: error: pointer '&data->intOne' is null */
+        printIntLine(data->intOne);/* ikos: error: pointer '&NULL->0' is null */
     }
 }
 
