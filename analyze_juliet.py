@@ -496,7 +496,7 @@ def target_match(n, kind, status, message, path, line, column, snapshot, frames)
                     and not code.lstrip().startswith('for')), 'tested_initialization_read'
     if re.search(r'__(?:stdinp|stdoutp|stderrp)', message):
         return False, 'stdio_global_not_tested_pointer'
-    return bool(re.search(r'\b(?:data\w*|intPointer)\b', code)), 'tested_null_dereference'
+    return bool(re.search(r'\b(?:data\w*|intPointer|twoIntsStructPointer)\b', code)), 'tested_null_dereference'
 
 
 def collect_result(db_path, program, snapshot):
@@ -1224,4 +1224,5 @@ if __name__ == '__main__':
     except Exception as error:
         print('ERROR: ' + str(error),file=sys.stderr)
         sys.exit(1)
+
 
