@@ -82,7 +82,7 @@ static void goodB2G()
         /* FIX: Properly validate the array index and prevent a buffer overread */
         if (data >= 0 && data < (10))
         {
-            printIntLine(buffer[data]);/* ikos: warning: possible buffer overflow */
+            printIntLine(buffer[data]);
         }
         else
         {

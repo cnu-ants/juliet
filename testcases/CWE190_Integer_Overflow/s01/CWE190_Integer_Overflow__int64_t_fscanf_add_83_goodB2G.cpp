@@ -34,7 +34,7 @@ CWE190_Integer_Overflow__int64_t_fscanf_add_83_goodB2G::~CWE190_Integer_Overflow
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < LLONG_MAX)
     {
-        int64_t result = data + 1;/* ikos: warning: possible signed integer overflow */
+        int64_t result = data + 1;
         printLongLongLine(result);
     }
     else

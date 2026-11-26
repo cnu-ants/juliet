@@ -71,7 +71,7 @@ static void goodB2G1()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < INT_MAX)
         {
-            data++;/* ikos: warning: possible signed integer overflow */
+            data++;
             int result = data;
             printIntLine(result);
         }
@@ -98,7 +98,7 @@ static void goodB2G2()
         /* FIX: Add a check to prevent an overflow from occurring */
         if (data < INT_MAX)
         {
-            data++;/* ikos: warning: possible signed integer overflow */
+            data++;
             int result = data;
             printIntLine(result);
         }

@@ -57,7 +57,7 @@ sink:
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < INT_MAX)
     {
-        data++;/* ikos: warning: possible signed integer overflow */
+        data++;
         int result = data;
         printIntLine(result);
     }

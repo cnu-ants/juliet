@@ -211,7 +211,7 @@ static void goodB2G()
     /* FIX: Add a check to prevent an overflow from occurring */
     if (data < INT_MAX)
     {
-        int result = data + 1;/* ikos: warning: possible signed integer overflow */
+        int result = data + 1;
         printIntLine(result);
     }
     else
