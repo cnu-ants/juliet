@@ -105,7 +105,7 @@ void bad()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -127,8 +127,8 @@ void bad()
     }
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -150,8 +150,8 @@ static void goodG2B()
     data = 7;
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -213,7 +213,7 @@ static void goodB2G()
                 break;
             }
             /* NUL-terminate the string */
-            inputBuffer[recvResult] = '\0';
+            inputBuffer[recvResult] = '\0';/* ikos: warning: possible buffer overflow */
             /* Convert to int */
             data = atoi(inputBuffer);
         }
@@ -234,8 +234,8 @@ static void goodB2G()
 #endif
     }
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

@@ -30,10 +30,10 @@ namespace CWE476_NULL_Pointer_Dereference__char_74
 void badSink(map<int, char *> dataMap)
 {
     /* copy data out of dataMap */
-    char * data = dataMap[2];
+    char * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, char*, std::less<int>, std::allocator<std::pair<int const, char*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 #endif /* OMITBAD */
@@ -43,21 +43,21 @@ void badSink(map<int, char *> dataMap)
 /* goodG2B uses the GoodSource with the BadSink */
 void goodG2BSink(map<int, char *> dataMap)
 {
-    char * data = dataMap[2];
+    char * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, char*, std::less<int>, std::allocator<std::pair<int const, char*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
     /* printLine() checks for NULL, so we cannot use it here */
-    printHexCharLine(data[0]);
+    printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */
 void goodB2GSink(map<int, char *> dataMap)
 {
-    char * data = dataMap[2];
+    char * data = dataMap[2];/* ikos: warning: pointer 'std::map<int, char*, std::less<int>, std::allocator<std::pair<int const, char*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     /* FIX: Check for NULL before attempting to print data */
     if (data != NULL)
     {
         /* printLine() checks for NULL, so we cannot use it here */
-        printHexCharLine(data[0]);
+        printHexCharLine(data[0]);/* ikos: warning: pointer 'data' might be null */
     }
     else
     {

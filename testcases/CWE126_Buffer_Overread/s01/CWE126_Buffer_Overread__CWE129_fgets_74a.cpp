@@ -39,7 +39,7 @@ void bad()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -51,8 +51,8 @@ void bad()
     }
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -74,8 +74,8 @@ static void goodG2B()
     data = 7;
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -91,7 +91,7 @@ static void goodB2G()
     {
         char inputBuffer[CHAR_ARRAY_SIZE] = "";
         /* POTENTIAL FLAW: Read data from the console using fgets() */
-        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)
+        if (fgets(inputBuffer, CHAR_ARRAY_SIZE, stdin) != NULL)/* ikos: warning: memory access might be invalid */
         {
             /* Convert to int */
             data = atoi(inputBuffer);
@@ -102,8 +102,8 @@ static void goodB2G()
         }
     }
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

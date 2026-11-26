@@ -38,8 +38,8 @@ void bad()
     data = 10;
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     badSink(dataMap);
 }
 
@@ -61,8 +61,8 @@ static void goodG2B()
     data = 7;
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodG2BSink(dataMap);
 }
 
@@ -78,8 +78,8 @@ static void goodB2G()
     /* POTENTIAL FLAW: Use an invalid index */
     data = 10;
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: memory access might be invalid */
+    dataMap[2] = data;/* ikos: warning: memory access might be invalid */
     goodB2GSink(dataMap);
 }
 

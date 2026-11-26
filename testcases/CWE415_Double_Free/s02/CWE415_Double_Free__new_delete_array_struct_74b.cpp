@@ -32,7 +32,7 @@ void badSink(map<int, twoIntsStruct *> dataMap)
     /* copy data out of dataMap */
     twoIntsStruct * data = dataMap[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: warning: ignored memory deallocation */
 }
 
 #endif /* OMITBAD */
@@ -44,7 +44,7 @@ void goodG2BSink(map<int, twoIntsStruct *> dataMap)
 {
     twoIntsStruct * data = dataMap[2];
     /* POTENTIAL FLAW: Possibly deleting memory twice */
-    delete [] data;
+    delete [] data;/* ikos: warning: ignored memory deallocation */
 }
 
 /* goodB2G uses the BadSource with the GoodSink */

@@ -36,8 +36,8 @@ void bad()
     data = NULL;
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     badSink(dataMap);
 }
 
@@ -61,8 +61,8 @@ static void goodG2B()
     }
     /* Put data in a map */
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     goodG2BSink(dataMap);
 }
 
@@ -76,8 +76,8 @@ static void goodB2G()
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
     dataMap[0] = data;
-    dataMap[1] = data;
-    dataMap[2] = data;
+    dataMap[1] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
+    dataMap[2] = data;/* ikos: warning: pointer 'std::map<int, TwoIntsClass*, std::less<int>, std::allocator<std::pair<int const, TwoIntsClass*> > >::operator[](int&&)(&dataMap, &__unnamed_local_var)' might be null */
     goodB2GSink(dataMap);
 }
 

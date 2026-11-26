@@ -34,7 +34,7 @@ void bad()
     map<int, short> dataMap;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     /* Put data in a map */
     dataMap[0] = data;
     dataMap[1] = data;
@@ -72,7 +72,7 @@ static void goodB2G()
     map<int, short> dataMap;
     data = 0;
     /* POTENTIAL FLAW: Use a random value */
-    data = (short)RAND32();
+    data = (short)RAND32();/* ikos: warning: possible unsigned integer underflow */
     dataMap[0] = data;
     dataMap[1] = data;
     dataMap[2] = data;
